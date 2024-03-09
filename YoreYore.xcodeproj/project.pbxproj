@@ -34,6 +34,7 @@
 		8BE601C82B9C4A46009249DD /* ClassifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE601C72B9C4A46009249DD /* ClassifyView.swift */; };
 		8BE601CA2B9C50B9009249DD /* FoodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE601C92B9C50B9009249DD /* FoodCollectionViewCell.swift */; };
 		8BE601CD2B9CA76F009249DD /* RecipeAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE601CC2B9CA76F009249DD /* RecipeAPIManager.swift */; };
+		8BE601CF2B9CAC02009249DD /* RecipeAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE601CE2B9CAC02009249DD /* RecipeAPIRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		8BE601C72B9C4A46009249DD /* ClassifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifyView.swift; sourceTree = "<group>"; };
 		8BE601C92B9C50B9009249DD /* FoodCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCollectionViewCell.swift; sourceTree = "<group>"; };
 		8BE601CC2B9CA76F009249DD /* RecipeAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeAPIManager.swift; sourceTree = "<group>"; };
+		8BE601CE2B9CAC02009249DD /* RecipeAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeAPIRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				8BE601CC2B9CA76F009249DD /* RecipeAPIManager.swift */,
+				8BE601CE2B9CAC02009249DD /* RecipeAPIRequest.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				8BE6019E2B9AECB6009249DD /* SearchViewController.swift in Sources */,
 				8BE601B92B9AEE5E009249DD /* BaseView.swift in Sources */,
 				8BE6016E2B998381009249DD /* SceneDelegate.swift in Sources */,
+				8BE601CF2B9CAC02009249DD /* RecipeAPIRequest.swift in Sources */,
 				8BE601B72B9AEE57009249DD /* BaseViewController.swift in Sources */,
 				8BE601C12B9C3C56009249DD /* ClassifyMenuCollectionViewCell.swift in Sources */,
 				8BE601BC2B9C0F06009249DD /* Constants.swift in Sources */,
