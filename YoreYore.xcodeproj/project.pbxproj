@@ -14,6 +14,27 @@
 		8BE601752B998383009249DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BE601742B998383009249DD /* Assets.xcassets */; };
 		8BE601782B998383009249DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BE601762B998383009249DD /* LaunchScreen.storyboard */; };
 		8BE601802B998601009249DD /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 8BE6017F2B998601009249DD /* .gitignore */; };
+		8BE601832B998A16009249DD /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8BE601822B998A16009249DD /* SnapKit */; };
+		8BE6019E2B9AECB6009249DD /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6019D2B9AECB6009249DD /* SearchViewController.swift */; };
+		8BE601A02B9AECC9009249DD /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6019F2B9AECC9009249DD /* SearchView.swift */; };
+		8BE601A32B9AED06009249DD /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 8BE601A22B9AED06009249DD /* FSCalendar */; };
+		8BE601A62B9AED0D009249DD /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 8BE601A52B9AED0D009249DD /* SideMenu */; };
+		8BE601A92B9AED1D009249DD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8BE601A82B9AED1D009249DD /* Alamofire */; };
+		8BE601AB2B9AED1D009249DD /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 8BE601AA2B9AED1D009249DD /* AlamofireDynamic */; };
+		8BE601AE2B9AED27009249DD /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8BE601AD2B9AED27009249DD /* Kingfisher */; };
+		8BE601B12B9AED47009249DD /* Parchment in Frameworks */ = {isa = PBXBuildFile; productRef = 8BE601B02B9AED47009249DD /* Parchment */; };
+		8BE601B42B9AEE19009249DD /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 8BE601B32B9AEE19009249DD /* SkeletonView */; };
+		8BE601B72B9AEE57009249DD /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE601B62B9AEE57009249DD /* BaseViewController.swift */; };
+		8BE601B92B9AEE5E009249DD /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE601B82B9AEE5E009249DD /* BaseView.swift */; };
+		8BE601BC2B9C0F06009249DD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE601BB2B9C0F06009249DD /* Constants.swift */; };
+		8BE601BE2B9C1F16009249DD /* ClassifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE601BD2B9C1F16009249DD /* ClassifyViewController.swift */; };
+		8BE601C12B9C3C56009249DD /* ClassifyMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE601C02B9C3C56009249DD /* ClassifyMenuCollectionViewCell.swift */; };
+		8BE601C32B9C3C7A009249DD /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE601C22B9C3C7A009249DD /* BaseCollectionViewCell.swift */; };
+		8BE601C62B9C3F3D009249DD /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE601C52B9C3F3D009249DD /* UIView+Extension.swift */; };
+		8BE601C82B9C4A46009249DD /* ClassifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE601C72B9C4A46009249DD /* ClassifyView.swift */; };
+		8BE601CA2B9C50B9009249DD /* FoodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE601C92B9C50B9009249DD /* FoodCollectionViewCell.swift */; };
+		8BE601CD2B9CA76F009249DD /* RecipeAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE601CC2B9CA76F009249DD /* RecipeAPIManager.swift */; };
+		8BE601CF2B9CAC02009249DD /* RecipeAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE601CE2B9CAC02009249DD /* RecipeAPIRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +47,19 @@
 		8BE601772B998383009249DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8BE601792B998383009249DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BE6017F2B998601009249DD /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		8BE6019D2B9AECB6009249DD /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		8BE6019F2B9AECC9009249DD /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		8BE601B62B9AEE57009249DD /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		8BE601B82B9AEE5E009249DD /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		8BE601BB2B9C0F06009249DD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8BE601BD2B9C1F16009249DD /* ClassifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifyViewController.swift; sourceTree = "<group>"; };
+		8BE601C02B9C3C56009249DD /* ClassifyMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifyMenuCollectionViewCell.swift; sourceTree = "<group>"; };
+		8BE601C22B9C3C7A009249DD /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		8BE601C52B9C3F3D009249DD /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		8BE601C72B9C4A46009249DD /* ClassifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifyView.swift; sourceTree = "<group>"; };
+		8BE601C92B9C50B9009249DD /* FoodCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCollectionViewCell.swift; sourceTree = "<group>"; };
+		8BE601CC2B9CA76F009249DD /* RecipeAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeAPIManager.swift; sourceTree = "<group>"; };
+		8BE601CE2B9CAC02009249DD /* RecipeAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeAPIRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +67,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BE601AE2B9AED27009249DD /* Kingfisher in Frameworks */,
+				8BE601832B998A16009249DD /* SnapKit in Frameworks */,
+				8BE601B12B9AED47009249DD /* Parchment in Frameworks */,
+				8BE601A92B9AED1D009249DD /* Alamofire in Frameworks */,
+				8BE601B42B9AEE19009249DD /* SkeletonView in Frameworks */,
+				8BE601AB2B9AED1D009249DD /* AlamofireDynamic in Frameworks */,
+				8BE601A62B9AED0D009249DD /* SideMenu in Frameworks */,
+				8BE601A32B9AED06009249DD /* FSCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +101,13 @@
 		8BE6016A2B998381009249DD /* YoreYore */ = {
 			isa = PBXGroup;
 			children = (
+				8BE601CB2B9CA711009249DD /* API */,
+				8BE601C42B9C3F25009249DD /* Extension */,
+				8BE601BA2B9C0EF9009249DD /* Enum */,
+				8BE601B52B9AEE41009249DD /* Base */,
+				8BE601882B9AEB35009249DD /* My */,
+				8BE601872B9AEB32009249DD /* Detail */,
+				8BE601862B9AEAA9009249DD /* Search */,
 				8BE6016B2B998381009249DD /* AppDelegate.swift */,
 				8BE6016D2B998381009249DD /* SceneDelegate.swift */,
 				8BE6016F2B998381009249DD /* ViewController.swift */,
@@ -68,6 +117,68 @@
 				8BE601792B998383009249DD /* Info.plist */,
 			);
 			path = YoreYore;
+			sourceTree = "<group>";
+		};
+		8BE601862B9AEAA9009249DD /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				8BE6019D2B9AECB6009249DD /* SearchViewController.swift */,
+				8BE6019F2B9AECC9009249DD /* SearchView.swift */,
+				8BE601C02B9C3C56009249DD /* ClassifyMenuCollectionViewCell.swift */,
+				8BE601BD2B9C1F16009249DD /* ClassifyViewController.swift */,
+				8BE601C72B9C4A46009249DD /* ClassifyView.swift */,
+				8BE601C92B9C50B9009249DD /* FoodCollectionViewCell.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		8BE601872B9AEB32009249DD /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		8BE601882B9AEB35009249DD /* My */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = My;
+			sourceTree = "<group>";
+		};
+		8BE601B52B9AEE41009249DD /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				8BE601B62B9AEE57009249DD /* BaseViewController.swift */,
+				8BE601B82B9AEE5E009249DD /* BaseView.swift */,
+				8BE601C22B9C3C7A009249DD /* BaseCollectionViewCell.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		8BE601BA2B9C0EF9009249DD /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				8BE601BB2B9C0F06009249DD /* Constants.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		8BE601C42B9C3F25009249DD /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8BE601C52B9C3F3D009249DD /* UIView+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		8BE601CB2B9CA711009249DD /* API */ = {
+			isa = PBXGroup;
+			children = (
+				8BE601CC2B9CA76F009249DD /* RecipeAPIManager.swift */,
+				8BE601CE2B9CAC02009249DD /* RecipeAPIRequest.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,6 +197,16 @@
 			dependencies = (
 			);
 			name = YoreYore;
+			packageProductDependencies = (
+				8BE601822B998A16009249DD /* SnapKit */,
+				8BE601A22B9AED06009249DD /* FSCalendar */,
+				8BE601A52B9AED0D009249DD /* SideMenu */,
+				8BE601A82B9AED1D009249DD /* Alamofire */,
+				8BE601AA2B9AED1D009249DD /* AlamofireDynamic */,
+				8BE601AD2B9AED27009249DD /* Kingfisher */,
+				8BE601B02B9AED47009249DD /* Parchment */,
+				8BE601B32B9AEE19009249DD /* SkeletonView */,
+			);
 			productName = YoreYore;
 			productReference = 8BE601682B998381009249DD /* YoreYore.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +235,15 @@
 				Base,
 			);
 			mainGroup = 8BE6015F2B998381009249DD;
+			packageReferences = (
+				8BE601812B998A16009249DD /* XCRemoteSwiftPackageReference "SnapKit" */,
+				8BE601A12B9AED06009249DD /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				8BE601A42B9AED0D009249DD /* XCRemoteSwiftPackageReference "SideMenu" */,
+				8BE601A72B9AED1D009249DD /* XCRemoteSwiftPackageReference "Alamofire" */,
+				8BE601AC2B9AED27009249DD /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				8BE601AF2B9AED47009249DD /* XCRemoteSwiftPackageReference "Parchment" */,
+				8BE601B22B9AEE19009249DD /* XCRemoteSwiftPackageReference "SkeletonView" */,
+			);
 			productRefGroup = 8BE601692B998381009249DD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -142,9 +272,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BE601A02B9AECC9009249DD /* SearchView.swift in Sources */,
 				8BE601702B998381009249DD /* ViewController.swift in Sources */,
+				8BE601C62B9C3F3D009249DD /* UIView+Extension.swift in Sources */,
+				8BE601CD2B9CA76F009249DD /* RecipeAPIManager.swift in Sources */,
+				8BE601BE2B9C1F16009249DD /* ClassifyViewController.swift in Sources */,
+				8BE601C82B9C4A46009249DD /* ClassifyView.swift in Sources */,
 				8BE6016C2B998381009249DD /* AppDelegate.swift in Sources */,
+				8BE601CA2B9C50B9009249DD /* FoodCollectionViewCell.swift in Sources */,
+				8BE601C32B9C3C7A009249DD /* BaseCollectionViewCell.swift in Sources */,
+				8BE6019E2B9AECB6009249DD /* SearchViewController.swift in Sources */,
+				8BE601B92B9AEE5E009249DD /* BaseView.swift in Sources */,
 				8BE6016E2B998381009249DD /* SceneDelegate.swift in Sources */,
+				8BE601CF2B9CAC02009249DD /* RecipeAPIRequest.swift in Sources */,
+				8BE601B72B9AEE57009249DD /* BaseViewController.swift in Sources */,
+				8BE601C12B9C3C56009249DD /* ClassifyMenuCollectionViewCell.swift in Sources */,
+				8BE601BC2B9C0F06009249DD /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +508,108 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8BE601812B998A16009249DD /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		8BE601A12B9AED06009249DD /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.4;
+			};
+		};
+		8BE601A42B9AED0D009249DD /* XCRemoteSwiftPackageReference "SideMenu" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jonkykong/SideMenu.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.5.0;
+			};
+		};
+		8BE601A72B9AED1D009249DD /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.0;
+			};
+		};
+		8BE601AC2B9AED27009249DD /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.0;
+			};
+		};
+		8BE601AF2B9AED47009249DD /* XCRemoteSwiftPackageReference "Parchment" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rechsteiner/Parchment";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		8BE601B22B9AEE19009249DD /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.30.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8BE601822B998A16009249DD /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8BE601812B998A16009249DD /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		8BE601A22B9AED06009249DD /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8BE601A12B9AED06009249DD /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
+		8BE601A52B9AED0D009249DD /* SideMenu */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8BE601A42B9AED0D009249DD /* XCRemoteSwiftPackageReference "SideMenu" */;
+			productName = SideMenu;
+		};
+		8BE601A82B9AED1D009249DD /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8BE601A72B9AED1D009249DD /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		8BE601AA2B9AED1D009249DD /* AlamofireDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8BE601A72B9AED1D009249DD /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = AlamofireDynamic;
+		};
+		8BE601AD2B9AED27009249DD /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8BE601AC2B9AED27009249DD /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		8BE601B02B9AED47009249DD /* Parchment */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8BE601AF2B9AED47009249DD /* XCRemoteSwiftPackageReference "Parchment" */;
+			productName = Parchment;
+		};
+		8BE601B32B9AEE19009249DD /* SkeletonView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8BE601B22B9AEE19009249DD /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8BE601602B998381009249DD /* Project object */;
 }
