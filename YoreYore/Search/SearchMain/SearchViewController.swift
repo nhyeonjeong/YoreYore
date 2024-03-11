@@ -11,7 +11,7 @@ import Parchment
 
 final class SearchViewController: BaseViewController {
 
-    let classifyList = ["한식", "중식", "일식"]
+    let classifyList = ["후식"]
     let mainView = SearchView()
     
     override func loadView() {
@@ -23,14 +23,14 @@ final class SearchViewController: BaseViewController {
     }
 }
 
-
 extension SearchViewController: PagingViewControllerDataSource {
     func numberOfViewControllers(in pagingViewController: Parchment.PagingViewController) -> Int {
         return classifyList.count
     }
     
     func pagingViewController(_: Parchment.PagingViewController, viewControllerAt index: Int) -> UIViewController {
-        return ClassifyViewController(classifyFood: classifyList[index])
+        print("pagingVC func foodType: \(classifyList[index])")
+        return ClassifyViewController(foodType: classifyList[index])
     }
     
     func pagingViewController(_: Parchment.PagingViewController, pagingItemAt index: Int) -> Parchment.PagingItem {

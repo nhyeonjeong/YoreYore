@@ -10,7 +10,7 @@ import SnapKit
 
 final class ClassifyView: BaseView {
 
-    lazy var classifyCollectionView: UICollectionView = {
+    lazy var foodCollectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: collectionLayout())
         view.register(FoodCollectionViewCell.self, forCellWithReuseIdentifier: FoodCollectionViewCell.identifier)
         view.register(FoodCollectionViewCell.self, forCellWithReuseIdentifier: FoodCollectionViewCell.identifier)
@@ -19,11 +19,11 @@ final class ClassifyView: BaseView {
     }()
     
     override func configureHierarchy() {
-        addSubview(classifyCollectionView)
+        addSubview(foodCollectionView)
     }
     
     override func configureConstraints() {
-        classifyCollectionView.snp.makeConstraints { make in
+        foodCollectionView.snp.makeConstraints { make in
             make.edges.equalTo(safeAreaLayoutGuide)
         }
     }

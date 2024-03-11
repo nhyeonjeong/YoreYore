@@ -21,7 +21,8 @@ final class FoodCollectionViewCell: BaseCollectionViewCell {
             make.center.equalTo(contentView)
         }
     }
-    func configureCell(text: String) {
-        testLabel.text = text
+    func configureCell(recipe: Recipe) {
+        testLabel.text = recipe.foodName
+        
     }
 }

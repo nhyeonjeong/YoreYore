@@ -6,44 +6,66 @@
 //
 
 import Foundation
+import Alamofire
 
 enum RecipeAPIRequest {
+
+    case foodType(type: String)
+    case searchWithType(type: String, search: String)
     
-    case trending
-    case search(query: String)
-    case photo(id: Int)
+    var baseURL: URL {
+        return URL(string: "https://openapi.foodsafetykorea.go.kr/api/sample/COOKRCP01/json/1/10/")!
+    }
     
-    var baseURL: String {
-        return "http://openapi.foodsafetykorea.go.kr/api/sample/COOKRCP01/xml/1/5"
+    var getMethod: HTTPMethod {
+        return .get
     }
     
     var endpoint: URL {
         switch self {
-        case .trending:
-            return URL(string: baseURL + "trending/movie/week")!
-        case .search: // 매개변수르 안써줘도 되긴 함
-            return URL(string: baseURL + "search/movie")!
-        case .photo(let id):
-            return URL(string: baseURL + "movie/\(id)/images")! // 영화 id가 들어가는 부분은 달라질 것이다.
+        case .foodType(let type):
+//            guard let queryType = type.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+//                print("queryType으로 encoding실패")
+//                return
+//            }
+            let query = type.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            return URL(string: "\(baseURL)RCP_PAT2=\(type)")!
+        case .searchWithType(let type, let search):
+            let query = type.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            return URL(string: "\(baseURL)RCP_PAT2=\(type)&RCP_NM=\(search)")!
         }
     }
     
-    var header: HTTPHeaders {
-        return ["Authorization": APIKey.tmdb]
-    }
-    
-    var method: HTTPMethod {
-        return .get
-    }
-    
+    /*
     var parameter: Parameters {
         switch self {
-        case .trending:
-            ["": ""] // 빈 거 보내는 것도 가능
-        case .search(let query):
-            ["language": "ko-KR", "query": query]
-        case .photo:
-            ["":""] // 여기도 딱히 queryString없음
+        case .foodType(let type):
+            let queryType = type.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            guard let queryType else {
+                print("query Encoding Failed")
+                return ["": ""]
+            }
+            return ["RCP_PAT2": queryType]
+        case .searchWithType(let type, let search):
+            let queryType = type.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            let querySearch = search.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            
+            guard let queryType, let querySearch else {
+                print("query Encoding Failed")
+                return ["": ""]
+            }
+//            print("queryType: \(queryType)")
+            return ["RCP_PAT2": queryType, "RCP_NM": querySearch]
+        }
+    }
+     */
+    
+    var typeString: String {
+        switch self {
+        case .foodType(let type):
+            return type
+        case .searchWithType(let type, let search):
+            return "\(type), \(search)"
         }
     }
 }
