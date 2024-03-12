@@ -61,6 +61,7 @@ extension ClassifyViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(#function)
         let vc = RecipeDetailViewController()
         vc.food = viewModel.recipeList.value[indexPath.item]
         navigationController?.pushViewController(vc, animated: true)
