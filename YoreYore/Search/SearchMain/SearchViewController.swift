@@ -40,3 +40,10 @@ extension SearchViewController: PagingViewControllerDataSource {
     
     
 }
+
+extension SearchViewController: UISearchBarDelegate {
+    // return 눌렀을 때
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+    }
+}
