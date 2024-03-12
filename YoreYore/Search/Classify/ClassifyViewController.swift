@@ -9,11 +9,12 @@ import UIKit
 
 // 넘어온 classifyFood 종류에 따라 collectionView 보이도록!
 final class ClassifyViewController: BaseViewController {
-    private let classifyFood: String
+    var goDetailRcp: ((Recipe) -> Void)?
     
-    let foodList = ["된장찌개", "김치찌개", "하하", "우우"]
+    var foodType: ClassifyList
     
-    private let mainView = ClassifyView()
+    let mainView = ClassifyView()
+    private let viewModel = ClassifyViewModel()
     
     override func loadView() {
         view = mainView
@@ -22,24 +23,33 @@ final class ClassifyViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
+//        print("ClassifyVC viewDidLoad foodtype: \(foodType)")
+        viewModel.inputFetchRecipe.value = foodType
+        bindData()
     }
-    init(classifyFood: String) {
-        self.classifyFood = classifyFood
+    init(_ foodType: ClassifyList) {
+        self.foodType = foodType
         super.init(nibName: nil, bundle: nil) // ?
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private func bindData() {
+        viewModel.recipeList.bind { _ in
+            self.mainView.foodCollectionView.reloadData()
+        }
+    }
 }
 
 extension ClassifyViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func configureCollectionView() {
-        mainView.classifyCollectionView.delegate = self
-        mainView.classifyCollectionView.dataSource = self
+        mainView.foodCollectionView.delegate = self
+        mainView.foodCollectionView.dataSource = self
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return foodList.count
+        return viewModel.recipeList.value.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -48,8 +58,13 @@ extension ClassifyViewController: UICollectionViewDelegate, UICollectionViewData
             return UICollectionViewCell()
         }
         
-        cell.configureCell(text: foodList[indexPath.item])
+        cell.configureCell(recipe: viewModel.recipeList.value[indexPath.item])
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(#function)
+        goDetailRcp?(viewModel.recipeList.value[indexPath.item])
     }
     
     

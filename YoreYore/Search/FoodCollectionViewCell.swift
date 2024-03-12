@@ -7,21 +7,44 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 final class FoodCollectionViewCell: BaseCollectionViewCell {
-    private let testLabel = UILabel()
+    private let foodImage: UIImageView = {
+        let view = UIImageView(frame: .zero)
+        view.contentMode = .scaleAspectFill
+        return view
+    }()
+    
+    private let foodName: UILabel = {
+        let view = UILabel()
+        view.font = Constants.Font.smallFont
+        return view
+    }()
+    
     
     override func configureHierarchy() {
-        contentView.addSubview(testLabel)
+        contentView.addSubview(foodImage)
+        contentView.addSubview(foodName)
         
     }
     
     override func configureConstraints() {
-        testLabel.snp.makeConstraints { make in
-            make.center.equalTo(contentView)
+        foodImage.snp.makeConstraints { make in
+            make.top.horizontalEdges.equalTo(contentView)
+            make.height.equalTo(100)
+        }
+        foodName.snp.makeConstraints { make in
+            make.top.equalTo(foodImage.snp.bottom)
+            make.horizontalEdges.bottom.equalTo(contentView)
         }
     }
-    func configureCell(text: String) {
-        testLabel.text = text
+    
+    func configureCell(recipe: Recipe) {
+        // http -> https로 변경
+        let httpsString = recipe.largeImage.replacingOccurrences(of: "http", with: "https")
+        foodImage.kf.setImage(with: URL(string: httpsString))
+        foodName.text = recipe.foodName
+        
     }
 }

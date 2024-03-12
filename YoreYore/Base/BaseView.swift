@@ -11,9 +11,6 @@ class BaseView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        print("textfield override init")
-        
         configureHierarchy()
         configureConstraints()
         configureView()

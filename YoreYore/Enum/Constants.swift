@@ -16,6 +16,8 @@ enum Constants {
     enum Font {
         static let classifyBold = UIFont.boldSystemFont(ofSize: 15)
         static let classify = UIFont.systemFont(ofSize: 15)
+        
+        static let smallFont = UIFont.systemFont(ofSize: 13)
     }
     
     enum Image {

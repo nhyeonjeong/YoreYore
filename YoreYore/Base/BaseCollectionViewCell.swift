@@ -31,7 +31,6 @@ class BaseCollectionViewCell: UICollectionViewCell {
     // 스토리보드로 할 때 실행되는 구문
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        print("textfield required init")
         fatalError("no storyboard")
     }
 }
