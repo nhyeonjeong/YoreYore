@@ -8,32 +8,10 @@
 import UIKit
 import Parchment
 
-
 final class SearchViewController: BaseViewController {
-
-    enum classifyList: Int, CaseIterable {
-        case dessert // 후식
-        case sideDish // 반찬
-        case mainDish // 밥
-//        case soup // 찌개또는 국
-        
-        var classifyName: String{
-            switch self {
-            case .dessert:
-                return "후식"
-            case .sideDish:
-                return "반찬"
-            case .mainDish:
-                return "밥"
-//            case .soup:
-//                return "국&찌개"
-            }
-        }
-        
-    }
+    
     let mainView = SearchView()
     let viewModel = SearchViewModel()
-    
     override func loadView() {
         view = mainView
     }
@@ -44,8 +22,11 @@ final class SearchViewController: BaseViewController {
     }
     
     private func bindData() {
-        viewModel.recipeList.bind { _ in
-            self.mainView.pagingViewController.reloadData()
+        viewModel.recipeList.bind { recipes in
+            print(recipes)
+            print("classifyVIewcon collectionview 다시 그리기")
+//            self.classifyVC.recipeList = recipes
+//            self.classifyVC.mainView.foodCollectionView.reloadData()
         }
     }
 }
@@ -53,19 +34,28 @@ final class SearchViewController: BaseViewController {
 extension SearchViewController: PagingViewControllerDataSource {
     // 1.
     func numberOfViewControllers(in pagingViewController: Parchment.PagingViewController) -> Int {
-        return classifyList.allCases.count
+        return ClassifyList.allCases.count
     }
-    
+    // 3,
     func pagingViewController(_: Parchment.PagingViewController, viewControllerAt index: Int) -> UIViewController {
-        print("pagingVC func foodType: \(classifyList.allCases[index])")
-        viewModel.selectedFootType = classifyList.allCases[index].classifyName
-        return ClassifyViewController(foodType: classifyList.allCases[index].classifyName)
+//        print("pagingVC func foodType: \(classifyList.allCases[index])")
+//        let classifyVC = ClassifyViewController([])
+//        
+//        viewModel.group[index].enter()
+//        viewModel.inputFetchRecipe.value = ClassifyList.allCases[index]
+//        viewModel.selectedFootType = ClassifyList.allCases[index]
+//        
+        let classifyVC = ClassifyViewController(ClassifyList.allCases[index])
+        classifyVC.goDetailRcp = { recipe in
+            let vc = RecipeDetailViewController()
+            vc.food = recipe
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        return classifyVC
     }
     // 2.
     func pagingViewController(_: Parchment.PagingViewController, pagingItemAt index: Int) -> Parchment.PagingItem {
-        print(#function)
-        return PagingIndexItem(index: index, title: classifyList.allCases[index].classifyName)
-
+        return PagingIndexItem(index: index, title: ClassifyList.allCases[index].classifyName)
     }
 }
 

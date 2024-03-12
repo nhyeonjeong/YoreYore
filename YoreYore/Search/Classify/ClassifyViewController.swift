@@ -9,10 +9,13 @@ import UIKit
 
 // 넘어온 classifyFood 종류에 따라 collectionView 보이도록!
 final class ClassifyViewController: BaseViewController {
-    private let foodType: String
+    var goDetailRcp: ((Recipe) -> Void)?
     
-    private let mainView = ClassifyView()
+    var foodType: ClassifyList
+    
+    let mainView = ClassifyView()
     private let viewModel = ClassifyViewModel()
+    
     override func loadView() {
         view = mainView
     }
@@ -20,12 +23,11 @@ final class ClassifyViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
-        print("ClassifyVC viewDidLoad foodtype: \(foodType)")
+//        print("ClassifyVC viewDidLoad foodtype: \(foodType)")
         viewModel.inputFetchRecipe.value = foodType
         bindData()
     }
-    init(foodType: String) {
-        print("Classify또 만들었다!!")
+    init(_ foodType: ClassifyList) {
         self.foodType = foodType
         super.init(nibName: nil, bundle: nil) // ?
     }
@@ -62,9 +64,7 @@ extension ClassifyViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(#function)
-        let vc = RecipeDetailViewController()
-        vc.food = viewModel.recipeList.value[indexPath.item]
-        navigationController?.pushViewController(vc, animated: true)
+        goDetailRcp?(viewModel.recipeList.value[indexPath.item])
     }
     
     

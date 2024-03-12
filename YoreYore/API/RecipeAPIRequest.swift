@@ -10,11 +10,11 @@ import Alamofire
 
 enum RecipeAPIRequest {
 
-    case foodType(type: String)
-    case searchWithType(type: String, search: String)
+    case foodType(type: ClassifyList)
+    case searchWithType(type: ClassifyList, search: String)
     
     var baseURL: URL {
-        return URL(string: "https://openapi.foodsafetykorea.go.kr/api/\(APIKey.recipe)/COOKRCP01/json/1/20/")!
+        return URL(string: "https://openapi.foodsafetykorea.go.kr/api/\(APIKey.recipe)/COOKRCP01/json/1/5/")!
     }
     
     var getMethod: HTTPMethod {
@@ -28,10 +28,10 @@ enum RecipeAPIRequest {
 //                print("queryType으로 encoding실패")
 //                return
 //            }
-            let query = type.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            let query = type.classifyName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
             return URL(string: "\(baseURL)RCP_PAT2=\(query)")!
         case .searchWithType(let type, let search):
-            let query = type.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            let query = type.classifyName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
             let query2 = search.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
             return URL(string: "\(baseURL)RCP_PAT2=\(query)&RCP_NM=\(query2)")!
         }
@@ -60,13 +60,4 @@ enum RecipeAPIRequest {
         }
     }
      */
-    
-    var typeString: String {
-        switch self {
-        case .foodType(let type):
-            return type
-        case .searchWithType(let type, let search):
-            return "\(type), \(search)"
-        }
-    }
 }

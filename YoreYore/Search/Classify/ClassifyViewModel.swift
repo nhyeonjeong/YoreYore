@@ -9,12 +9,13 @@ import Foundation
 
 final class ClassifyViewModel {
     var recipeList: Observable<[Recipe]> = Observable([])
-    var inputFetchRecipe: Observable<String> = Observable("") // 레시피 통신하는 트리거
+    var inputFetchRecipe: Observable<ClassifyList> = Observable(.dessert) // 레시피 통신하는 트리거
     
     init() {
         bindData()
     }
     private func bindData() {
+        
         inputFetchRecipe.bind { type in
             RecipeAPIManager.shared.fetchRecipe(type: RCP.self, api: .foodType(type: type), completionHandler: { data, error in
                 print("inputFetchRecipe api result = \(data)")
@@ -25,5 +26,6 @@ final class ClassifyViewModel {
                 self.recipeList.value = data.COOKRCP01.row
             })
         }
+         
     }
 }
