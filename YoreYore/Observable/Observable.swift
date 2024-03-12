@@ -20,7 +20,7 @@ final class Observable<T> {
     }
     
     func bind(_ closure: @escaping (T) -> Void ) {
-        closure(value)
+//        closure(value) // 아놔 없애
         self.closure = closure
     }
 }

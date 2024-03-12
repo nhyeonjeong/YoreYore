@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 final class FoodCollectionViewCell: BaseCollectionViewCell {
     private let foodImage: UIImageView = {
@@ -40,6 +41,9 @@ final class FoodCollectionViewCell: BaseCollectionViewCell {
     }
     
     func configureCell(recipe: Recipe) {
+        // http -> https로 변경
+        let httpsString = recipe.largeImage.replacingOccurrences(of: "http", with: "https")
+        foodImage.kf.setImage(with: URL(string: httpsString))
         foodName.text = recipe.foodName
         
     }

@@ -14,7 +14,7 @@ enum RecipeAPIRequest {
     case searchWithType(type: String, search: String)
     
     var baseURL: URL {
-        return URL(string: "https://openapi.foodsafetykorea.go.kr/api/sample/COOKRCP01/json/1/10/")!
+        return URL(string: "https://openapi.foodsafetykorea.go.kr/api/\(APIKey.recipe)/COOKRCP01/json/1/20/")!
     }
     
     var getMethod: HTTPMethod {
@@ -29,10 +29,11 @@ enum RecipeAPIRequest {
 //                return
 //            }
             let query = type.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-            return URL(string: "\(baseURL)RCP_PAT2=\(type)")!
+            return URL(string: "\(baseURL)RCP_PAT2=\(query)")!
         case .searchWithType(let type, let search):
             let query = type.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-            return URL(string: "\(baseURL)RCP_PAT2=\(type)&RCP_NM=\(search)")!
+            let query2 = search.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            return URL(string: "\(baseURL)RCP_PAT2=\(query)&RCP_NM=\(query2)")!
         }
     }
     

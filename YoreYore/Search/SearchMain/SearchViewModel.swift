@@ -10,6 +10,7 @@ import Foundation
 final class SearchViewModel {
     var selectedFootType = ""
     var inputSearchBar: Observable<String> = Observable("")
+    var recipeList: Observable<[Recipe]> = Observable([])
     
     init() {
         bindData()
@@ -26,3 +27,4 @@ final class SearchViewModel {
         }
     }
 }
+

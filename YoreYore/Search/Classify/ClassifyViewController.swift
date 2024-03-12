@@ -20,12 +20,12 @@ final class ClassifyViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
-        // 처음 뷰를 띄울때만 API통신을 하고 싶어서..!
         print("ClassifyVC viewDidLoad foodtype: \(foodType)")
         viewModel.inputFetchRecipe.value = foodType
         bindData()
     }
     init(foodType: String) {
+        print("Classify또 만들었다!!")
         self.foodType = foodType
         super.init(nibName: nil, bundle: nil) // ?
     }
