@@ -11,7 +11,7 @@ import SnapKit
 final class ClassifyView: BaseView {
 
     lazy var foodCollectionView: UICollectionView = {
-        let view = UICollectionView(frame: .zero, collectionViewLayout: collectionLayout())
+        let view = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
         view.register(FoodCollectionViewCell.self, forCellWithReuseIdentifier: FoodCollectionViewCell.identifier)
         view.register(FoodCollectionViewCell.self, forCellWithReuseIdentifier: FoodCollectionViewCell.identifier)
         return view
@@ -30,7 +30,7 @@ final class ClassifyView: BaseView {
 
 }
 extension ClassifyView {
-    private func collectionLayout() -> UICollectionViewLayout {
+    private func collectionViewLayout() -> UICollectionViewLayout {
         
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 100, height: 160) // 없으면 안됨
