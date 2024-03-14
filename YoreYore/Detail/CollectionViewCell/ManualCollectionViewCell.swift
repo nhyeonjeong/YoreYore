@@ -34,10 +34,13 @@ class ManualCollectionViewCell: BaseCollectionViewCell {
         manualImageView.contentMode = .scaleAspectFill
     }
     
-    func configureCell(_ manualText: String, _ manualImageString: String) {
-        let httpsImageString = manualImageString.replacingOccurrences(of: "http", with: "https")
-        guard let url = URL(string: httpsImageString) else { return}
-        manualImageView.kf.setImage(with: url)
-        manualLabel.text = manualText
+    func upgradeCell(_ manual: Recipe.Manual) {
+        let httpsImageString = manual.image.replacingOccurrences(of: "http", with: "https")
+        if let url = URL(string: httpsImageString) {
+            manualImageView.kf.setImage(with: url)
+        } else {
+            manualImageView.backgroundColor = .lightGray
+        }
+        manualLabel.text = manual.content
     }
 }

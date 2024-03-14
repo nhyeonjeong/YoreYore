@@ -10,28 +10,14 @@ import UIKit
 final class RecipeDetailViewController: BaseViewController {
     enum Section: Int, CaseIterable {
         case detail
-//        case manual
+        case manual
     }
+
     var food: Recipe!
-    lazy var manualList: [String] = {
-        var list: [String] = []
-        for i in 0..<14 {
-            list.append(food.manual_01)
-        }
-        return list
-    }()
     
-    lazy var manualImageList: [String] = {
-        var list: [String] = []
-        for i in 0..<14 {
-            list.append(food.manualImage_01)
-        }
-        return list
-    }()
     let mainView = RecipeDetailView()
     
-    private var dataSource: UICollectionViewDiffableDataSource<Section, Recipe>!
-    //    private var manualDataSource: UICollectionViewDiffableDataSource<Section, Recip
+    private var dataSource: UICollectionViewDiffableDataSource<Section, AnyHashable>!
         
     override func loadView() {
         view = mainView
@@ -39,11 +25,18 @@ final class RecipeDetailViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+//        viewModel.food.value = food
+//        bindData()
         configureCollectionView()
         configureDataSource() // snapshot찍기 전에 해야함(갱신전에 어떻게 표현해야할지가 먼저 있어야함)
         updateSnapshot()
     }
+//    private func bindData() {
+//        viewModel.outputSetManual.bind { _ in
+//            print("다시그려")
+//            self.updateSnapshot()
+//        }
+//    }
 }
 
 extension RecipeDetailViewController: UICollectionViewDelegate {
@@ -54,33 +47,39 @@ extension RecipeDetailViewController: UICollectionViewDelegate {
     
     private func configureDataSource() {
 
-        let cellRegistration = UICollectionView.CellRegistration<DetailCollectionViewCell, Recipe> { cell, indexPath, ItemIdentifier in
-            let httpsString = ItemIdentifier.largeImage.replacingOccurrences(of: "http", with: "https")
-            // cellForItemAt에 해당하는 메서드
-            if let url = URL(string: httpsString) {
-                cell.mainImageView.kf.setImage(with: url)
-            } else {
-                cell.mainImageView.backgroundColor = .lightGray // 이미지가 없습니다...
-                print("DetailCollectionVIewCell no image-----------")
-            }
-            print(ItemIdentifier)
-            cell.recipeNameLabel.text = ItemIdentifier.foodName
+        let detailCellRegistration = UICollectionView.CellRegistration<DetailCollectionViewCell, Recipe> { cell, indexPath, ItemIdentifier in
+            cell.upgradeCell(ItemIdentifier)
+        }
+        
+        let manualCellRegistration = UICollectionView.CellRegistration<ManualCollectionViewCell, Recipe.Manual> { cell, indexPath, ItemIdentifier in
+            cell.upgradeCell(ItemIdentifier)
         }
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: mainView.manualCollectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             
-            let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
-            return cell
+            let section = Section(rawValue: indexPath.section)
+            switch section {
+            case .detail:
+                let cell = collectionView.dequeueConfiguredReusableCell(using: detailCellRegistration, for: indexPath, item: itemIdentifier as! Recipe)
+                return cell
+            case .manual:
+                let cell = collectionView.dequeueConfiguredReusableCell(using: manualCellRegistration, for: indexPath, item: itemIdentifier as! Recipe.Manual)
+                return cell
+            case .none:
+                let cell = collectionView.dequeueConfiguredReusableCell(using: manualCellRegistration, for: indexPath, item: itemIdentifier as! Recipe.Manual)
+                return cell
+            }
+
         })
     }
     
     private func updateSnapshot() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Recipe>()
-        snapshot.appendSections(Section.allCases)
-        snapshot.appendItems([food])
-        dataSource.apply(snapshot)
+        var snapShot = NSDiffableDataSourceSnapshot<Section, AnyHashable>()
+        snapShot.appendSections(Section.allCases)
+        snapShot.appendItems([food], toSection: .detail)
+        snapShot.appendItems(food.manuals, toSection: .manual)
+        dataSource.apply(snapShot)
     }
-    
 }
 
 

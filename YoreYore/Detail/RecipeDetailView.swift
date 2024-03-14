@@ -47,6 +47,4 @@ extension RecipeDetailView {
         return UICollectionViewCompositionalLayout(section: section)
         
     }
-
-
 }

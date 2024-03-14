@@ -8,7 +8,12 @@
 import Foundation
 
 struct Recipe: Decodable, Hashable {
-
+    
+    struct Manual: Hashable {
+        let image: String
+        let content: String
+    }
+    
     let id: String
     let foodName: String
     let way: String
@@ -18,48 +23,51 @@ struct Recipe: Decodable, Hashable {
     let smallImage: String
     let largeImage: String
     let ingredients: String
-    let manualImage_01: String
-    let manual_01: String
-    let manualImage_02: String
-    let manual_02: String
-    let manualImage_03: String
-    let manual_03: String
-    let manualImage_04: String
-    let manual_04: String
-    let manualImage_05: String
-    let manual_05: String
-    let manualImage_06: String
-    let manual_06: String
-    let manualImage_07: String
-    let manual_07: String
-    let manualImage_08: String
-    let manual_08: String
-    let manualImage_09: String
-    let manual_09: String
-    let manualImage_10: String
-    let manual_10: String
-    let manualImage_11: String
-    let manual_11: String
-    let manualImage_12: String
-    let manual_12: String
-    let manualImage_13: String
-    let manual_13: String
-    let manualImage_14: String
-    let manual_14: String
-    let manualImage_15: String
-    let manual_15: String
-    let manualImage_16: String
-    let manual_16: String
-    let manualImage_17: String
-    let manual_17: String
-    let manualImage_18: String
-    let manual_18: String
-    let manualImage_19: String
-    let manual_19: String
-    let manualImage_20: String
-    let manual_20: String
+    /*
+     let manualImage_1: String
+     let manual_1: String
+     let manualImage_2: String
+     let manual_2: String
+     let manualImage_3: String
+     let manual_3: String
+     let manualImage_4: String
+     let manual_4: String
+     let manualImage_5: String
+     let manual_5: String
+     let manualImage_6: String
+     let manual_6: String
+     let manualImage_7: String
+     let manual_7: String
+     let manualImage_8: String
+     let manual_8: String
+     let manualImage_9: String
+     let manual_9: String
+     let manualImage_10: String
+     let manual_10: String
+     let manualImage_11: String
+     let manual_11: String
+     let manualImage_12: String
+     let manual_12: String
+     let manualImage_13: String
+     let manual_13: String
+     let manualImage_14: String
+     let manual_14: String
+     let manualImage_15: String
+     let manual_15: String
+     let manualImage_16: String
+     let manual_16: String
+     let manualImage_17: String
+     let manual_17: String
+     let manualImage_18: String
+     let manual_18: String
+     let manualImage_19: String
+     let manual_19: String
+     let manualImage_20: String
+     let manual_20: String
+     */
+    let manuals: [Manual]
     let tip: String
- 
+    
     enum CodingKeys: String, CodingKey {
         case id = "RCP_SEQ"
         case foodName = "RCP_NM"
@@ -70,24 +78,25 @@ struct Recipe: Decodable, Hashable {
         case smallImage = "ATT_FILE_NO_MAIN"
         case largeImage = "ATT_FILE_NO_MK"
         case ingredients = "RCP_PARTS_DTLS"
-        case manualImage_01 = "MANUAL_IMG01"
-        case manual_01 = "MANUAL01"
-        case manualImage_02 = "MANUAL_IMG02"
-        case manual_02 = "MANUAL02"
-        case manualImage_03 = "MANUAL_IMG03"
-        case manual_03 = "MANUAL03"
-        case manualImage_04 = "MANUAL_IMG04"
-        case manual_04 = "MANUAL04"
-        case manualImage_05 = "MANUAL_IMG05"
-        case manual_05 = "MANUAL05"
-        case manualImage_06 = "MANUAL_IMG06"
-        case manual_06 = "MANUAL06"
-        case manualImage_07 = "MANUAL_IMG07"
-        case manual_07 = "MANUAL07"
-        case manualImage_08 = "MANUAL_IMG08"
-        case manual_08 = "MANUAL08"
-        case manualImage_09 = "MANUAL_IMG09"
-        case manual_09 = "MANUAL09"
+        
+        case manualImage_1 = "MANUAL_IMG01"
+        case manual_1 = "MANUAL01"
+        case manualImage_2 = "MANUAL_IMG02"
+        case manual_2 = "MANUAL02"
+        case manualImage_3 = "MANUAL_IMG03"
+        case manual_3 = "MANUAL03"
+        case manualImage_4 = "MANUAL_IMG04"
+        case manual_4 = "MANUAL04"
+        case manualImage_5 = "MANUAL_IMG05"
+        case manual_5 = "MANUAL05"
+        case manualImage_6 = "MANUAL_IMG06"
+        case manual_6 = "MANUAL06"
+        case manualImage_7 = "MANUAL_IMG07"
+        case manual_7 = "MANUAL07"
+        case manualImage_8 = "MANUAL_IMG08"
+        case manual_8 = "MANUAL08"
+        case manualImage_9 = "MANUAL_IMG09"
+        case manual_9 = "MANUAL09"
         case manualImage_10 = "MANUAL_IMG10"
         case manual_10 = "MANUAL10"
         case manualImage_11 = "MANUAL_IMG11"
@@ -113,4 +122,33 @@ struct Recipe: Decodable, Hashable {
         
         case tip = "RCP_NA_TIP" // 저감 조리법Tip
     }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decode(String.self, forKey: .id)
+        self.foodName = try container.decode(String.self, forKey: .foodName)
+        self.way = try container.decode(String.self, forKey: .way)
+        self.footType = try container.decode(String.self, forKey: .footType)
+        self.weight = try container.decode(String.self, forKey: .weight)
+        self.kal = try container.decode(String.self, forKey: .kal)
+        self.smallImage = try container.decode(String.self, forKey: .smallImage)
+        self.largeImage = try container.decode(String.self, forKey: .largeImage)
+        self.ingredients = try container.decode(String.self, forKey: .ingredients)
+        self.tip = try container.decode(String.self, forKey: .tip)
+        
+        var manuals: [Manual] = []
+        for index in 1...20 {
+            let imageKey = "MANUAL_IMG" + String(format: "%02d", index)
+            let textKey = "MANUAL" + String(format: "%02d", index)
+            
+            let image = try container.decode(String.self, forKey: .init(rawValue: imageKey)!)
+            let text = try container.decode(String.self, forKey: .init(rawValue: textKey)!)
+            if text == "" && image == "" { break }
+            manuals.append(Manual(image: image, content: text))
+        }
+        self.manuals = manuals
+        print("init manuals: \(manuals)")
+    }
 }
+
+  
