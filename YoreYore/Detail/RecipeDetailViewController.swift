@@ -30,7 +30,7 @@ final class RecipeDetailViewController: BaseViewController {
         updateSnapshot()
     }
     
-    @objc func bookmarkClicked() {
+    @objc func bookmarkClicked() { // 북마크를 클릭하면
         print(#function)
     }
 }
@@ -38,7 +38,7 @@ final class RecipeDetailViewController: BaseViewController {
 extension RecipeDetailViewController {
     func setNavigationBar() {
         navigationItem.title = food.foodName
-        
+        // 북마크
         let button = UIBarButtonItem(image: Constants.Image.bookmark, style: .plain, target: self, action: #selector(bookmarkClicked))
         button.tintColor = Constants.Color.point
         navigationItem.rightBarButtonItem = button
@@ -52,7 +52,6 @@ extension RecipeDetailViewController: UICollectionViewDelegate {
     }
     
     private func configureDataSource() {
-
         let detailCellRegistration = UICollectionView.CellRegistration<DetailCollectionViewCell, Recipe> { cell, indexPath, ItemIdentifier in
             cell.upgradeCell(ItemIdentifier)
         }
