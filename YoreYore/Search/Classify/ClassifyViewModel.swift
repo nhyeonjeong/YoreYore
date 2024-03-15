@@ -18,7 +18,7 @@ final class ClassifyViewModel {
         
         inputFetchRecipe.bind { type in
             RecipeAPIManager.shared.fetchRecipe(type: RCP.self, api: .foodType(type: type), completionHandler: { data, error in
-                print("inputFetchRecipe api result = \(data)")
+//                print("inputFetchRecipe api result = \(data)")
                 guard let data else {
                     print("api result data nil")
                     return

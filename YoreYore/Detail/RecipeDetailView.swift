@@ -6,26 +6,39 @@
 //
 
 import UIKit
+import SnapKit
+import Kingfisher
 
 final class RecipeDetailView: BaseView {
 
-    let manualTableView: UITableView = {
-        let view = UITableView()
+    lazy var screenWidth = UIScreen.main.bounds.width
+    
+    lazy var manualCollectionView: UICollectionView = {
+        let view = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
+        view.backgroundColor = .clear
         return view
     }()
     
-    /*
     override func configureHierarchy() {
-        <#code#>
+        addSubview(manualCollectionView)
     }
     
     override func configureConstraints() {
-        <#code#>
+        manualCollectionView.snp.makeConstraints { make in
+            make.edges.equalTo(safeAreaLayoutGuide)
+        }
     }
-    
-    override func configureView() {
-        <#code#>
-    }
-    */
 }
 
+extension RecipeDetailView {
+    private func collectionViewLayout() -> UICollectionViewLayout {
+        
+        var configuration = UICollectionLayoutListConfiguration(appearance: .plain)
+        configuration.backgroundColor = .white // 컴
+        configuration.showsSeparators = false
+        
+        let layout = UICollectionViewCompositionalLayout.list(using: configuration)
+        return layout
+        
+    }
+}

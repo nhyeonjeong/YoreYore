@@ -15,11 +15,12 @@ final class RecipeAPIManager {
     }
     
     func fetchRecipe<T: Decodable>(type: T.Type, api: RecipeAPIRequest, completionHandler: @escaping (T?, Error?) -> Void) {
+        
         /*
 //        print("api.parameter: \(api.parameter)")
-        print("foodTypeAPI\(api.typeString)------------------------------")
+//        print("foodTypeAPI\(api.typeString)------------------------------")
         AF.request(api.endpoint, method: api.getMethod, /*parameters: api.parameter,*/ encoding: URLEncoding(destination: .queryString)).responseString { data in
-            print("response String\(api.typeString)")
+//            print("response String\(api.typeString)")
             print("data: \(data)")
             print("--------------------------------------------")
         }
@@ -29,7 +30,7 @@ final class RecipeAPIManager {
         AF.request(api.endpoint, method: api.getMethod, encoding: URLEncoding(destination: .queryString)).responseDecodable(of: T.self) { response in
             switch response.result {
             case .success(let success):
-//                print(success)
+                print(success)
                 completionHandler(success, nil)
             case .failure(let failure):
                 print("RecipeAPIManager fetchRecipe failure")
