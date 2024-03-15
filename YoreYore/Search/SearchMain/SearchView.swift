@@ -23,7 +23,7 @@ final class SearchView: BaseView {
         let vc = PagingViewController()
         // 메뉴 커스텀
         vc.register(ClassifyMenuCollectionViewCell.self, for: FoodClassifyItem.self)
-        vc.backgroundColor = .lightGray
+        vc.backgroundColor = Constants.Color.point ?? .point
         vc.menuItemSize = .selfSizing(estimatedWidth: 40, height: 70)
         vc.menuItemSpacing = 10
 //        vc.menuHorizontalAlignment = .center

@@ -18,6 +18,7 @@ final class SearchViewModel {
     }
     
     private func bindData() {
+        print("dfd")
         inputSearchBar.bind { searchText in
             // api통신
             RecipeAPIManager.shared.fetchRecipe(type: RCP.self, api: .searchWithType(type: self.selectedFootType, search: searchText)) { data, error in

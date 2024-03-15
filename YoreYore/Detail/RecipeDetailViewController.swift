@@ -14,7 +14,6 @@ final class RecipeDetailViewController: BaseViewController {
     }
 
     var food: Recipe!
-    
     let mainView = RecipeDetailView()
     
     private var dataSource: UICollectionViewDiffableDataSource<Section, AnyHashable>!
@@ -25,18 +24,25 @@ final class RecipeDetailViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        viewModel.food.value = food
-//        bindData()
+        setNavigationBar()
         configureCollectionView()
         configureDataSource() // snapshot찍기 전에 해야함(갱신전에 어떻게 표현해야할지가 먼저 있어야함)
         updateSnapshot()
     }
-//    private func bindData() {
-//        viewModel.outputSetManual.bind { _ in
-//            print("다시그려")
-//            self.updateSnapshot()
-//        }
-//    }
+    
+    @objc func bookmarkClicked() {
+        print(#function)
+    }
+}
+
+extension RecipeDetailViewController {
+    func setNavigationBar() {
+        navigationItem.title = food.foodName
+        
+        let button = UIBarButtonItem(image: Constants.Image.bookmark, style: .plain, target: self, action: #selector(bookmarkClicked))
+        button.tintColor = Constants.Color.point
+        navigationItem.rightBarButtonItem = button
+    }
 }
 
 extension RecipeDetailViewController: UICollectionViewDelegate {
@@ -69,7 +75,6 @@ extension RecipeDetailViewController: UICollectionViewDelegate {
                 let cell = collectionView.dequeueConfiguredReusableCell(using: manualCellRegistration, for: indexPath, item: itemIdentifier as! Recipe.Manual)
                 return cell
             }
-
         })
     }
     

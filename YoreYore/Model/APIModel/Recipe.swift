@@ -23,52 +23,11 @@ struct Recipe: Decodable, Hashable {
     let smallImage: String
     let largeImage: String
     let ingredients: String
-    /*
-     let manualImage_1: String
-     let manual_1: String
-     let manualImage_2: String
-     let manual_2: String
-     let manualImage_3: String
-     let manual_3: String
-     let manualImage_4: String
-     let manual_4: String
-     let manualImage_5: String
-     let manual_5: String
-     let manualImage_6: String
-     let manual_6: String
-     let manualImage_7: String
-     let manual_7: String
-     let manualImage_8: String
-     let manual_8: String
-     let manualImage_9: String
-     let manual_9: String
-     let manualImage_10: String
-     let manual_10: String
-     let manualImage_11: String
-     let manual_11: String
-     let manualImage_12: String
-     let manual_12: String
-     let manualImage_13: String
-     let manual_13: String
-     let manualImage_14: String
-     let manual_14: String
-     let manualImage_15: String
-     let manual_15: String
-     let manualImage_16: String
-     let manual_16: String
-     let manualImage_17: String
-     let manual_17: String
-     let manualImage_18: String
-     let manual_18: String
-     let manualImage_19: String
-     let manual_19: String
-     let manualImage_20: String
-     let manual_20: String
-     */
+
     let manuals: [Manual]
     let tip: String
     
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case id = "RCP_SEQ"
         case foodName = "RCP_NM"
         case way = "RCP_WAY2"
@@ -147,7 +106,6 @@ struct Recipe: Decodable, Hashable {
             manuals.append(Manual(image: image, content: text))
         }
         self.manuals = manuals
-        print("init manuals: \(manuals)")
     }
 }
 

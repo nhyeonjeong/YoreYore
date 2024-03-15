@@ -13,6 +13,7 @@
 		8B57DA2B2BA0999300716D63 /* ClassifyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B57DA2A2BA0999300716D63 /* ClassifyList.swift */; };
 		8B57DA2D2BA1252400716D63 /* ManualCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B57DA2C2BA1252400716D63 /* ManualCollectionViewCell.swift */; };
 		8B57DA332BA1438300716D63 /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B57DA322BA1438300716D63 /* DetailCollectionViewCell.swift */; };
+		8B57DA472BA32B3700716D63 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8B57DA462BA32B3700716D63 /* Alamofire */; };
 		8BE6016C2B998381009249DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6016B2B998381009249DD /* AppDelegate.swift */; };
 		8BE6016E2B998381009249DD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6016D2B998381009249DD /* SceneDelegate.swift */; };
 		8BE601702B998381009249DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6016F2B998381009249DD /* ViewController.swift */; };
@@ -25,8 +26,6 @@
 		8BE601A02B9AECC9009249DD /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6019F2B9AECC9009249DD /* SearchView.swift */; };
 		8BE601A32B9AED06009249DD /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 8BE601A22B9AED06009249DD /* FSCalendar */; };
 		8BE601A62B9AED0D009249DD /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 8BE601A52B9AED0D009249DD /* SideMenu */; };
-		8BE601A92B9AED1D009249DD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8BE601A82B9AED1D009249DD /* Alamofire */; };
-		8BE601AB2B9AED1D009249DD /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 8BE601AA2B9AED1D009249DD /* AlamofireDynamic */; };
 		8BE601AE2B9AED27009249DD /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8BE601AD2B9AED27009249DD /* Kingfisher */; };
 		8BE601B12B9AED47009249DD /* Parchment in Frameworks */ = {isa = PBXBuildFile; productRef = 8BE601B02B9AED47009249DD /* Parchment */; };
 		8BE601B42B9AEE19009249DD /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 8BE601B32B9AEE19009249DD /* SkeletonView */; };
@@ -90,11 +89,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BE601AE2B9AED27009249DD /* Kingfisher in Frameworks */,
+				8B57DA472BA32B3700716D63 /* Alamofire in Frameworks */,
 				8BE601832B998A16009249DD /* SnapKit in Frameworks */,
 				8BE601B12B9AED47009249DD /* Parchment in Frameworks */,
-				8BE601A92B9AED1D009249DD /* Alamofire in Frameworks */,
 				8BE601B42B9AEE19009249DD /* SkeletonView in Frameworks */,
-				8BE601AB2B9AED1D009249DD /* AlamofireDynamic in Frameworks */,
 				8BE601A62B9AED0D009249DD /* SideMenu in Frameworks */,
 				8BE601A32B9AED06009249DD /* FSCalendar in Frameworks */,
 			);
@@ -121,12 +119,20 @@
 			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
+		8B57DA422BA32AD900716D63 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8BE6015F2B998381009249DD = {
 			isa = PBXGroup;
 			children = (
 				8BE6017F2B998601009249DD /* .gitignore */,
 				8BE6016A2B998381009249DD /* YoreYore */,
 				8BE601692B998381009249DD /* Products */,
+				8B57DA422BA32AD900716D63 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -290,11 +296,10 @@
 				8BE601822B998A16009249DD /* SnapKit */,
 				8BE601A22B9AED06009249DD /* FSCalendar */,
 				8BE601A52B9AED0D009249DD /* SideMenu */,
-				8BE601A82B9AED1D009249DD /* Alamofire */,
-				8BE601AA2B9AED1D009249DD /* AlamofireDynamic */,
 				8BE601AD2B9AED27009249DD /* Kingfisher */,
 				8BE601B02B9AED47009249DD /* Parchment */,
 				8BE601B32B9AEE19009249DD /* SkeletonView */,
+				8B57DA462BA32B3700716D63 /* Alamofire */,
 			);
 			productName = YoreYore;
 			productReference = 8BE601682B998381009249DD /* YoreYore.app */;
@@ -328,10 +333,10 @@
 				8BE601812B998A16009249DD /* XCRemoteSwiftPackageReference "SnapKit" */,
 				8BE601A12B9AED06009249DD /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				8BE601A42B9AED0D009249DD /* XCRemoteSwiftPackageReference "SideMenu" */,
-				8BE601A72B9AED1D009249DD /* XCRemoteSwiftPackageReference "Alamofire" */,
 				8BE601AC2B9AED27009249DD /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				8BE601AF2B9AED47009249DD /* XCRemoteSwiftPackageReference "Parchment" */,
 				8BE601B22B9AEE19009249DD /* XCRemoteSwiftPackageReference "SkeletonView" */,
+				8B57DA452BA32B3700716D63 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 8BE601692B998381009249DD /* Products */;
 			projectDirPath = "";
@@ -465,7 +470,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -522,7 +527,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -537,8 +542,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3D3V9NJ477;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = YoreYore/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -546,16 +553,21 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ohddang.YoreYore;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bamy.YoreYore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -564,8 +576,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3D3V9NJ477;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = YoreYore/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -573,16 +587,21 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ohddang.YoreYore;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bamy.YoreYore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -610,6 +629,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8B57DA452BA32B3700716D63 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.0;
+			};
+		};
 		8BE601812B998A16009249DD /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -632,14 +659,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 6.5.0;
-			};
-		};
-		8BE601A72B9AED1D009249DD /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.9.0;
 			};
 		};
 		8BE601AC2B9AED27009249DD /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
@@ -669,6 +688,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8B57DA462BA32B3700716D63 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8B57DA452BA32B3700716D63 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		8BE601822B998A16009249DD /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8BE601812B998A16009249DD /* XCRemoteSwiftPackageReference "SnapKit" */;
@@ -683,16 +707,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8BE601A42B9AED0D009249DD /* XCRemoteSwiftPackageReference "SideMenu" */;
 			productName = SideMenu;
-		};
-		8BE601A82B9AED1D009249DD /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8BE601A72B9AED1D009249DD /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-		8BE601AA2B9AED1D009249DD /* AlamofireDynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8BE601A72B9AED1D009249DD /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = AlamofireDynamic;
 		};
 		8BE601AD2B9AED27009249DD /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;

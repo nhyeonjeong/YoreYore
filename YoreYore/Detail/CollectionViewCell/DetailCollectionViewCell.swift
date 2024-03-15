@@ -8,6 +8,8 @@
 import UIKit
 
 final class DetailCollectionViewCell: BaseCollectionViewCell {
+    private let horizontalInset: CGFloat = 10
+    
     private let mainImageView = {
         let view = UIImageView(frame: .zero)
         view.contentMode = .scaleAspectFill
@@ -15,22 +17,65 @@ final class DetailCollectionViewCell: BaseCollectionViewCell {
         return view
     }()
     
-    private let recipeNameLabel = UILabel()
+    private let recipeNameLabel = {
+        let view = UILabel()
+        view.textColor = Constants.Color.point
+        view.font = Constants.Font.classifyBold
+        return view
+    }()
+    
+    private let weightLabel = {
+        let view = UILabel()
+        view.textColor = Constants.Color.subText
+        view.font = Constants.Font.smallFont
+        return view
+    }()
+    
+    private let kalLabel = {
+        let view = UILabel()
+        view.font = Constants.Font.smallFont
+        view.textColor = Constants.Color.subText
+        return view
+    }()
+    
+    private let ingredientsLabel = {
+        let view = UILabel()
+        view.font = Constants.Font.smallFont
+        view.textColor = Constants.Color.mainText
+        view.numberOfLines = 0
+        return view
+    }()
     
     override func configureHierarchy() {
-        contentView.addSubview(mainImageView)
-        contentView.addSubview(recipeNameLabel)
+        contentView.addViews([mainImageView, recipeNameLabel, weightLabel, kalLabel, ingredientsLabel])
     }
     
     override func configureConstraints() {
         mainImageView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(contentView)
-            make.height.equalTo(180)
+            make.height.equalTo(230)
         }
         
         recipeNameLabel.snp.makeConstraints { make in
-            make.top.equalTo(mainImageView.snp.bottom)
-            make.horizontalEdges.bottom.equalTo(contentView)
+            make.top.equalTo(mainImageView.snp.bottom).offset(4)
+            make.horizontalEdges.equalTo(contentView).inset(horizontalInset)
+            make.height.equalTo(22)
+        }
+        ingredientsLabel.snp.makeConstraints { make in
+            make.top.equalTo(recipeNameLabel.snp.bottom).offset(4)
+            make.horizontalEdges.equalTo(contentView).inset(horizontalInset)
+        }
+        weightLabel.snp.makeConstraints { make in
+            make.top.equalTo(ingredientsLabel.snp.bottom).offset(12)
+            make.leading.equalTo(contentView).inset(horizontalInset)
+            make.height.equalTo(20)
+            make.bottom.equalTo(contentView).inset(20) // 아래 간격
+        }
+        kalLabel.snp.makeConstraints { make in
+            make.top.equalTo(weightLabel.snp.top)
+            make.leading.equalTo(weightLabel.snp.trailing)
+            make.height.equalTo(20)
+            make.trailing.greaterThanOrEqualTo(contentView).inset(horizontalInset)
         }
     }
     
@@ -44,7 +89,13 @@ final class DetailCollectionViewCell: BaseCollectionViewCell {
             print("DetailCollectionVIewCell no image-----------")
         }
         recipeNameLabel.text = item.foodName
+        ingredientsLabel.text = item.ingredients
+        if item.weight == "" {
+            weightLabel.isHidden = true // 빈 문자열이면 아예 숨기기
+        } else {
+            weightLabel.text = "중량 : \(item.weight)g "
+        }
+        kalLabel.text = "\(item.kal)kcal"
+        
     }
-    
-    
 }
