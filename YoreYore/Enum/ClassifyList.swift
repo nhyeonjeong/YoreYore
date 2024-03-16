@@ -6,8 +6,14 @@
 //
 
 import Foundation
+/*
+import Parchment
 
-enum ClassifyList: Int, CaseIterable {
+enum ClassifyList: Int, CaseIterable, PagingItem {
+    func isBefore(item: Parchment.PagingItem) -> Bool {
+        return true
+    }
+    
     case dessert // 후식
     case sideDish // 반찬
     case mainDish // 밥
@@ -26,3 +32,4 @@ enum ClassifyList: Int, CaseIterable {
         }
     }
 }
+*/

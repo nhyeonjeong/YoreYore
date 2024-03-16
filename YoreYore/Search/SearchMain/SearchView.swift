@@ -10,6 +10,7 @@ import SnapKit
 import Parchment
 
 struct FoodClassifyItem: PagingItem, Hashable {
+
     let classifyName: String
     func isBefore(item: Parchment.PagingItem) -> Bool {
         return true
@@ -17,7 +18,7 @@ struct FoodClassifyItem: PagingItem, Hashable {
 }
 final class SearchView: BaseView {
     
-    let searchBar = UISearchBar()
+    let searchTextField = UITextField()
     
     let pagingViewController: PagingViewController = {
         let vc = PagingViewController()
@@ -31,16 +32,16 @@ final class SearchView: BaseView {
     }()
     
     override func configureHierarchy() {
-        addSubview(searchBar)
-        addSubview(pagingViewController.view)
+        self.addViews([searchTextField, pagingViewController.view])
     }
     
     override func configureConstraints() {
-        searchBar.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalTo(safeAreaLayoutGuide)
+        searchTextField.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide)
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(Constants.Layout.defaultPadding)
         }
         pagingViewController.view.snp.makeConstraints { make in
-            make.top.equalTo(searchBar.snp.bottom)
+            make.top.equalTo(searchTextField.snp.bottom)
             make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
         }
     }
