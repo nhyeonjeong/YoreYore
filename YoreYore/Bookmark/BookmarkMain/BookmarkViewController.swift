@@ -10,8 +10,9 @@ import UIKit
 class BookmarkViewController: BaseViewController {
     let bookmarkRealm = BookmarkTableRepository.shared
     let mainView = BookmarkView()
+    let viewModel = BookmarkViewModel()
     // Diffable사용
-    private var dataSource: UICollectionViewDiffableDataSource<Int, Recipe>!
+    private var dataSource: UICollectionViewDiffableDataSource<Int, FoodTable>!
     
     override func loadView() {
         view = mainView
@@ -19,15 +20,23 @@ class BookmarkViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.inputselectedFoodType.value = .dessert // 일단 후식으로만
+        bindData()
         setNavigationBar()
         
         configureDataSource()
         updateSnapshot()
     }
+    
+    private func bindData() {
+        viewModel.outputFetchFoodList.bind { _ in
+            self.updateSnapshot()
+        }
+    }
 }
 
 extension BookmarkViewController {
-    func setNavigationBar() {
+    private func setNavigationBar() {
 //        navigationItem.titleView = mainView.navigationTitleView
         navigationItem.title = "북마크"
     }
@@ -35,7 +44,7 @@ extension BookmarkViewController {
 
 extension BookmarkViewController {
     private func configureDataSource() {
-        let bookmarkCellRegistration = UICollectionView.CellRegistration<BookmarkCollectionViewCell, Recipe> { cell, indexPath, ItemIdentifier in
+        let bookmarkCellRegistration = UICollectionView.CellRegistration<BookmarkCollectionViewCell, FoodTable> { cell, indexPath, ItemIdentifier in
             cell.upgradeCell(ItemIdentifier)
         }
 
@@ -47,9 +56,9 @@ extension BookmarkViewController {
     }
     
     private func updateSnapshot() {
-        var snapShot = NSDiffableDataSourceSnapshot<Int, Recipe>()
+        var snapShot = NSDiffableDataSourceSnapshot<Int, FoodTable>()
         snapShot.appendSections([0])
-        snapShot.appendItems([])
+        snapShot.appendItems(viewModel.outputFetchFoodList.value)
         dataSource.apply(snapShot)
     }
 }

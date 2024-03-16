@@ -95,7 +95,7 @@ extension BookmarkView {
         
         // Section
         let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 5 // 그룹간 세로 간격
+        section.interGroupSpacing = 10 // 그룹간 세로 간격
         return UICollectionViewCompositionalLayout(section: section)
     }
 }

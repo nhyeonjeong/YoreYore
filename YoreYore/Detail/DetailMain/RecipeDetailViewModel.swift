@@ -33,10 +33,12 @@ final class RecipeDetailViewModel {
                 manualList.append(manualData)
                 
             }
-            let foodTableData = FoodTable(foodType: food.foodType, foodName: food.foodName, kcal: food.kal, ingredients: food.ingredients)
+            let foodTableData = FoodTable(foodType: food.foodType, foodName: food.foodName, mainImageString: food.largeImage, kcal: food.kal, ingredients: food.ingredients)
             
             self.foodRealm.createMenualItem(manualList: manualList, foodItem: foodTableData)
             self.bookmarkRealm.createFoodItem(foodTableData, foodTypeIdx: foodType.rawValue )
+//            print(self.foodRealm.realm.configuration.fileURL)
+            print("dfdf")
         }
         
     }

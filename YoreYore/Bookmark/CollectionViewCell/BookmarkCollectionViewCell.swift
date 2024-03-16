@@ -16,39 +16,43 @@ class BookmarkCollectionViewCell: BaseCollectionViewCell {
         view.image = .orangememo // 일단 핑크 메모로
         return view
     }()
-    let foodTypeLabel = {
-        let view = UILabel()
-        view.font = Constants.Font.smallFont
-        view.textColor = Constants.Color.mainText
-        return view
-    }()
+//    let foodTypeLabel = {
+//        let view = UILabel()
+//        view.font = Constants.Font.smallFont
+//        view.textColor = Constants.Color.mainText
+//        view.textAlignment = .center
+//        return view
+//    }()
     
     let foodNameLabel = {
         let view = UILabel()
         view.font = Constants.Font.classifyBold
         view.textColor = Constants.Color.mainText
-        view.numberOfLines = 0
+        view.textAlignment = .center
+        view.numberOfLines = 2
         return view
+    }()
+    
+    let foodImageView = {
+        let view = UIImageView(frame: .zero)
+        view.contentMode = .scaleAspectFill
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 10
+        return view
+        
     }()
     
     let ingredientsLabel = {
         let view = UILabel()
         view.font = Constants.Font.smallFont
         view.textColor = Constants.Color.mainText
-        view.numberOfLines = 0
+        view.numberOfLines = 5
         return view
-    }()
-    
-    let foodImageView = {
-        let view = UIImageView(frame: .zero)
-        view.contentMode = .scaleAspectFit
-        return view
-        
     }()
     
     override func configureHierarchy() {
         contentView.addViews([backImageView])
-        backImageView.addViews([foodTypeLabel, foodNameLabel, ingredientsLabel, foodImageView])
+        backImageView.addViews([foodNameLabel, ingredientsLabel, foodImageView])
     }
     
     override func configureConstraints() {
@@ -56,16 +60,30 @@ class BookmarkCollectionViewCell: BaseCollectionViewCell {
             make.edges.equalToSuperview()
         }
         
-        foodTypeLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+        foodNameLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(20)
+            make.horizontalEdges.equalToSuperview().inset(10)
+            make.height.equalTo(22)
+        }
+        
+        foodImageView.snp.makeConstraints { make in
+            make.top.equalTo(foodNameLabel.snp.bottom).offset(2)
+            make.horizontalEdges.equalToSuperview().inset(10)
+            make.height.equalTo(150)
+        }
+        
+        ingredientsLabel.snp.makeConstraints { make in
+            make.top.equalTo(foodImageView.snp.bottom).offset(2)
+            make.horizontalEdges.equalToSuperview().inset(10)
             
         }
+
     }
-    func upgradeCell(_ item: Recipe) {
-        foodTypeLabel.text = item.foodType
+    func upgradeCell(_ item: FoodTable) {
+//        foodTypeLabel.text = "\(item.foodType) | "
         foodNameLabel.text = item.foodName
         ingredientsLabel.text = item.ingredients
-        guard let url = URL(string: item.largeImage) else {
+        guard let url = URL(string: item.mainImageString) else {
             foodImageView.backgroundColor = .lightGray
             return
         }

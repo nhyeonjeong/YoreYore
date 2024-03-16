@@ -35,6 +35,7 @@ final class RecipeDetailViewController: BaseViewController {
     }
     
     @objc func bookmarkClicked() {
+        print(#function)
         viewModel.inputCheckBookmark.value = ()
     }
         

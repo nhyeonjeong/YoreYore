@@ -23,16 +23,18 @@ class FoodTable: Object {
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var foodType: String
     @Persisted var foodName: String
+    @Persisted var mainImageString: String
     @Persisted var kcal: String
     @Persisted var ingredients: String
     @Persisted(originProperty: "foodList") var main: LinkingObjects<BookmarkTable>
     
     @Persisted var manualList: List<ManualTable>
     
-    convenience init(foodType: String, foodName: String, kcal: String, ingredients: String) {
+    convenience init(foodType: String, foodName: String, mainImageString: String, kcal: String, ingredients: String) {
         self.init()
         self.foodType = foodType
         self.foodName = foodName
+        self.mainImageString = mainImageString
         self.kcal = kcal
         self.ingredients = ingredients
     }
