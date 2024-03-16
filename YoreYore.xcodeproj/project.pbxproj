@@ -45,6 +45,9 @@
 		8BE602082B9D2361009249DD /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE602072B9D2361009249DD /* Recipe.swift */; };
 		8BE6020A2B9D29F1009249DD /* CookRCP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE602092B9D29F1009249DD /* CookRCP.swift */; };
 		8BED50BA2BA5A7F900900A18 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED50B92BA5A7F900900A18 /* String+Extension.swift */; };
+		8BED50C12BA5B0AB00900A18 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED50C02BA5B0AB00900A18 /* BookmarkViewController.swift */; };
+		8BED50C42BA5B44E00900A18 /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED50C32BA5B44E00900A18 /* BookmarkView.swift */; };
+		8BED50C82BA5C5E600900A18 /* BookmarkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED50C72BA5C5E600900A18 /* BookmarkCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +84,9 @@
 		8BE602072B9D2361009249DD /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		8BE602092B9D29F1009249DD /* CookRCP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookRCP.swift; sourceTree = "<group>"; };
 		8BED50B92BA5A7F900900A18 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		8BED50C02BA5B0AB00900A18 /* BookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
+		8BED50C32BA5B44E00900A18 /* BookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
+		8BED50C72BA5C5E600900A18 /* BookmarkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,9 +159,9 @@
 				8BE601C42B9C3F25009249DD /* Extension */,
 				8BE601BA2B9C0EF9009249DD /* Enum */,
 				8BE601B52B9AEE41009249DD /* Base */,
-				8BE601882B9AEB35009249DD /* My */,
 				8BE601872B9AEB32009249DD /* Detail */,
 				8BE601862B9AEAA9009249DD /* Search */,
+				8BED50BF2BA5B0A000900A18 /* Bookmark */,
 				8BE6016B2B998381009249DD /* AppDelegate.swift */,
 				8BE6016D2B998381009249DD /* SceneDelegate.swift */,
 				8BE6016F2B998381009249DD /* ViewController.swift */,
@@ -180,18 +186,10 @@
 		8BE601872B9AEB32009249DD /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				8B57DA1D2B9E8B7300716D63 /* RecipeDetailViewController.swift */,
-				8B57DA212B9FDA3E00716D63 /* RecipeDetailView.swift */,
+				8BED50C22BA5B32900900A18 /* DetailMain */,
 				8B57DA342BA1438B00716D63 /* CollectionViewCell */,
 			);
 			path = Detail;
-			sourceTree = "<group>";
-		};
-		8BE601882B9AEB35009249DD /* My */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = My;
 			sourceTree = "<group>";
 		};
 		8BE601B52B9AEE41009249DD /* Base */ = {
@@ -274,6 +272,41 @@
 				8BE602092B9D29F1009249DD /* CookRCP.swift */,
 			);
 			path = APIModel;
+			sourceTree = "<group>";
+		};
+		8BED50BF2BA5B0A000900A18 /* Bookmark */ = {
+			isa = PBXGroup;
+			children = (
+				8BED50C62BA5C5D200900A18 /* CollectionViewCell */,
+				8BED50C52BA5B46300900A18 /* BookmarkMain */,
+			);
+			path = Bookmark;
+			sourceTree = "<group>";
+		};
+		8BED50C22BA5B32900900A18 /* DetailMain */ = {
+			isa = PBXGroup;
+			children = (
+				8B57DA1D2B9E8B7300716D63 /* RecipeDetailViewController.swift */,
+				8B57DA212B9FDA3E00716D63 /* RecipeDetailView.swift */,
+			);
+			path = DetailMain;
+			sourceTree = "<group>";
+		};
+		8BED50C52BA5B46300900A18 /* BookmarkMain */ = {
+			isa = PBXGroup;
+			children = (
+				8BED50C02BA5B0AB00900A18 /* BookmarkViewController.swift */,
+				8BED50C32BA5B44E00900A18 /* BookmarkView.swift */,
+			);
+			path = BookmarkMain;
+			sourceTree = "<group>";
+		};
+		8BED50C62BA5C5D200900A18 /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				8BED50C72BA5C5E600900A18 /* BookmarkCollectionViewCell.swift */,
+			);
+			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -377,8 +410,10 @@
 				8BE602012B9D1B1B009249DD /* ClassifyViewModel.swift in Sources */,
 				8BE6020A2B9D29F1009249DD /* CookRCP.swift in Sources */,
 				8BE6016C2B998381009249DD /* AppDelegate.swift in Sources */,
+				8BED50C42BA5B44E00900A18 /* BookmarkView.swift in Sources */,
 				8BE601CA2B9C50B9009249DD /* FoodCollectionViewCell.swift in Sources */,
 				8BE601C32B9C3C7A009249DD /* BaseCollectionViewCell.swift in Sources */,
+				8BED50C82BA5C5E600900A18 /* BookmarkCollectionViewCell.swift in Sources */,
 				8BE6019E2B9AECB6009249DD /* SearchViewController.swift in Sources */,
 				8BE601B92B9AEE5E009249DD /* BaseView.swift in Sources */,
 				8B57DA222B9FDA3E00716D63 /* RecipeDetailView.swift in Sources */,
@@ -390,6 +425,7 @@
 				8B57DA2D2BA1252400716D63 /* ManualCollectionViewCell.swift in Sources */,
 				8BE601C12B9C3C56009249DD /* ClassifyMenuCollectionViewCell.swift in Sources */,
 				8B57DA1E2B9E8B7300716D63 /* RecipeDetailViewController.swift in Sources */,
+				8BED50C12BA5B0AB00900A18 /* BookmarkViewController.swift in Sources */,
 				8BE601BC2B9C0F06009249DD /* Constants.swift in Sources */,
 				8BE601FD2B9CB28C009249DD /* APIKey.swift in Sources */,
 				8BE602082B9D2361009249DD /* Recipe.swift in Sources */,

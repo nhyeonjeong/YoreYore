@@ -18,9 +18,9 @@ final class SearchViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindData()
+        setNavigationBar()
         configurePaging()
         configureTextField()
-        
     }
     
     private func bindData() {
@@ -30,6 +30,12 @@ final class SearchViewController: BaseViewController {
 ////            self.classifyVC.recipeList = recipes
 ////            self.classifyVC.mainView.foodCollectionView.reloadData()
 //        }
+    }
+}
+
+extension SearchViewController {
+    func setNavigationBar() {
+        navigationItem.title = "YoreYore"
     }
 }
 

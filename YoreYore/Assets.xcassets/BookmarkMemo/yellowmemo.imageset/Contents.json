@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "crafty-yellow-square-piece-of-paper.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

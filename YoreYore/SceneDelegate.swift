@@ -13,15 +13,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        window = UIWindow(windowScene: windowScene)
+        guard let scene = (scene as? UIWindowScene) else { return }
         
-        window?.rootViewController = UINavigationController(rootViewController: SearchViewController())
+        window = UIWindow(windowScene: scene)
         
+        let tabBarvc = UITabBarController()
+        
+        let firstNav = UINavigationController(rootViewController: SearchViewController())
+        let secondNav = UINavigationController(rootViewController: BookmarkViewController())
+        
+        firstNav.tabBarItem = UITabBarItem(title: "레시피", image: Constants.Image.bowl, tag: 0)
+        secondNav.tabBarItem = UITabBarItem(title: "북마크", image: Constants.Image.forkFill, tag: 1)
+        
+        tabBarvc.tabBar.tintColor = Constants.Color.point
+        tabBarvc.tabBar.barTintColor = Constants.Color.background // 스크롤하면 색이 변경되는데 그때 색을 여기서 바꿀 수 있다.
+        tabBarvc.viewControllers = [firstNav, secondNav]
+        
+        window?.rootViewController = tabBarvc
         window?.makeKeyAndVisible()
     }
 

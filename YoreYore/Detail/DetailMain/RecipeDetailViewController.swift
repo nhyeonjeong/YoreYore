@@ -26,7 +26,7 @@ final class RecipeDetailViewController: BaseViewController {
         super.viewDidLoad()
         setNavigationBar()
         configureCollectionView()
-        configureDataSource() // snapshot찍기 전에 해야함(갱신전에 어떻게 표현해야할지가 먼저 있어야함)
+        configureDataSource()
         updateSnapshot()
     }
     
