@@ -21,7 +21,7 @@ struct Recipe: Decodable, Hashable {
     let weight: String
     let kal: String
     let smallImage: String
-    let largeImage: String
+    var largeImage: String // https가 아닐경우 가공해서 다시 저장하기 때문에 var로 변경
     let ingredients: String
 
     let manuals: [Manual]
@@ -91,9 +91,12 @@ struct Recipe: Decodable, Hashable {
         self.weight = try container.decode(String.self, forKey: .weight)
         self.kal = try container.decode(String.self, forKey: .kal)
         self.smallImage = try container.decode(String.self, forKey: .smallImage)
-        self.largeImage = try container.decode(String.self, forKey: .largeImage)
+//        self.largeImage = try container.decode(String.self, forKey: .largeImage)
         self.ingredients = try container.decode(String.self, forKey: .ingredients)
         self.tip = try container.decode(String.self, forKey: .tip)
+        
+        var largeImageString = try container.decode(String.self, forKey: .largeImage)
+        self.largeImage = largeImageString.setHttps()
         
         var manuals: [Manual] = []
         for index in 1...20 {
@@ -103,7 +106,9 @@ struct Recipe: Decodable, Hashable {
             let image = try container.decode(String.self, forKey: .init(rawValue: imageKey)!)
             let text = try container.decode(String.self, forKey: .init(rawValue: textKey)!)
             if text == "" && image == "" { break }
-            manuals.append(Manual(image: image, content: text))
+            
+            // http라면 https로 바꾸기
+            manuals.append(Manual(image: image.setHttps(), content: text.setHttps()))
         }
         self.manuals = manuals
     }

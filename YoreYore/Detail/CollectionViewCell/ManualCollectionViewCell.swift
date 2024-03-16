@@ -48,8 +48,7 @@ class ManualCollectionViewCell: BaseCollectionViewCell {
     }
     
     func upgradeCell(_ manual: Recipe.Manual) {
-        let httpsImageString = manual.image.replacingOccurrences(of: "http", with: "https")
-        if let url = URL(string: httpsImageString) {
+        if let url = URL(string: manual.image) {
             manualImageView.kf.setImage(with: url)
         } else {
             manualImageView.backgroundColor = .lightGray

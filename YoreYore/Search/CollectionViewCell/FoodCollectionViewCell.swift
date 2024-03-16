@@ -41,10 +41,7 @@ final class FoodCollectionViewCell: BaseCollectionViewCell {
     }
     
     func configureCell(recipe: Recipe) {
-        // http -> https로 변경
-        let httpsString = recipe.largeImage.replacingOccurrences(of: "http", with: "https")
-        foodImage.kf.setImage(with: URL(string: httpsString))
+        foodImage.kf.setImage(with: URL(string: recipe.largeImage))
         foodName.text = recipe.foodName
-        
     }
 }
