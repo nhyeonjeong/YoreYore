@@ -127,9 +127,8 @@ final class DetailCollectionViewCell: BaseCollectionViewCell {
 //    }
     
     func upgradeCell(_ item: Recipe) {
-        let httpsString = item.largeImage.replacingOccurrences(of: "http", with: "https")
         // cellForItemAt에 해당하는 메서드
-        if let url = URL(string: httpsString) {
+        if let url = URL(string: item.largeImage) {
             mainImageView.kf.setImage(with: url)
         } else {
             mainImageView.backgroundColor = .lightGray // 이미지가 없습니다...

@@ -33,6 +33,7 @@ enum Constants {
     
     enum Layout {
         static let detailCollectionPadding: CGFloat = 40
+        static let defaultPadding: CGFloat = 15
     }
 }
 

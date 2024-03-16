@@ -10,8 +10,8 @@ import Alamofire
 
 enum RecipeAPIRequest {
 
-    case foodType(type: ClassifyList)
-    case searchWithType(type: ClassifyList, search: String)
+    case foodType(type: SearchViewModel.ClassifyList)
+    case searchWithType(type: SearchViewModel.ClassifyList, search: String)
     
     var baseURL: URL {
         return URL(string: "https://openapi.foodsafetykorea.go.kr/api/\(APIKey.recipe)/COOKRCP01/json/1/5/")!
