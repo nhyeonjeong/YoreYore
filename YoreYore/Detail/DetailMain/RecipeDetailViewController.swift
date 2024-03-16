@@ -8,14 +8,15 @@
 import UIKit
 
 final class RecipeDetailViewController: BaseViewController {
+    
     enum Section: Int, CaseIterable {
         case detail
         case manual
     }
-
+    var foodType: ClassifyList?
     var food: Recipe!
     let mainView = RecipeDetailView()
-    
+    let viewModel = RecipeDetailViewModel()
     private var dataSource: UICollectionViewDiffableDataSource<Section, AnyHashable>!
         
     override func loadView() {
@@ -24,15 +25,19 @@ final class RecipeDetailViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.foodType = foodType
+        viewModel.food = food
+        
         setNavigationBar()
         configureCollectionView()
         configureDataSource()
         updateSnapshot()
     }
     
-    @objc func bookmarkClicked() { // 북마크를 클릭하면
-        print(#function)
+    @objc func bookmarkClicked() {
+        viewModel.inputCheckBookmark.value = ()
     }
+        
 }
 
 extension RecipeDetailViewController {

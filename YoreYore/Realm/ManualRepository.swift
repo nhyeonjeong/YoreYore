@@ -1,18 +1,18 @@
 //
-//  RealmRepository.swift
+//  MenualRepository.swift
 //  YoreYore
 //
-//  Created by 남현정 on 2024/03/16.
+//  Created by 남현정 on 2024/03/17.
 //
 
 import Foundation
 import RealmSwift
 
-class RealmRepository {
-    static let shared = RealmRepository()
+class ManualRepository {
+    static let shared = ManualRepository()
     
     let realm = try! Realm()
-    func createItem(_ data: BookmarkTable) {
+    func createItem(_ data: ManualTable) {
         print(self.realm.configuration.fileURL)
         
         do {
@@ -22,12 +22,14 @@ class RealmRepository {
         } catch {
             print("realm create fail", error)
         }
+        
+        let data = realm.objects(ManualTable.self).first
     }
-    func fetchItem() -> [FoodTable] {
-        let result = realm.objects(FoodTable.self)
+    func fetchItem() -> [ManualTable] {
+        let result = realm.objects(ManualTable.self)
         return Array(result) // 정확한 타입을 써주자
     }
-    func removeItem(_ item: FoodTable) {
+    func removeItem(_ item: ManualTable) {
         do {
             try realm.write {
                 realm.delete(item)

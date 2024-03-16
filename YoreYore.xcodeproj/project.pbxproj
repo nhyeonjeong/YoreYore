@@ -48,11 +48,14 @@
 		8BED50C12BA5B0AB00900A18 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED50C02BA5B0AB00900A18 /* BookmarkViewController.swift */; };
 		8BED50C42BA5B44E00900A18 /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED50C32BA5B44E00900A18 /* BookmarkView.swift */; };
 		8BED50C82BA5C5E600900A18 /* BookmarkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED50C72BA5C5E600900A18 /* BookmarkCollectionViewCell.swift */; };
-		8BED50CB2BA5DE2C00900A18 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED50CA2BA5DE2C00900A18 /* RealmRepository.swift */; };
-		8BED50CD2BA5DE6F00900A18 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED50CC2BA5DE6F00900A18 /* Bookmark.swift */; };
+		8BED50CB2BA5DE2C00900A18 /* BookmarkTableRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED50CA2BA5DE2C00900A18 /* BookmarkTableRepository.swift */; };
+		8BED50CD2BA5DE6F00900A18 /* BookmarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED50CC2BA5DE6F00900A18 /* BookmarkModel.swift */; };
 		8BED50D02BA5DF0900900A18 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 8BED50CF2BA5DF0900900A18 /* Realm */; };
 		8BED50D22BA5DF0900900A18 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8BED50D12BA5DF0900900A18 /* RealmSwift */; };
 		8BED50D62BA5EDF200900A18 /* ClassifyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED50D52BA5EDF200900A18 /* ClassifyList.swift */; };
+		8BED50D82BA5F32800900A18 /* FoodTableRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED50D72BA5F32800900A18 /* FoodTableRepository.swift */; };
+		8BED50DA2BA5F33300900A18 /* ManualRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED50D92BA5F33300900A18 /* ManualRepository.swift */; };
+		8BED50DC2BA6107300900A18 /* RecipeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED50DB2BA6107200900A18 /* RecipeDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,9 +95,12 @@
 		8BED50C02BA5B0AB00900A18 /* BookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
 		8BED50C32BA5B44E00900A18 /* BookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
 		8BED50C72BA5C5E600900A18 /* BookmarkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCollectionViewCell.swift; sourceTree = "<group>"; };
-		8BED50CA2BA5DE2C00900A18 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
-		8BED50CC2BA5DE6F00900A18 /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
+		8BED50CA2BA5DE2C00900A18 /* BookmarkTableRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTableRepository.swift; sourceTree = "<group>"; };
+		8BED50CC2BA5DE6F00900A18 /* BookmarkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkModel.swift; sourceTree = "<group>"; };
 		8BED50D52BA5EDF200900A18 /* ClassifyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifyList.swift; sourceTree = "<group>"; };
+		8BED50D72BA5F32800900A18 /* FoodTableRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTableRepository.swift; sourceTree = "<group>"; };
+		8BED50D92BA5F33300900A18 /* ManualRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualRepository.swift; sourceTree = "<group>"; };
+		8BED50DB2BA6107200900A18 /* RecipeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,8 +295,8 @@
 		8BED50BF2BA5B0A000900A18 /* Bookmark */ = {
 			isa = PBXGroup;
 			children = (
-				8BED50C62BA5C5D200900A18 /* CollectionViewCell */,
 				8BED50C52BA5B46300900A18 /* BookmarkMain */,
+				8BED50C62BA5C5D200900A18 /* CollectionViewCell */,
 			);
 			path = Bookmark;
 			sourceTree = "<group>";
@@ -300,6 +306,7 @@
 			children = (
 				8B57DA1D2B9E8B7300716D63 /* RecipeDetailViewController.swift */,
 				8B57DA212B9FDA3E00716D63 /* RecipeDetailView.swift */,
+				8BED50DB2BA6107200900A18 /* RecipeDetailViewModel.swift */,
 			);
 			path = DetailMain;
 			sourceTree = "<group>";
@@ -324,8 +331,10 @@
 		8BED50C92BA5DE1B00900A18 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
-				8BED50CA2BA5DE2C00900A18 /* RealmRepository.swift */,
-				8BED50CC2BA5DE6F00900A18 /* Bookmark.swift */,
+				8BED50CC2BA5DE6F00900A18 /* BookmarkModel.swift */,
+				8BED50CA2BA5DE2C00900A18 /* BookmarkTableRepository.swift */,
+				8BED50D72BA5F32800900A18 /* FoodTableRepository.swift */,
+				8BED50D92BA5F33300900A18 /* ManualRepository.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -428,6 +437,7 @@
 				8BE601702B998381009249DD /* ViewController.swift in Sources */,
 				8BE601C62B9C3F3D009249DD /* UIView+Extension.swift in Sources */,
 				8BE601CD2B9CA76F009249DD /* RecipeAPIManager.swift in Sources */,
+				8BED50DC2BA6107300900A18 /* RecipeDetailViewModel.swift in Sources */,
 				8BE601BE2B9C1F16009249DD /* ClassifyViewController.swift in Sources */,
 				8BE601C82B9C4A46009249DD /* ClassifyView.swift in Sources */,
 				8BED50D62BA5EDF200900A18 /* ClassifyList.swift in Sources */,
@@ -444,14 +454,16 @@
 				8B57DA222B9FDA3E00716D63 /* RecipeDetailView.swift in Sources */,
 				8BE6016E2B998381009249DD /* SceneDelegate.swift in Sources */,
 				8BE601CF2B9CAC02009249DD /* RecipeAPIRequest.swift in Sources */,
-				8BED50CB2BA5DE2C00900A18 /* RealmRepository.swift in Sources */,
-				8BED50CD2BA5DE6F00900A18 /* Bookmark.swift in Sources */,
+				8BED50CB2BA5DE2C00900A18 /* BookmarkTableRepository.swift in Sources */,
+				8BED50CD2BA5DE6F00900A18 /* BookmarkModel.swift in Sources */,
 				8BE601B72B9AEE57009249DD /* BaseViewController.swift in Sources */,
 				8BED50BA2BA5A7F900900A18 /* String+Extension.swift in Sources */,
 				8B57DA242B9FDB9300716D63 /* SearchViewModel.swift in Sources */,
+				8BED50D82BA5F32800900A18 /* FoodTableRepository.swift in Sources */,
 				8B57DA2D2BA1252400716D63 /* ManualCollectionViewCell.swift in Sources */,
 				8BE601C12B9C3C56009249DD /* ClassifyMenuCollectionViewCell.swift in Sources */,
 				8B57DA1E2B9E8B7300716D63 /* RecipeDetailViewController.swift in Sources */,
+				8BED50DA2BA5F33300900A18 /* ManualRepository.swift in Sources */,
 				8BED50C12BA5B0AB00900A18 /* BookmarkViewController.swift in Sources */,
 				8BE601BC2B9C0F06009249DD /* Constants.swift in Sources */,
 				8BE601FD2B9CB28C009249DD /* APIKey.swift in Sources */,

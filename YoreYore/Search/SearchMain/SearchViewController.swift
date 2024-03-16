@@ -63,6 +63,7 @@ extension SearchViewController: PagingViewControllerDataSource, PagingViewContro
         classifyVC.goDetailRcp = { recipe in
             let vc = RecipeDetailViewController()
             vc.food = recipe
+            vc.foodType = self.viewModel.selectedFootType
             self.navigationController?.pushViewController(vc, animated: true)
         }
         print(#function, classifyVC.foodType, classifyVC.searchFoodName)

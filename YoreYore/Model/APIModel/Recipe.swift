@@ -17,7 +17,7 @@ struct Recipe: Decodable, Hashable {
     let id: String
     let foodName: String
     let way: String
-    let footType: String
+    let foodType: String
     let weight: String
     let kal: String
     let smallImage: String
@@ -31,7 +31,7 @@ struct Recipe: Decodable, Hashable {
         case id = "RCP_SEQ"
         case foodName = "RCP_NM"
         case way = "RCP_WAY2"
-        case footType = "RCP_PAT2"
+        case foodType = "RCP_PAT2"
         case weight = "INFO_WGT" // "" 일수도 있음 주의
         case kal = "INFO_ENG"
         case smallImage = "ATT_FILE_NO_MAIN"
@@ -87,7 +87,7 @@ struct Recipe: Decodable, Hashable {
         self.id = try container.decode(String.self, forKey: .id)
         self.foodName = try container.decode(String.self, forKey: .foodName)
         self.way = try container.decode(String.self, forKey: .way)
-        self.footType = try container.decode(String.self, forKey: .footType)
+        self.foodType = try container.decode(String.self, forKey: .foodType)
         self.weight = try container.decode(String.self, forKey: .weight)
         self.kal = try container.decode(String.self, forKey: .kal)
         self.smallImage = try container.decode(String.self, forKey: .smallImage)

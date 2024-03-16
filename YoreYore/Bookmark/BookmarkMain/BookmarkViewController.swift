@@ -8,7 +8,7 @@
 import UIKit
 
 class BookmarkViewController: BaseViewController {
-    
+    let bookmarkRealm = BookmarkTableRepository.shared
     let mainView = BookmarkView()
     // Diffable사용
     private var dataSource: UICollectionViewDiffableDataSource<Int, Recipe>!

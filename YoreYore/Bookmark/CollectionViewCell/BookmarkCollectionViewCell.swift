@@ -62,12 +62,12 @@ class BookmarkCollectionViewCell: BaseCollectionViewCell {
         }
     }
     func upgradeCell(_ item: Recipe) {
-        foodTypeLabel.text = item.footType
+        foodTypeLabel.text = item.foodType
         foodNameLabel.text = item.foodName
         ingredientsLabel.text = item.ingredients
         guard let url = URL(string: item.largeImage) else {
             foodImageView.backgroundColor = .lightGray
-            return 
+            return
         }
         foodImageView.kf.setImage(with: url)
     }
