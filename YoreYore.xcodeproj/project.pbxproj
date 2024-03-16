@@ -52,6 +52,7 @@
 		8BED50CD2BA5DE6F00900A18 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED50CC2BA5DE6F00900A18 /* Bookmark.swift */; };
 		8BED50D02BA5DF0900900A18 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 8BED50CF2BA5DF0900900A18 /* Realm */; };
 		8BED50D22BA5DF0900900A18 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8BED50D12BA5DF0900900A18 /* RealmSwift */; };
+		8BED50D62BA5EDF200900A18 /* ClassifyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED50D52BA5EDF200900A18 /* ClassifyList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +94,7 @@
 		8BED50C72BA5C5E600900A18 /* BookmarkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCollectionViewCell.swift; sourceTree = "<group>"; };
 		8BED50CA2BA5DE2C00900A18 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
 		8BED50CC2BA5DE6F00900A18 /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
+		8BED50D52BA5EDF200900A18 /* ClassifyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifyList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				8BE601BB2B9C0F06009249DD /* Constants.swift */,
+				8BED50D52BA5EDF200900A18 /* ClassifyList.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				8BE601CD2B9CA76F009249DD /* RecipeAPIManager.swift in Sources */,
 				8BE601BE2B9C1F16009249DD /* ClassifyViewController.swift in Sources */,
 				8BE601C82B9C4A46009249DD /* ClassifyView.swift in Sources */,
+				8BED50D62BA5EDF200900A18 /* ClassifyList.swift in Sources */,
 				8B57DA332BA1438300716D63 /* DetailCollectionViewCell.swift in Sources */,
 				8BE602012B9D1B1B009249DD /* ClassifyViewModel.swift in Sources */,
 				8BE6020A2B9D29F1009249DD /* CookRCP.swift in Sources */,

@@ -9,7 +9,7 @@ import Foundation
 
 final class ClassifyViewModel {
     struct SearchWithType {
-        let foodType: SearchViewModel.ClassifyList
+        let foodType: ClassifyList
         let foodName: String
     }
     var recipeList: Observable<[Recipe]> = Observable([])

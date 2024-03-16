@@ -35,6 +35,14 @@ class BookmarkView: BaseView {
         return view
     }()
     
+    let foodTypeSegment: UISegmentedControl = {
+        let view = UISegmentedControl()
+        let cases = ClassifyList.allCases
+        for idx in 0..<cases.count {
+            view.insertSegment(withTitle: cases[idx].classifyName, at: idx, animated: true)
+        }
+        return view
+    }()
     lazy var bookmarkCollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
         view.register(BookmarkCollectionViewCell.self, forCellWithReuseIdentifier: BookmarkCollectionViewCell.identifier)
@@ -50,7 +58,7 @@ class BookmarkView: BaseView {
     override func configureHierarchy() {
 //        navigationTitleView.addViews([titleViewImageView])
         addViews([backImage])
-        backImage.addViews([bookmarkCollectionView])
+        backImage.addViews([foodTypeSegment, bookmarkCollectionView])
     }
     override func configureConstraints() {
 //        titleViewImageView.snp.makeConstraints { make in
@@ -60,8 +68,12 @@ class BookmarkView: BaseView {
             make.top.horizontalEdges.equalTo(self)
             make.bottom.equalTo(safeAreaLayoutGuide)
         }
+        foodTypeSegment.snp.makeConstraints { make in
+            make.top.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(10)
+        }
         bookmarkCollectionView.snp.makeConstraints { make in
-            make.edges.equalTo(safeAreaLayoutGuide)
+            make.top.equalTo(foodTypeSegment.snp.bottom)
+            make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
         }
     }
     

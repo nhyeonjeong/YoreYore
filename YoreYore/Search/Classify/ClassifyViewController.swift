@@ -11,7 +11,7 @@ import UIKit
 final class ClassifyViewController: BaseViewController {
     var goDetailRcp: ((Recipe) -> Void)?
     
-    var foodType: SearchViewModel.ClassifyList
+    var foodType: ClassifyList
     var searchFoodName: String
     
     let mainView = ClassifyView()
@@ -28,7 +28,7 @@ final class ClassifyViewController: BaseViewController {
         viewModel.inputFetchRecipe.value = ClassifyViewModel.SearchWithType(foodType: foodType, foodName: searchFoodName)
         bindData()
     }
-    init(foodType: SearchViewModel.ClassifyList, searchText: String) {
+    init(foodType: ClassifyList, searchText: String) {
         self.foodType = foodType
         self.searchFoodName = searchText
         super.init(nibName: nil, bundle: nil) // ?
