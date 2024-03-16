@@ -17,7 +17,7 @@ final class SearchViewModel {
         case dessert // 후식
         case sideDish // 반찬
         case mainDish // 밥
-    //        case soup // 찌개또는 국
+        case soup // 찌개또는 국
         
         var classifyName: String{
             switch self {
@@ -27,8 +27,8 @@ final class SearchViewModel {
                 return "반찬"
             case .mainDish:
                 return "밥"
-    //        case .soup:
-    //            return "국&찌개"
+            case .soup:
+                return "국"
             }
         }
     }
@@ -42,10 +42,7 @@ final class SearchViewModel {
         return list
     }()
     
-    var selectedFootType: ClassifyList = .dessert
-//    var inputSearchBar: Observable<String> = Observable("") // 검색할 텍스트
-//    var recipeList: Observable<[Recipe]> = Observable([]) // api통신으로 가져온 레시피 결과
-    
+    var selectedFootType: ClassifyList = .dessert // 제일 처음은 dessert로 시작
     init() {
 //        bindData()
     }
