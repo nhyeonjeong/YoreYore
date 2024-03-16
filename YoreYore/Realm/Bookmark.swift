@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class TypeFolder: Object {
+class BookmarkTable: Object {
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var foodType: String
     @Persisted var bookmarkList: List<BookmarkTable> // 저장한 레시피 리스트
@@ -19,7 +19,7 @@ class TypeFolder: Object {
     }
 }
 
-class BookmarkTable: Object {
+class FoodTable: Object {
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var foodType: String
     @Persisted var foodName: String
