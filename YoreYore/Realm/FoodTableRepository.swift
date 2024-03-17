@@ -44,6 +44,7 @@ class FoodTableRepository {
     func removeItem(_ item: FoodTable) {
         do {
             try realm.write {
+                realm.delete(item.manualList) // 하위계층부터 삭제후 레시피 삭제
                 realm.delete(item)
                 print("realm delete")
             }

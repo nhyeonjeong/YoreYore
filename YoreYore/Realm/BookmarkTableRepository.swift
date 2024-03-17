@@ -21,7 +21,6 @@ class BookmarkTableRepository {
         } catch {
             print("realm create fail", error)
         }
-        
     }
     
     func createFoodItem(_ item: FoodTable, foodTypeIdx: Int) {
@@ -38,11 +37,12 @@ class BookmarkTableRepository {
         let result = realm.objects(BookmarkTable.self)
         return Array(result)
     }
-    
+    // foodList만 가져오기
     func fetchItem(_ foodType: ClassifyList) -> [FoodTable] {
         let result = realm.objects(BookmarkTable.self)
         return Array(result[foodType.rawValue].foodList)
     }
+    
     func removeItem(_ item: BookmarkTable) {
         do {
             try realm.write {

@@ -37,12 +37,15 @@ final class RecipeDetailViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.inputFetchFoodIdList.value = ()
+        viewModel.inputFetchBookmarkTable.value = ()
     }
     
     private func bindData() {
         viewModel.bookmarkList.bind { _ in
-            self.setNavigationBar() // 북마크버튼 다시 그리기
+            self.viewModel.inputCheckBookmarkTrigger.value = ()
+        }
+        viewModel.outputCheckBookmark.bind { isSaved in
+            self.setNavigationBar(isSaved: isSaved) // 북마크버튼 다시 그리기
         }
     }
     
@@ -55,9 +58,10 @@ extension RecipeDetailViewController {
     private func setNavigationTitle() {
         navigationItem.title = food.foodName
     }
-    private func setNavigationBar() {
+    private func setNavigationBar(isSaved: Bool) {
         // 북마크
-        let buttomImage = viewModel.checkBookmark() ? Constants.Image.bookmarkFill : Constants.Image.bookmark
+        print("isSaved : ", isSaved)
+        let buttomImage = isSaved ? Constants.Image.bookmarkFill : Constants.Image.bookmark
         let button = UIBarButtonItem(image: buttomImage, style: .plain, target: self, action: #selector(bookmarkClicked))
         button.tintColor = Constants.Color.point
         navigationItem.rightBarButtonItem = button
