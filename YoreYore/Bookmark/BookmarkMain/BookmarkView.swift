@@ -34,13 +34,6 @@ class BookmarkView: BaseView {
         return view
     }()
     
-    let whiteOpacityView = {
-        let view = UIView()
-//        view.layer.backgroundColor = (UIColor.white.cgColor).copy(alpha: 0.5)
-        view.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
-        return view
-    }()
-    
     let foodTypeSegment: UISegmentedControl = {
         let view = UISegmentedControl()
         let cases = ClassifyList.allCases
@@ -56,6 +49,15 @@ class BookmarkView: BaseView {
         return view
     }()
     
+    let messageLabel = {
+        let view = UILabel()
+        view.font = Constants.Font.classify
+        view.textColor = Constants.Color.point
+        view.textAlignment = .center
+        view.numberOfLines = 0
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -63,27 +65,29 @@ class BookmarkView: BaseView {
     
     override func configureHierarchy() {
 //        navigationTitleView.addViews([titleViewImageView])
-        addViews([backImage])
-        backImage.addViews([whiteOpacityView, foodTypeSegment, bookmarkCollectionView])
+//        addViews([backImage])
+        addViews([foodTypeSegment, bookmarkCollectionView])
+        bookmarkCollectionView.addViews([messageLabel])
     }
     override func configureConstraints() {
 //        titleViewImageView.snp.makeConstraints { make in
 //            make.edges.equalToSuperview()
 //        }
-        backImage.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalTo(self)
-            make.bottom.equalTo(safeAreaLayoutGuide)
-        }
-        
-        whiteOpacityView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+//        backImage.snp.makeConstraints { make in
+//            make.top.horizontalEdges.equalTo(self)
+//            make.bottom.equalTo(safeAreaLayoutGuide)
+//        }
         foodTypeSegment.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(10)
+            make.top.equalTo(safeAreaLayoutGuide).inset(10)
+            make.horizontalEdges.equalToSuperview().inset(10)
         }
         bookmarkCollectionView.snp.makeConstraints { make in
             make.top.equalTo(foodTypeSegment.snp.bottom)
             make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
+        }
+        
+        messageLabel.snp.makeConstraints { make in
+            make.center.equalToSuperview()
         }
     }
     

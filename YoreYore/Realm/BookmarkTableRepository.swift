@@ -38,9 +38,9 @@ class BookmarkTableRepository {
         return Array(result)
     }
     // foodList만 가져오기
-    func fetchItem(_ foodType: ClassifyList) -> [FoodTable] {
+    func fetchItem(_ foodTypeIdx: Int) -> [FoodTable] {
         let result = realm.objects(BookmarkTable.self)
-        return Array(result[foodType.rawValue].foodList)
+        return Array(result[foodTypeIdx].foodList)
     }
     
     func removeItem(_ item: BookmarkTable) {

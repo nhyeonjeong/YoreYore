@@ -20,18 +20,55 @@ class BookmarkViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.inputselectedFoodType.value = .dessert // 일단 후식으로만
         bindData()
         setNavigationBar()
-        
+        super.viewDidLoad()
+        mainView.foodTypeSegment.addTarget(self, action: #selector(segmentClicked), for: .valueChanged)
         configureDataSource()
         updateSnapshot()
     }
     
-    private func bindData() {
-        viewModel.outputFetchFoodList.bind { _ in
-            self.updateSnapshot()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        print("isSelected: \(mainView.foodTypeSegment.isSelected)")
+//        print("viewModel selected: \(viewModel.inputselectedFoodType.value)")
+//        if mainView.foodTypeSegment.isSelected { // 들어올때마다 collectionview reload
+//            let selectedIdx = mainView.foodTypeSegment.selectedSegmentIndex
+//            viewModel.inputselectedFoodType.value = selectedIdx
+//        } else {
+//            viewModel.inputselectedFoodType.value = 0
+//        }
+        // 선택된 값이 이미 있는 상태면 collectionview 업데이트
+        if let selectedIdx = viewModel.inputselectedFoodType.value {
+            viewModel.updateFoodList(selectedIdx)
+            mainView.messageLabel.isHidden = true
+            checkFoodListEmpty()
+        } else { // 선택된 값이 없는 상태면
+            mainView.messageLabel.text = "북마크입니다\n음식종류를 선택해주세요!"
+            mainView.messageLabel.isHidden = false
         }
+    }
+    
+    private func bindData() {
+        viewModel.outputFetchFoodList.bind { foodList in
+            self.checkFoodListEmpty()
+        }
+    }
+    
+    func checkFoodListEmpty() {
+        if viewModel.outputFetchFoodList.value.count == 0 {
+            self.mainView.messageLabel.text = "북마크된 음식이 없습니다."
+            self.mainView.messageLabel.isHidden = false
+        } else {
+            self.mainView.messageLabel.isHidden = true
+        }
+        self.updateSnapshot()
+    }
+    @objc func segmentClicked() {
+        print(#function)
+        let selectedIdx = mainView.foodTypeSegment.selectedSegmentIndex
+        print("selectedIdx: \(selectedIdx)")
+        viewModel.inputselectedFoodType.value = selectedIdx
     }
 }
 

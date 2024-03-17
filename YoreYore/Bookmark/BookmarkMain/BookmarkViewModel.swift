@@ -9,7 +9,7 @@ import Foundation
 
 final class BookmarkViewModel {
     let bookmarkRealm = BookmarkTableRepository.shared
-    var inputselectedFoodType: Observable<ClassifyList> = Observable(.dessert)
+    var inputselectedFoodType: Observable<Int?> = Observable(nil)
     
     var outputFetchFoodList: Observable<[FoodTable]> = Observable([])
     
@@ -18,10 +18,18 @@ final class BookmarkViewModel {
     }
     
     private func bindData() {
-        inputselectedFoodType.bind { type in
+        inputselectedFoodType.bind { foodTypeIdx in
             // realm에서 가져오기
-            let foodList = self.bookmarkRealm.fetchItem(type)
-            self.outputFetchFoodList.value = foodList
+            self.updateFoodList(foodTypeIdx)
         }
+    }
+    
+    func updateFoodList(_ foodTypeIdx: Int?) {
+        guard let idx = foodTypeIdx else {
+            print("foodTypeIdx nil")
+            return
+        }
+        let foodList = self.bookmarkRealm.fetchItem(idx)
+        self.outputFetchFoodList.value = foodList
     }
 }

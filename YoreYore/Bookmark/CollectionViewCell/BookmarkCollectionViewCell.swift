@@ -13,16 +13,9 @@ class BookmarkCollectionViewCell: BaseCollectionViewCell {
     let backImageView = {
         let view = UIImageView(frame: .zero)
         view.contentMode = .scaleToFill
-        view.image = .orangememo // 일단 핑크 메모로
+        view.image = .checkmemo // 일단 핑크 메모로
         return view
     }()
-//    let foodTypeLabel = {
-//        let view = UILabel()
-//        view.font = Constants.Font.smallFont
-//        view.textColor = Constants.Color.mainText
-//        view.textAlignment = .center
-//        return view
-//    }()
     
     let foodNameLabel = {
         let view = UILabel()
