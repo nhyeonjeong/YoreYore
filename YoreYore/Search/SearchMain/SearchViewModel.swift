@@ -19,7 +19,7 @@ final class SearchViewModel {
         return list
     }()
     
-    var selectedFootType: ClassifyList = .dessert // 제일 처음은 dessert로 시작
+    var selectedFoodType: ClassifyList = .dessert // 제일 처음은 dessert로 시작
     init() {
 //        bindData()
     }

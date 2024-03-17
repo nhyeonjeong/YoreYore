@@ -20,7 +20,7 @@ class BookmarkTable: Object {
 }
 
 class FoodTable: Object {
-    @Persisted(primaryKey: true) var id: ObjectId
+    @Persisted(primaryKey: true) var id: String
     @Persisted var foodType: String
     @Persisted var foodName: String
     @Persisted var mainImageString: String
@@ -30,8 +30,9 @@ class FoodTable: Object {
     
     @Persisted var manualList: List<ManualTable>
     
-    convenience init(foodType: String, foodName: String, mainImageString: String, kcal: String, ingredients: String) {
+    convenience init(id: String, foodType: String, foodName: String, mainImageString: String, kcal: String, ingredients: String) {
         self.init()
+        self.id = id
         self.foodType = foodType
         self.foodName = foodName
         self.mainImageString = mainImageString

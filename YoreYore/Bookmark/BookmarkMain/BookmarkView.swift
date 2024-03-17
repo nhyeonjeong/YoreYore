@@ -10,28 +10,34 @@ import SnapKit
 
 class BookmarkView: BaseView {
     /*
-    let navigationTitleView = UIView()
-    let titleViewImageView = {
-        let view = UIImageView(frame: .zero)
-        view.animationImages = {
-            var list: [UIImage] = []
-            for i in 0..<3 {
-                list.append(Constants.Image.forkFill)
-            }
-            return list
-        }()
-        
-        view.image?.withTintColor(Constants.Color.point ?? .point)
-        view.contentMode = .scaleToFill
-        return view
-    }()
+     let navigationTitleView = UIView()
+     let titleViewImageView = {
+     let view = UIImageView(frame: .zero)
+     view.animationImages = {
+     var list: [UIImage] = []
+     for i in 0..<3 {
+     list.append(Constants.Image.forkFill)
+     }
+     return list
+     }()
+     
+     view.image?.withTintColor(Constants.Color.point ?? .point)
+     view.contentMode = .scaleToFill
+     return view
+     }()
      */
     
     let backImage = {
         let view = UIImageView(frame: .zero)
         view.contentMode = .scaleAspectFill
         view.image = Constants.Image.bookmarkBack
-        view.layer.opacity = 0.4
+        return view
+    }()
+    
+    let whiteOpacityView = {
+        let view = UIView()
+//        view.layer.backgroundColor = (UIColor.white.cgColor).copy(alpha: 0.5)
+        view.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
         return view
     }()
     
@@ -58,7 +64,7 @@ class BookmarkView: BaseView {
     override func configureHierarchy() {
 //        navigationTitleView.addViews([titleViewImageView])
         addViews([backImage])
-        backImage.addViews([foodTypeSegment, bookmarkCollectionView])
+        backImage.addViews([whiteOpacityView, foodTypeSegment, bookmarkCollectionView])
     }
     override func configureConstraints() {
 //        titleViewImageView.snp.makeConstraints { make in
@@ -67,6 +73,10 @@ class BookmarkView: BaseView {
         backImage.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(self)
             make.bottom.equalTo(safeAreaLayoutGuide)
+        }
+        
+        whiteOpacityView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
         foodTypeSegment.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(10)
