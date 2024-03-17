@@ -30,14 +30,6 @@ class BookmarkViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        print("isSelected: \(mainView.foodTypeSegment.isSelected)")
-//        print("viewModel selected: \(viewModel.inputselectedFoodType.value)")
-//        if mainView.foodTypeSegment.isSelected { // 들어올때마다 collectionview reload
-//            let selectedIdx = mainView.foodTypeSegment.selectedSegmentIndex
-//            viewModel.inputselectedFoodType.value = selectedIdx
-//        } else {
-//            viewModel.inputselectedFoodType.value = 0
-//        }
         // 선택된 값이 이미 있는 상태면 collectionview 업데이트
         if let selectedIdx = viewModel.inputselectedFoodType.value {
             viewModel.updateFoodList(selectedIdx)
@@ -95,7 +87,10 @@ extension BookmarkViewController {
     private func updateSnapshot() {
         var snapShot = NSDiffableDataSourceSnapshot<Int, FoodTable>()
         snapShot.appendSections([0])
+//        print("viewModel.outputFetchList.value: \(viewModel.outputFetchFoodList.value)")
+//        print("----------------------------")
         snapShot.appendItems(viewModel.outputFetchFoodList.value)
-        dataSource.apply(snapShot)
+//        dataSource.apply(snapShot)
+        dataSource.applySnapshotUsingReloadData(snapShot)
     }
 }

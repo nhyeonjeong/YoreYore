@@ -63,7 +63,7 @@ final class RecipeDetailViewModel {
         }
         let foodList = bookmarkList.value[foodType.rawValue].foodList
         for idx in 0..<foodList.count {
-            if foodList[idx].id == food.id {
+            if foodList[idx].sequenceId == food.sequenceId {
                 outputCheckBookmark.value = true // 북마크여부 저장
                 foodListIdx = idx
                 return // 찾아면 바로 return
@@ -79,11 +79,11 @@ final class RecipeDetailViewModel {
             manualList.append(manualData)
             
         }
-        let foodTableData = FoodTable(id: food.id, foodType: food.foodType, foodName: food.foodName, mainImageString: food.largeImage, kcal: food.kal, ingredients: food.ingredients)
+        let foodTableData = FoodTable(sequenceId: food.sequenceId, foodType: food.foodType, foodName: food.foodName, mainImageString: food.largeImage, kcal: food.kal, ingredients: food.ingredients)
         
         self.foodRealm.createMenualItem(manualList: manualList, foodItem: foodTableData)
         self.bookmarkRealm.createFoodItem(foodTableData, foodTypeIdx: foodType.rawValue )
-//            print(self.foodRealm.realm.configuration.fileURL)
+            print(self.foodRealm.realm.configuration.fileURL)
     }
     
     func removeBookmark(_ foodType: ClassifyList, _ food: Recipe) {

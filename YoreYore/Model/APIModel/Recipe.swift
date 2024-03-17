@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct Recipe: Decodable, Hashable {
+struct Recipe: Identifiable, Decodable, Hashable {
     
     struct Manual: Hashable {
         let image: String
         let content: String
     }
-    
-    let id: String
+    let id: UUID = UUID()
+    let sequenceId: String
     let foodName: String
     let way: String
     let foodType: String
@@ -28,7 +28,7 @@ struct Recipe: Decodable, Hashable {
     let tip: String
     
     private enum CodingKeys: String, CodingKey {
-        case id = "RCP_SEQ"
+        case sequenceId = "RCP_SEQ"
         case foodName = "RCP_NM"
         case way = "RCP_WAY2"
         case foodType = "RCP_PAT2"
@@ -84,7 +84,7 @@ struct Recipe: Decodable, Hashable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try container.decode(String.self, forKey: .id)
+        self.sequenceId = try container.decode(String.self, forKey: .sequenceId)
         self.foodName = try container.decode(String.self, forKey: .foodName)
         self.way = try container.decode(String.self, forKey: .way)
         self.foodType = try container.decode(String.self, forKey: .foodType)
