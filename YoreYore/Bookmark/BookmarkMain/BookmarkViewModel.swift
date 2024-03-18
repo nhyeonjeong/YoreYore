@@ -9,9 +9,10 @@ import Foundation
 
 final class BookmarkViewModel {
     let bookmarkRealm = BookmarkTableRepository.shared
+    
     var inputselectedFoodType: Observable<Int?> = Observable(nil)
-    var outputFetchFoodList: Observable<[FoodTable]> = Observable([])
     var inputSelectRecipeTrigger: Observable<Int> = Observable(0)
+    var outputFetchFoodList: Observable<[Recipe]> = Observable([])
     var outputcheckSelectedSegment: Observable<Bool> = Observable(false)
     var outputcheckEmptyFoodList: Observable<Bool> = Observable(false)
     // CollectionView셀을 선택했을 때 갱신
@@ -40,7 +41,18 @@ final class BookmarkViewModel {
             return
         }
         let foodList = self.bookmarkRealm.fetchItem(idx)
-        self.outputFetchFoodList.value = foodList
+        var recipeList: [Recipe] = []
+        for data in foodList {
+            var manualList: [Row.Manual] = []
+            for data in data.manualList {
+                let manual = Row.Manual(image: data.manualImageString, content: data.manualContent)
+                manualList.append(manual)
+            }
+            let recipe = Recipe(sequenceId: data.sequenceId, foodName: data.foodName, way: data.way, foodType: data.foodType, weight: data.weight, kal: data.kcal, smallImage: "", largeImage: data.mainImageString, ingredients: data.ingredients, manuals: manualList, tip: "")
+            
+            recipeList.append(recipe)
+        }
+        self.outputFetchFoodList.value = recipeList
     }
     /// 음식종류 idx를 ClassifyList타입으로 변환
     func getFoodType() -> ClassifyList {

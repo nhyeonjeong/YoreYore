@@ -20,21 +20,5 @@ final class SearchViewModel {
     }()
     
     var selectedFoodType: ClassifyList = .dessert // 제일 처음은 dessert로 시작
-    init() {
-//        bindData()
-    }
-//    
-//    private func bindData() {
-//        print("dfd")
-//        inputSearchBar.bind { searchText in
-//            // api통신
-//            RecipeAPIManager.shared.fetchRecipe(type: RCP.self, api: .searchWithType(type: self.selectedFootType, search: searchText)) { data, error in
-//                
-//                print("inputSearchBar api result = \(data)")
-//                print("----------------------------------")
-//                
-//            }
-//        }
-//    }
 }
 

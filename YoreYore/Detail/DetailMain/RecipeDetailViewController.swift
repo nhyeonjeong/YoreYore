@@ -14,7 +14,7 @@ final class RecipeDetailViewController: BaseViewController {
         case manual
     }
     var foodType: ClassifyList?
-    var food: Row!
+    var food: Recipe!
     let mainView = RecipeDetailView()
     let viewModel = RecipeDetailViewModel()
     private var dataSource: UICollectionViewDiffableDataSource<Section, AnyHashable>!
@@ -75,7 +75,7 @@ extension RecipeDetailViewController: UICollectionViewDelegate {
     }
     
     private func configureDataSource() {
-        let detailCellRegistration = UICollectionView.CellRegistration<DetailCollectionViewCell, Row> { cell, indexPath, ItemIdentifier in
+        let detailCellRegistration = UICollectionView.CellRegistration<DetailCollectionViewCell, Recipe> { cell, indexPath, ItemIdentifier in
             cell.upgradeCell(ItemIdentifier)
         }
         
@@ -88,7 +88,7 @@ extension RecipeDetailViewController: UICollectionViewDelegate {
             let section = Section(rawValue: indexPath.section)
             switch section {
             case .detail:
-                let cell = collectionView.dequeueConfiguredReusableCell(using: detailCellRegistration, for: indexPath, item: itemIdentifier as! Row)
+                let cell = collectionView.dequeueConfiguredReusableCell(using: detailCellRegistration, for: indexPath, item: itemIdentifier as! Recipe)
                 return cell
             case .manual:
                 let cell = collectionView.dequeueConfiguredReusableCell(using: manualCellRegistration, for: indexPath, item: itemIdentifier as! Row.Manual)

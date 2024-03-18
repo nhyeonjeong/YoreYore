@@ -40,7 +40,7 @@ final class FoodCollectionViewCell: BaseCollectionViewCell {
         }
     }
     
-    func configureCell(recipe: Row) {
+    func configureCell(recipe: Recipe) {
         foodImage.kf.setImage(with: URL(string: recipe.largeImage))
         foodName.text = recipe.foodName
     }
