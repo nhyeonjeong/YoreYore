@@ -8,14 +8,15 @@
 import UIKit
 
 final class RecipeDetailViewController: BaseViewController {
+    
     enum Section: Int, CaseIterable {
         case detail
         case manual
     }
-
+    var foodType: ClassifyList?
     var food: Recipe!
     let mainView = RecipeDetailView()
-    
+    let viewModel = RecipeDetailViewModel()
     private var dataSource: UICollectionViewDiffableDataSource<Section, AnyHashable>!
         
     override func loadView() {
@@ -24,22 +25,44 @@ final class RecipeDetailViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavigationBar()
+        viewModel.foodType = foodType
+        viewModel.food = food
+        bindData()
+        
+        setNavigationTitle()
         configureCollectionView()
-        configureDataSource() // snapshot찍기 전에 해야함(갱신전에 어떻게 표현해야할지가 먼저 있어야함)
+        configureDataSource()
         updateSnapshot()
     }
     
-    @objc func bookmarkClicked() { // 북마크를 클릭하면
-        print(#function)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.inputFetchBookmarkTable.value = ()
+    }
+    
+    private func bindData() {
+        viewModel.bookmarkList.bind { _ in
+            self.viewModel.inputCheckBookmarkTrigger.value = ()
+        }
+        viewModel.outputCheckBookmark.bind { isSaved in
+            self.setNavigationBar(isSaved: isSaved) // 북마크버튼 다시 그리기
+        }
+    }
+    
+    @objc func bookmarkClicked() {
+        viewModel.inputBookmarkTrigger.value = ()
     }
 }
 
 extension RecipeDetailViewController {
-    func setNavigationBar() {
+    private func setNavigationTitle() {
         navigationItem.title = food.foodName
+    }
+    private func setNavigationBar(isSaved: Bool) {
         // 북마크
-        let button = UIBarButtonItem(image: Constants.Image.bookmark, style: .plain, target: self, action: #selector(bookmarkClicked))
+        print("isSaved : ", isSaved)
+        let buttomImage = isSaved ? Constants.Image.bookmarkFill : Constants.Image.bookmark
+        let button = UIBarButtonItem(image: buttomImage, style: .plain, target: self, action: #selector(bookmarkClicked))
         button.tintColor = Constants.Color.point
         navigationItem.rightBarButtonItem = button
     }

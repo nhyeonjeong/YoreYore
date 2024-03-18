@@ -23,6 +23,8 @@ enum Constants {
     }
     
     enum Image {
+        static let bookmarkBack: UIImage = .bookmarkBack
+        
         static let bookmarkFill: UIImage = .bookmarkFill
         static let bookmark: UIImage = .bookmark
         static let bowl: UIImage = .bowl

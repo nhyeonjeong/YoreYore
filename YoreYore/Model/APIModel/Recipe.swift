@@ -13,25 +13,24 @@ struct Recipe: Decodable, Hashable {
         let image: String
         let content: String
     }
-    
-    let id: String
-    let foodName: String
-    let way: String
-    let footType: String
-    let weight: String
-    let kal: String
-    let smallImage: String
+    var sequenceId: String
+    var foodName: String
+    var way: String
+    var foodType: String
+    var weight: String
+    var kal: String
+    var smallImage: String
     var largeImage: String // https가 아닐경우 가공해서 다시 저장하기 때문에 var로 변경
-    let ingredients: String
+    var ingredients: String
 
-    let manuals: [Manual]
-    let tip: String
+    var manuals: [Manual]
+    var tip: String
     
     private enum CodingKeys: String, CodingKey {
-        case id = "RCP_SEQ"
+        case sequenceId = "RCP_SEQ"
         case foodName = "RCP_NM"
         case way = "RCP_WAY2"
-        case footType = "RCP_PAT2"
+        case foodType = "RCP_PAT2"
         case weight = "INFO_WGT" // "" 일수도 있음 주의
         case kal = "INFO_ENG"
         case smallImage = "ATT_FILE_NO_MAIN"
@@ -84,10 +83,10 @@ struct Recipe: Decodable, Hashable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try container.decode(String.self, forKey: .id)
+        self.sequenceId = try container.decode(String.self, forKey: .sequenceId)
         self.foodName = try container.decode(String.self, forKey: .foodName)
         self.way = try container.decode(String.self, forKey: .way)
-        self.footType = try container.decode(String.self, forKey: .footType)
+        self.foodType = try container.decode(String.self, forKey: .foodType)
         self.weight = try container.decode(String.self, forKey: .weight)
         self.kal = try container.decode(String.self, forKey: .kal)
         self.smallImage = try container.decode(String.self, forKey: .smallImage)

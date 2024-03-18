@@ -13,6 +13,7 @@
 		8B57DA2D2BA1252400716D63 /* ManualCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B57DA2C2BA1252400716D63 /* ManualCollectionViewCell.swift */; };
 		8B57DA332BA1438300716D63 /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B57DA322BA1438300716D63 /* DetailCollectionViewCell.swift */; };
 		8B57DA472BA32B3700716D63 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8B57DA462BA32B3700716D63 /* Alamofire */; };
+		8BBEEB612BA61B6900A4ADF9 /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBEEB602BA61B6900A4ADF9 /* BookmarkViewModel.swift */; };
 		8BE6016C2B998381009249DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6016B2B998381009249DD /* AppDelegate.swift */; };
 		8BE6016E2B998381009249DD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6016D2B998381009249DD /* SceneDelegate.swift */; };
 		8BE601702B998381009249DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6016F2B998381009249DD /* ViewController.swift */; };
@@ -45,6 +46,17 @@
 		8BE602082B9D2361009249DD /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE602072B9D2361009249DD /* Recipe.swift */; };
 		8BE6020A2B9D29F1009249DD /* CookRCP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE602092B9D29F1009249DD /* CookRCP.swift */; };
 		8BED50BA2BA5A7F900900A18 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED50B92BA5A7F900900A18 /* String+Extension.swift */; };
+		8BED50C12BA5B0AB00900A18 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED50C02BA5B0AB00900A18 /* BookmarkViewController.swift */; };
+		8BED50C42BA5B44E00900A18 /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED50C32BA5B44E00900A18 /* BookmarkView.swift */; };
+		8BED50C82BA5C5E600900A18 /* BookmarkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED50C72BA5C5E600900A18 /* BookmarkCollectionViewCell.swift */; };
+		8BED50CB2BA5DE2C00900A18 /* BookmarkTableRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED50CA2BA5DE2C00900A18 /* BookmarkTableRepository.swift */; };
+		8BED50CD2BA5DE6F00900A18 /* BookmarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED50CC2BA5DE6F00900A18 /* BookmarkModel.swift */; };
+		8BED50D02BA5DF0900900A18 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 8BED50CF2BA5DF0900900A18 /* Realm */; };
+		8BED50D22BA5DF0900900A18 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8BED50D12BA5DF0900900A18 /* RealmSwift */; };
+		8BED50D62BA5EDF200900A18 /* ClassifyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED50D52BA5EDF200900A18 /* ClassifyList.swift */; };
+		8BED50D82BA5F32800900A18 /* FoodTableRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED50D72BA5F32800900A18 /* FoodTableRepository.swift */; };
+		8BED50DA2BA5F33300900A18 /* ManualRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED50D92BA5F33300900A18 /* ManualRepository.swift */; };
+		8BED50DC2BA6107300900A18 /* RecipeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED50DB2BA6107200900A18 /* RecipeDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +65,7 @@
 		8B57DA232B9FDB9300716D63 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		8B57DA2C2BA1252400716D63 /* ManualCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualCollectionViewCell.swift; sourceTree = "<group>"; };
 		8B57DA322BA1438300716D63 /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		8BBEEB602BA61B6900A4ADF9 /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
 		8BE601682B998381009249DD /* YoreYore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoreYore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BE6016B2B998381009249DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BE6016D2B998381009249DD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +94,15 @@
 		8BE602072B9D2361009249DD /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		8BE602092B9D29F1009249DD /* CookRCP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookRCP.swift; sourceTree = "<group>"; };
 		8BED50B92BA5A7F900900A18 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		8BED50C02BA5B0AB00900A18 /* BookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
+		8BED50C32BA5B44E00900A18 /* BookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
+		8BED50C72BA5C5E600900A18 /* BookmarkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCollectionViewCell.swift; sourceTree = "<group>"; };
+		8BED50CA2BA5DE2C00900A18 /* BookmarkTableRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTableRepository.swift; sourceTree = "<group>"; };
+		8BED50CC2BA5DE6F00900A18 /* BookmarkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkModel.swift; sourceTree = "<group>"; };
+		8BED50D52BA5EDF200900A18 /* ClassifyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifyList.swift; sourceTree = "<group>"; };
+		8BED50D72BA5F32800900A18 /* FoodTableRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTableRepository.swift; sourceTree = "<group>"; };
+		8BED50D92BA5F33300900A18 /* ManualRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualRepository.swift; sourceTree = "<group>"; };
+		8BED50DB2BA6107200900A18 /* RecipeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,9 +113,11 @@
 				8BE601AE2B9AED27009249DD /* Kingfisher in Frameworks */,
 				8B57DA472BA32B3700716D63 /* Alamofire in Frameworks */,
 				8BE601832B998A16009249DD /* SnapKit in Frameworks */,
+				8BED50D22BA5DF0900900A18 /* RealmSwift in Frameworks */,
 				8BE601B12B9AED47009249DD /* Parchment in Frameworks */,
 				8BE601B42B9AEE19009249DD /* SkeletonView in Frameworks */,
 				8BE601A62B9AED0D009249DD /* SideMenu in Frameworks */,
+				8BED50D02BA5DF0900900A18 /* Realm in Frameworks */,
 				8BE601A32B9AED06009249DD /* FSCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -148,14 +172,15 @@
 			isa = PBXGroup;
 			children = (
 				8BE602022B9D1B41009249DD /* Observable */,
+				8BED50C92BA5DE1B00900A18 /* Realm */,
 				8BE601CB2B9CA711009249DD /* API */,
 				8BE602052B9D20AF009249DD /* Model */,
 				8BE601C42B9C3F25009249DD /* Extension */,
 				8BE601BA2B9C0EF9009249DD /* Enum */,
 				8BE601B52B9AEE41009249DD /* Base */,
-				8BE601882B9AEB35009249DD /* My */,
 				8BE601872B9AEB32009249DD /* Detail */,
 				8BE601862B9AEAA9009249DD /* Search */,
+				8BED50BF2BA5B0A000900A18 /* Bookmark */,
 				8BE6016B2B998381009249DD /* AppDelegate.swift */,
 				8BE6016D2B998381009249DD /* SceneDelegate.swift */,
 				8BE6016F2B998381009249DD /* ViewController.swift */,
@@ -180,18 +205,10 @@
 		8BE601872B9AEB32009249DD /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				8B57DA1D2B9E8B7300716D63 /* RecipeDetailViewController.swift */,
-				8B57DA212B9FDA3E00716D63 /* RecipeDetailView.swift */,
+				8BED50C22BA5B32900900A18 /* DetailMain */,
 				8B57DA342BA1438B00716D63 /* CollectionViewCell */,
 			);
 			path = Detail;
-			sourceTree = "<group>";
-		};
-		8BE601882B9AEB35009249DD /* My */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = My;
 			sourceTree = "<group>";
 		};
 		8BE601B52B9AEE41009249DD /* Base */ = {
@@ -208,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				8BE601BB2B9C0F06009249DD /* Constants.swift */,
+				8BED50D52BA5EDF200900A18 /* ClassifyList.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -276,6 +294,54 @@
 			path = APIModel;
 			sourceTree = "<group>";
 		};
+		8BED50BF2BA5B0A000900A18 /* Bookmark */ = {
+			isa = PBXGroup;
+			children = (
+				8BED50C52BA5B46300900A18 /* BookmarkMain */,
+				8BED50C62BA5C5D200900A18 /* CollectionViewCell */,
+			);
+			path = Bookmark;
+			sourceTree = "<group>";
+		};
+		8BED50C22BA5B32900900A18 /* DetailMain */ = {
+			isa = PBXGroup;
+			children = (
+				8B57DA1D2B9E8B7300716D63 /* RecipeDetailViewController.swift */,
+				8B57DA212B9FDA3E00716D63 /* RecipeDetailView.swift */,
+				8BED50DB2BA6107200900A18 /* RecipeDetailViewModel.swift */,
+			);
+			path = DetailMain;
+			sourceTree = "<group>";
+		};
+		8BED50C52BA5B46300900A18 /* BookmarkMain */ = {
+			isa = PBXGroup;
+			children = (
+				8BED50C02BA5B0AB00900A18 /* BookmarkViewController.swift */,
+				8BED50C32BA5B44E00900A18 /* BookmarkView.swift */,
+				8BBEEB602BA61B6900A4ADF9 /* BookmarkViewModel.swift */,
+			);
+			path = BookmarkMain;
+			sourceTree = "<group>";
+		};
+		8BED50C62BA5C5D200900A18 /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				8BED50C72BA5C5E600900A18 /* BookmarkCollectionViewCell.swift */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		8BED50C92BA5DE1B00900A18 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				8BED50CC2BA5DE6F00900A18 /* BookmarkModel.swift */,
+				8BED50CA2BA5DE2C00900A18 /* BookmarkTableRepository.swift */,
+				8BED50D72BA5F32800900A18 /* FoodTableRepository.swift */,
+				8BED50D92BA5F33300900A18 /* ManualRepository.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -300,6 +366,8 @@
 				8BE601B02B9AED47009249DD /* Parchment */,
 				8BE601B32B9AEE19009249DD /* SkeletonView */,
 				8B57DA462BA32B3700716D63 /* Alamofire */,
+				8BED50CF2BA5DF0900900A18 /* Realm */,
+				8BED50D12BA5DF0900900A18 /* RealmSwift */,
 			);
 			productName = YoreYore;
 			productReference = 8BE601682B998381009249DD /* YoreYore.app */;
@@ -337,6 +405,7 @@
 				8BE601AF2B9AED47009249DD /* XCRemoteSwiftPackageReference "Parchment" */,
 				8BE601B22B9AEE19009249DD /* XCRemoteSwiftPackageReference "SkeletonView" */,
 				8B57DA452BA32B3700716D63 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				8BED50CE2BA5DF0900900A18 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 8BE601692B998381009249DD /* Products */;
 			projectDirPath = "";
@@ -371,26 +440,36 @@
 				8BE601702B998381009249DD /* ViewController.swift in Sources */,
 				8BE601C62B9C3F3D009249DD /* UIView+Extension.swift in Sources */,
 				8BE601CD2B9CA76F009249DD /* RecipeAPIManager.swift in Sources */,
+				8BED50DC2BA6107300900A18 /* RecipeDetailViewModel.swift in Sources */,
 				8BE601BE2B9C1F16009249DD /* ClassifyViewController.swift in Sources */,
 				8BE601C82B9C4A46009249DD /* ClassifyView.swift in Sources */,
+				8BED50D62BA5EDF200900A18 /* ClassifyList.swift in Sources */,
 				8B57DA332BA1438300716D63 /* DetailCollectionViewCell.swift in Sources */,
 				8BE602012B9D1B1B009249DD /* ClassifyViewModel.swift in Sources */,
 				8BE6020A2B9D29F1009249DD /* CookRCP.swift in Sources */,
 				8BE6016C2B998381009249DD /* AppDelegate.swift in Sources */,
+				8BED50C42BA5B44E00900A18 /* BookmarkView.swift in Sources */,
 				8BE601CA2B9C50B9009249DD /* FoodCollectionViewCell.swift in Sources */,
 				8BE601C32B9C3C7A009249DD /* BaseCollectionViewCell.swift in Sources */,
+				8BED50C82BA5C5E600900A18 /* BookmarkCollectionViewCell.swift in Sources */,
 				8BE6019E2B9AECB6009249DD /* SearchViewController.swift in Sources */,
 				8BE601B92B9AEE5E009249DD /* BaseView.swift in Sources */,
 				8B57DA222B9FDA3E00716D63 /* RecipeDetailView.swift in Sources */,
 				8BE6016E2B998381009249DD /* SceneDelegate.swift in Sources */,
 				8BE601CF2B9CAC02009249DD /* RecipeAPIRequest.swift in Sources */,
+				8BED50CB2BA5DE2C00900A18 /* BookmarkTableRepository.swift in Sources */,
+				8BED50CD2BA5DE6F00900A18 /* BookmarkModel.swift in Sources */,
 				8BE601B72B9AEE57009249DD /* BaseViewController.swift in Sources */,
 				8BED50BA2BA5A7F900900A18 /* String+Extension.swift in Sources */,
 				8B57DA242B9FDB9300716D63 /* SearchViewModel.swift in Sources */,
+				8BED50D82BA5F32800900A18 /* FoodTableRepository.swift in Sources */,
 				8B57DA2D2BA1252400716D63 /* ManualCollectionViewCell.swift in Sources */,
 				8BE601C12B9C3C56009249DD /* ClassifyMenuCollectionViewCell.swift in Sources */,
 				8B57DA1E2B9E8B7300716D63 /* RecipeDetailViewController.swift in Sources */,
+				8BED50DA2BA5F33300900A18 /* ManualRepository.swift in Sources */,
+				8BED50C12BA5B0AB00900A18 /* BookmarkViewController.swift in Sources */,
 				8BE601BC2B9C0F06009249DD /* Constants.swift in Sources */,
+				8BBEEB612BA61B6900A4ADF9 /* BookmarkViewModel.swift in Sources */,
 				8BE601FD2B9CB28C009249DD /* APIKey.swift in Sources */,
 				8BE602082B9D2361009249DD /* Recipe.swift in Sources */,
 			);
@@ -685,6 +764,14 @@
 				minimumVersion = 1.30.4;
 			};
 		};
+		8BED50CE2BA5DF0900900A18 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -722,6 +809,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8BE601B22B9AEE19009249DD /* XCRemoteSwiftPackageReference "SkeletonView" */;
 			productName = SkeletonView;
+		};
+		8BED50CF2BA5DF0900900A18 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8BED50CE2BA5DF0900900A18 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		8BED50D12BA5DF0900900A18 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8BED50CE2BA5DF0900900A18 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

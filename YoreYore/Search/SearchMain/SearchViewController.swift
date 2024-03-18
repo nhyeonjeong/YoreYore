@@ -18,9 +18,9 @@ final class SearchViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindData()
+        setNavigationBar()
         configurePaging()
         configureTextField()
-        
     }
     
     private func bindData() {
@@ -30,6 +30,12 @@ final class SearchViewController: BaseViewController {
 ////            self.classifyVC.recipeList = recipes
 ////            self.classifyVC.mainView.foodCollectionView.reloadData()
 //        }
+    }
+}
+
+extension SearchViewController {
+    func setNavigationBar() {
+        navigationItem.title = "YoreYore"
     }
 }
 
@@ -57,6 +63,7 @@ extension SearchViewController: PagingViewControllerDataSource, PagingViewContro
         classifyVC.goDetailRcp = { recipe in
             let vc = RecipeDetailViewController()
             vc.food = recipe
+            vc.foodType = self.viewModel.selectedFoodType
             self.navigationController?.pushViewController(vc, animated: true)
         }
         print(#function, classifyVC.foodType, classifyVC.searchFoodName)
@@ -75,7 +82,7 @@ extension SearchViewController: PagingViewControllerDataSource, PagingViewContro
             if pagingItem.isEqual(to: item) {
                 let index = item.index
                 // 선택된 메뉴 알아내기,,
-                viewModel.selectedFootType = viewModel.classifyCases[index]
+                viewModel.selectedFoodType = viewModel.classifyCases[index]
                 break
             }
         }
@@ -94,7 +101,7 @@ extension SearchViewController: UITextFieldDelegate {
             return
         }
         print(#function, textField.text!)
-        mainView.pagingViewController.reloadData(around: viewModel.pagingItem[viewModel.selectedFootType.rawValue]) // textfield까지 같이 검색된다
+        mainView.pagingViewController.reloadData(around: viewModel.pagingItem[viewModel.selectedFoodType.rawValue]) // textfield까지 같이 검색된다
 
     }
     
