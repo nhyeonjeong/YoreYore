@@ -47,7 +47,7 @@ class ManualCollectionViewCell: BaseCollectionViewCell {
         }
     }
     
-    func upgradeCell(_ manual: Recipe.Manual) {
+    func upgradeCell(_ manual: Row.Manual) {
         if let url = URL(string: manual.image) {
             manualImageView.kf.setImage(with: url)
         } else {

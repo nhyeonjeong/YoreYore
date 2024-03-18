@@ -79,7 +79,7 @@ extension RecipeDetailViewController: UICollectionViewDelegate {
             cell.upgradeCell(ItemIdentifier)
         }
         
-        let manualCellRegistration = UICollectionView.CellRegistration<ManualCollectionViewCell, Recipe.Manual> { cell, indexPath, ItemIdentifier in
+        let manualCellRegistration = UICollectionView.CellRegistration<ManualCollectionViewCell, Row.Manual> { cell, indexPath, ItemIdentifier in
             cell.upgradeCell(ItemIdentifier)
         }
         
@@ -91,10 +91,10 @@ extension RecipeDetailViewController: UICollectionViewDelegate {
                 let cell = collectionView.dequeueConfiguredReusableCell(using: detailCellRegistration, for: indexPath, item: itemIdentifier as! Recipe)
                 return cell
             case .manual:
-                let cell = collectionView.dequeueConfiguredReusableCell(using: manualCellRegistration, for: indexPath, item: itemIdentifier as! Recipe.Manual)
+                let cell = collectionView.dequeueConfiguredReusableCell(using: manualCellRegistration, for: indexPath, item: itemIdentifier as! Row.Manual)
                 return cell
             case .none:
-                let cell = collectionView.dequeueConfiguredReusableCell(using: manualCellRegistration, for: indexPath, item: itemIdentifier as! Recipe.Manual)
+                let cell = collectionView.dequeueConfiguredReusableCell(using: manualCellRegistration, for: indexPath, item: itemIdentifier as! Row.Manual)
                 return cell
             }
         })

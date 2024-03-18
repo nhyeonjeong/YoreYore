@@ -30,11 +30,12 @@ class FoodTable: Object {
     @Persisted var mainImageString: String
     @Persisted var kcal: String
     @Persisted var ingredients: String
+    @Persisted var tip: String
     @Persisted(originProperty: "foodList") var main: LinkingObjects<BookmarkTable>
     
     @Persisted var manualList: List<ManualTable>
     
-    convenience init(sequenceId: String, foodType: String, foodName: String, way: String, mainImageString: String, kcal: String, ingredients: String) {
+    convenience init(sequenceId: String, foodType: String, foodName: String, way: String, mainImageString: String, kcal: String, ingredients: String, tip: String) {
         self.init()
         self.sequenceId = sequenceId
         self.foodType = foodType
@@ -43,6 +44,7 @@ class FoodTable: Object {
         self.mainImageString = mainImageString
         self.kcal = kcal
         self.ingredients = ingredients
+        self.tip = tip
     }
 }
 

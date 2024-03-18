@@ -11,7 +11,7 @@ class BookmarkViewController: BaseViewController {
     let mainView = BookmarkView()
     let viewModel = BookmarkViewModel()
     // Diffable사용
-    private var dataSource: UICollectionViewDiffableDataSource<Int, FoodTable>!
+    private var dataSource: UICollectionViewDiffableDataSource<Int, Recipe>!
     
     override func loadView() {
         view = mainView
@@ -76,7 +76,7 @@ extension BookmarkViewController {
 
 extension BookmarkViewController {
     private func configureDataSource() {
-        let bookmarkCellRegistration = UICollectionView.CellRegistration<BookmarkCollectionViewCell, FoodTable> { cell, indexPath, ItemIdentifier in
+        let bookmarkCellRegistration = UICollectionView.CellRegistration<BookmarkCollectionViewCell, Recipe> { cell, indexPath, ItemIdentifier in
             cell.upgradeCell(ItemIdentifier)
         }
 
@@ -88,13 +88,13 @@ extension BookmarkViewController {
     }
     
     private func updateSnapshot() {
-        var snapShot = NSDiffableDataSourceSnapshot<Int, FoodTable>()
+        var snapShot = NSDiffableDataSourceSnapshot<Int, Recipe>()
         snapShot.appendSections([0])
 //        print("viewModel.outputFetchList.value: \(viewModel.outputFetchFoodList.value)")
 //        print("----------------------------")
         snapShot.appendItems(viewModel.outputFetchFoodList.value)
-//        dataSource.apply(snapShot)
-        dataSource.applySnapshotUsingReloadData(snapShot)
+        dataSource.apply(snapShot)
+//        dataSource.applySnapshotUsingReloadData(snapShot)
     }
 }
 
@@ -108,7 +108,7 @@ extension BookmarkViewController: UICollectionViewDelegate {
         
         let vc = RecipeDetailViewController()
         vc.foodType = viewModel.selectedFoodType
-        vc.food = viewModel.selectedRecipe
+        vc.food = viewModel.outputFetchFoodList.value[indexPath.item]
         navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -9,7 +9,7 @@ import UIKit
 
 // 넘어온 classifyFood 종류에 따라 collectionView 보이도록!
 final class ClassifyViewController: BaseViewController {
-    var goDetailRcp: ((Recipe) -> Void)?
+    var goDetailRcp: ((Recipe) -> Void)? // 전체화면의 전환 위한 클로저
     
     var foodType: ClassifyList
     var searchFoodName: String
@@ -24,7 +24,6 @@ final class ClassifyViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
-//        print("ClassifyVC viewDidLoad foodtype: \(foodType)")
         viewModel.inputFetchRecipe.value = ClassifyViewModel.SearchWithType(foodType: foodType, foodName: searchFoodName)
         bindData()
     }
