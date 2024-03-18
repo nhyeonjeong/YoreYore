@@ -79,7 +79,7 @@ final class RecipeDetailViewModel {
             manualList.append(manualData)
             
         }
-        let foodTableData = FoodTable(sequenceId: food.sequenceId, foodType: food.foodType, foodName: food.foodName, way: food.way, mainImageString: food.largeImage, kcal: food.kal, ingredients: food.ingredients)
+        let foodTableData = FoodTable(sequenceId: food.sequenceId, foodType: food.foodType, foodName: food.foodName, way: food.way, mainImageString: food.largeImage, kcal: food.kal, ingredients: food.ingredients, tip: food.tip)
         
         self.foodRealm.createMenualItem(manualList: manualList, foodItem: foodTableData)
         self.bookmarkRealm.createFoodItem(foodTableData, foodTypeIdx: foodType.rawValue )
