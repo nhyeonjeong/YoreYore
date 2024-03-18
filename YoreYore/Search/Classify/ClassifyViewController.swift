@@ -65,8 +65,7 @@ extension ClassifyViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(#function)
+        view.endEditing(true)
         goDetailRcp?(viewModel.recipeList.value[indexPath.item])
     }
-    
-    
 }

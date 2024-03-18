@@ -24,7 +24,7 @@ enum Constants {
     
     enum Image {
         static let bookmarkBack: UIImage = .bookmarkBack
-        
+        static let searchXButton = UIImage(systemName: "xmark.circle.fill")
         static let bookmarkFill: UIImage = .bookmarkFill
         static let bookmark: UIImage = .bookmark
         static let bowl: UIImage = .bowl
@@ -38,4 +38,3 @@ enum Constants {
         static let defaultPadding: CGFloat = 15
     }
 }
-

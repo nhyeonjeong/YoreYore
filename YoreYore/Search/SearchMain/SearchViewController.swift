@@ -17,19 +17,10 @@ final class SearchViewController: BaseViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        bindData()
+
         setNavigationBar()
         configurePaging()
         configureTextField()
-    }
-    
-    private func bindData() {
-//        viewModel.recipeList.bind { recipes in
-//            print(recipes)
-//            print("classifyVIewcon collectionview 다시 그리기")
-////            self.classifyVC.recipeList = recipes
-////            self.classifyVC.mainView.foodCollectionView.reloadData()
-//        }
     }
 }
 
@@ -96,10 +87,10 @@ extension SearchViewController: UITextFieldDelegate {
     }
     // 실시간 검색되도록
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        guard let text = textField.text else {
-            print("textField.text = nil")
-            return
-        }
+//        guard let text = textField.text else {
+//            print("textField.text = nil")
+//            return
+//        }
         print(#function, textField.text!)
         mainView.pagingViewController.reloadData(around: viewModel.pagingItem[viewModel.selectedFoodType.rawValue]) // textfield까지 같이 검색된다
 
