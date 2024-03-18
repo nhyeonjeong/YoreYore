@@ -126,7 +126,7 @@ final class DetailCollectionViewCell: BaseCollectionViewCell {
 //        tipView.setLineDot(color: Constants.Color.point, radius: 10)
 //    }
     
-    func upgradeCell(_ item: Recipe) {
+    func upgradeCell(_ item: Row) {
         // cellForItemAt에 해당하는 메서드
         if let url = URL(string: item.largeImage) {
             mainImageView.kf.setImage(with: url)

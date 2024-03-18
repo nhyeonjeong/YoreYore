@@ -16,7 +16,7 @@ final class BookmarkViewModel {
     var outputcheckEmptyFoodList: Observable<Bool> = Observable(false)
     // CollectionView셀을 선택했을 때 갱신
     var selectedFoodType: ClassifyList = .dessert
-    var selectedRecipe: Recipe?
+    var selectedRecipe: Row?
     
     init() {
         bindData()

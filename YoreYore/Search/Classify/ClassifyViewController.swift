@@ -9,7 +9,7 @@ import UIKit
 
 // 넘어온 classifyFood 종류에 따라 collectionView 보이도록!
 final class ClassifyViewController: BaseViewController {
-    var goDetailRcp: ((Recipe) -> Void)?
+    var goDetailRcp: ((Row) -> Void)?
     
     var foodType: ClassifyList
     var searchFoodName: String

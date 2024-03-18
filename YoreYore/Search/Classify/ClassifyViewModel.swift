@@ -12,7 +12,7 @@ final class ClassifyViewModel {
         let foodType: ClassifyList
         let foodName: String
     }
-    var recipeList: Observable<[Recipe]> = Observable([])
+    var recipeList: Observable<[Row]> = Observable([])
     var inputFetchRecipe: Observable<SearchWithType> = Observable(SearchWithType(foodType: .dessert, foodName: "")) // 레시피 통신하는 트리거
     
     init() {

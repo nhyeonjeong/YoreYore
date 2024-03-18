@@ -13,7 +13,7 @@ final class RecipeDetailViewModel {
     let manualRealm = ManualRepository.shared
     
     var foodType: ClassifyList? = nil
-    var food: Recipe? = nil
+    var food: Row? = nil
     var bookmarkList: Observable<[BookmarkTable]> = Observable([])
     var foodListIdx: Int? = nil // bookmarkList에서 저장된 순서 인덱스
     
@@ -72,7 +72,7 @@ final class RecipeDetailViewModel {
         outputCheckBookmark.value = false
     }
     
-    func addBookmark(_ foodType: ClassifyList, _ food: Recipe) {
+    func addBookmark(_ foodType: ClassifyList, _ food: Row) {
         var manualList: [ManualTable] = [] // 메뉴얼 리스트
         for i in 0..<food.manuals.count {
             let manualData = ManualTable(number: i+1, manualImageString: food.manuals[i].image, manualContent: food.manuals[i].content)
@@ -86,7 +86,7 @@ final class RecipeDetailViewModel {
             print(self.foodRealm.realm.configuration.fileURL)
     }
     
-    func removeBookmark(_ foodType: ClassifyList, _ food: Recipe) {
+    func removeBookmark(_ foodType: ClassifyList, _ food: Row) {
         guard let idx = foodListIdx else {
             print("foodListIdx = nil")
             return
