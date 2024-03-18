@@ -12,15 +12,28 @@ final class SearchViewController: BaseViewController {
     
     let mainView = SearchView()
     let viewModel = SearchViewModel()
+    
+    private var dataSource: UICollectionViewDiffableDataSource<Int, String>!
+    
     override func loadView() {
         view = mainView
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        bindData()
         setNavigationBar()
         configurePaging()
         configureTextField()
+        
+        configureTagListCollectionView()
+        configureDataSource()
+        updateSnapshot()
+    }
+    
+    private func bindData() {
+        viewModel.outputTagList.bind { tagList in
+            self.updateSnapshot()
+        }
     }
 }
 
@@ -28,8 +41,37 @@ extension SearchViewController {
     func setNavigationBar() {
         navigationItem.title = "YoreYore"
     }
-}
+    
+    private func configureDataSource() {
+        let tagListCellRegistration = UICollectionView.CellRegistration<TagListCollectionViewCell, String> { cell, indexPath, ItemIdentifier in
+            cell.upgradeCell(ItemIdentifier)
+        }
 
+        dataSource = UICollectionViewDiffableDataSource(collectionView: mainView.tagListCollectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+        
+            let cell = collectionView.dequeueConfiguredReusableCell(using: tagListCellRegistration, for: indexPath, item: itemIdentifier)
+            return cell
+        })
+    }
+    
+    private func updateSnapshot() {
+        var snapShot = NSDiffableDataSourceSnapshot<Int, String>()
+        snapShot.appendSections([0])
+        snapShot.appendItems(viewModel.outputTagList.value)
+        dataSource.apply(snapShot)
+    }
+}
+// MARK: - TagList CollectionViewDelegate
+extension SearchViewController: UICollectionViewDelegate {
+    private func configureTagListCollectionView() {
+        mainView.tagListCollectionView.delegate = self
+    }
+    // 누르면 tagList에서 삭제
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.outputTagList.value.remove(at: indexPath.item)
+    }
+}
+// MARK: - PagingViewContorllerDatasource
 extension SearchViewController: PagingViewControllerDataSource, PagingViewControllerDelegate {
     // DateSource
     private func configurePaging() {
@@ -43,12 +85,6 @@ extension SearchViewController: PagingViewControllerDataSource, PagingViewContro
     }
     // 3,
     func pagingViewController(_: Parchment.PagingViewController, viewControllerAt index: Int) -> UIViewController {
-//        print("pagingVC func foodType: \(classifyList.allCases[index])")
-//        let classifyVC = ClassifyViewController([])
-//        
-//        viewModel.group[index].enter()
-//        viewModel.inputFetchRecipe.value = ClassifyList.allCases[index]
-//        viewModel.selectedFootType = ClassifyList.allCases[index]
         let classifyVC = ClassifyViewController(foodType: viewModel.classifyCases[index], searchText: mainView.searchTextField.text!)
         // 상세화면으로 전환
         classifyVC.goDetailRcp = { recipe in
@@ -97,7 +133,13 @@ extension SearchViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        view.endEditing(true)
+        let text = textField.text!
+        if text == "" { // 검색창이 비어있으면 키보드 내리기
+            view.endEditing(true)
+        } else {
+            // taglist추가
+            viewModel.inputTextFieldReturn.value = text
+        }
         return true
     }
 }

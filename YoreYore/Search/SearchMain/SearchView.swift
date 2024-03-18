@@ -37,7 +37,7 @@ final class SearchView: BaseView {
         return view
     }()
     
-    // List Configuration으로 CollectionView
+    // compositionalLayout
     lazy var tagListCollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
         view.backgroundColor = .clear
@@ -81,7 +81,7 @@ final class SearchView: BaseView {
         tagListCollectionView.snp.makeConstraints { make in
             make.top.equalTo(textfieldView.snp.bottom).offset(4)
             make.horizontalEdges.equalToSuperview().inset(Constants.Layout.defaultPadding)
-            make.height.equalTo(30)
+            make.height.equalTo(100) // 높이 지정 안해줬다.
         }
         pagingViewController.view.snp.makeConstraints { make in
             make.top.equalTo(tagListCollectionView.snp.bottom).offset(8)
@@ -92,12 +92,18 @@ final class SearchView: BaseView {
 
 extension SearchView {
     private func collectionViewLayout() -> UICollectionViewLayout {
-        var configuration = UICollectionLayoutListConfiguration(appearance: .plain)
-        configuration.backgroundColor = .white // 컴
-        configuration.showsSeparators = false
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.2), heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let layout = UICollectionViewCompositionalLayout.list(using: configuration)
-        return layout
+        // Group
+        // absoulte는 절대적인,,사이즈 , 디바이스랑 상관없이 정해진다.
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(30))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item]) // 그룹안에 수평으으로 셀을 넣을지, 수직으로 넣을지(item과 group의 연결고리)
+        
+        // Section
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 8 // 그룹간 세로 간격
+        return UICollectionViewCompositionalLayout(section: section)
     }
 }
 

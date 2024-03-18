@@ -10,6 +10,8 @@ import Parchment
 
 final class SearchViewModel {
     let classifyCases = ClassifyList.allCases
+    let inputTextFieldReturn: Observable<String> = Observable("")
+    let outputTagList: Observable<[String]> = Observable([])
     // 메뉴 배열
     let pagingItem: [PagingIndexItem] = {
         var list: [PagingIndexItem] = []
@@ -20,5 +22,15 @@ final class SearchViewModel {
     }()
     
     var selectedFoodType: ClassifyList = .dessert // 제일 처음은 dessert로 시작
+    
+    init() {
+        bindDate()
+    }
+    
+    private func bindDate() {
+        inputTextFieldReturn.bind { text in
+            self.outputTagList.value.append(text)
+        }
+    }
 }
 

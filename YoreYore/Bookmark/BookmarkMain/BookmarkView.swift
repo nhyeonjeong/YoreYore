@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class BookmarkView: BaseView {
+final class BookmarkView: BaseView {
     /*
      let navigationTitleView = UIView()
      let titleViewImageView = {
@@ -98,7 +98,7 @@ class BookmarkView: BaseView {
 }
 
 extension BookmarkView {
-    func collectionViewLayout() -> UICollectionViewLayout {
+    private func collectionViewLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         

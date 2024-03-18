@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BookmarkViewController: BaseViewController {
+final class BookmarkViewController: BaseViewController {
     let mainView = BookmarkView()
     let viewModel = BookmarkViewModel()
     // Diffable사용
