@@ -7,25 +7,24 @@
 
 import Foundation
 
-struct Recipe: Identifiable, Decodable, Hashable {
+struct Recipe: Decodable, Hashable {
     
     struct Manual: Hashable {
         let image: String
         let content: String
     }
-    let id: UUID = UUID()
-    let sequenceId: String
-    let foodName: String
-    let way: String
-    let foodType: String
-    let weight: String
-    let kal: String
-    let smallImage: String
+    var sequenceId: String
+    var foodName: String
+    var way: String
+    var foodType: String
+    var weight: String
+    var kal: String
+    var smallImage: String
     var largeImage: String // https가 아닐경우 가공해서 다시 저장하기 때문에 var로 변경
-    let ingredients: String
+    var ingredients: String
 
-    let manuals: [Manual]
-    let tip: String
+    var manuals: [Manual]
+    var tip: String
     
     private enum CodingKeys: String, CodingKey {
         case sequenceId = "RCP_SEQ"

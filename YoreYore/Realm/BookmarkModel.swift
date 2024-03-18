@@ -20,10 +20,13 @@ class BookmarkTable: Object {
 }
 
 class FoodTable: Object {
+
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var sequenceId: String
     @Persisted var foodType: String
     @Persisted var foodName: String
+    @Persisted var way: String
+    @Persisted var weight: String
     @Persisted var mainImageString: String
     @Persisted var kcal: String
     @Persisted var ingredients: String
@@ -31,11 +34,12 @@ class FoodTable: Object {
     
     @Persisted var manualList: List<ManualTable>
     
-    convenience init(sequenceId: String, foodType: String, foodName: String, mainImageString: String, kcal: String, ingredients: String) {
+    convenience init(sequenceId: String, foodType: String, foodName: String, way: String, mainImageString: String, kcal: String, ingredients: String) {
         self.init()
         self.sequenceId = sequenceId
         self.foodType = foodType
         self.foodName = foodName
+        self.way = way
         self.mainImageString = mainImageString
         self.kcal = kcal
         self.ingredients = ingredients

@@ -35,12 +35,7 @@ class FoodTableRepository {
             print(#function, "error")
         }
     }
-    
-    func fetchItem() -> [FoodTable] {
-        let result = realm.objects(FoodTable.self)
-        return Array(result) // 정확한 타입을 써주자
-    }
-    
+
     func removeItem(_ item: FoodTable) {
         do {
             try realm.write {
