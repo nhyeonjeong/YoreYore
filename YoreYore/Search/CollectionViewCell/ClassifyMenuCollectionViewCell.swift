@@ -64,8 +64,7 @@ final class ClassifyMenuCollectionViewCell: PagingCell {
     
     
     override func setPagingItem(_ pagingItem: PagingItem, selected: Bool, options _: PagingOptions) {
-        let item = pagingItem as! SearchView.FoodMenuItem
-        menuBackImageView.image = item.headerImage
+        let item = pagingItem as! SearchViewModel.FoodMenuItem
         classifyNameLabel.text = item.classifyName
         if selected {
             menuBackImageView.transform = CGAffineTransform(scaleX: 2, y: 2)

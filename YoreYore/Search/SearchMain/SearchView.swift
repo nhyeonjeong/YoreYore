@@ -10,25 +10,7 @@ import SnapKit
 import Parchment
 
 final class SearchView: BaseView {
-    // menu 구조체
-    struct FoodMenuItem: PagingItem, Hashable {
-        let index: Int
-        let headerImage: UIImage?
-        let classifyName: String
-        func isBefore(item: Parchment.PagingItem) -> Bool {
-            return true
-        }
-    }
     private let classifyCases = ClassifyList.allCases
-    // menu
-    private lazy var menuItems = {
-        var list: [FoodMenuItem] = []
-        for idx in 0..<self.classifyCases.count {
-            let item = FoodMenuItem(index: idx, headerImage: UIImage(systemName: "star"), classifyName: self.classifyCases[idx].classifyName)
-            list.append(item)
-        }
-        return list
-    }()
     
     let textfieldView = {
         let view = UIView()
@@ -86,8 +68,8 @@ final class SearchView: BaseView {
     // MARK: - pagingvc
     lazy var pagingViewController: PagingViewController = {
         let vc = PagingViewController()
-        // 메뉴 커스텀
-        vc.register(ClassifyMenuCollectionViewCell.self, for: FoodMenuItem.self)
+        // 메뉴
+        vc.register(ClassifyMenuCollectionViewCell.self, for: SearchViewModel.FoodMenuItem.self)
         vc.backgroundColor = Constants.Color.background ?? .background
         vc.menuBackgroundColor = Constants.Color.background ?? .background
 
