@@ -13,6 +13,8 @@ final class ClassifyViewController: BaseViewController {
     
     var foodType: ClassifyList
     var searchIngredients: [String]
+    // Diffable사용
+    private var dataSource: UICollectionViewDiffableDataSource<Int, Recipe>!
     
     let mainView = ClassifyView()
     private let viewModel = ClassifyViewModel()
@@ -23,9 +25,11 @@ final class ClassifyViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureCollectionView()
         viewModel.inputFetchRecipe.value = ClassifyViewModel.SearchWithIngredients(foodType: foodType, ingredients: searchIngredients)
         bindData()
+        configureCollectionView()
+        configureDataSource()
+        updateSnapshot()
     }
     init(foodType: ClassifyList, searchIngredients: [String]) {
         self.foodType = foodType
@@ -39,30 +43,34 @@ final class ClassifyViewController: BaseViewController {
     
     private func bindData() {
         viewModel.recipeList.bind { _ in
-            self.mainView.foodCollectionView.reloadData()
+            self.updateSnapshot()
         }
     }
 }
+extension ClassifyViewController {
+    private func configureDataSource() {
+        let foodCellRegistration = UICollectionView.CellRegistration<FoodCollectionViewCell, Recipe> { cell, indexPath, ItemIdentifier in
+            cell.upgradeCell(ItemIdentifier)
+        }
 
-extension ClassifyViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+        dataSource = UICollectionViewDiffableDataSource(collectionView: mainView.foodCollectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+        
+            let cell = collectionView.dequeueConfiguredReusableCell(using: foodCellRegistration, for: indexPath, item: itemIdentifier)
+            return cell
+        })
+    }
+    
+    private func updateSnapshot() {
+        var snapShot = NSDiffableDataSourceSnapshot<Int, Recipe>()
+        snapShot.appendSections([0])
+        snapShot.appendItems(viewModel.recipeList.value)
+        dataSource.apply(snapShot)
+    }
+}
+extension ClassifyViewController: UICollectionViewDelegate {
     func configureCollectionView() {
         mainView.foodCollectionView.delegate = self
-        mainView.foodCollectionView.dataSource = self
     }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.recipeList.value.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FoodCollectionViewCell.identifier, for: indexPath) as? FoodCollectionViewCell else {
-            print("FoodCollectionViewCell로 변경 실패")
-            return UICollectionViewCell()
-        }
-        
-        cell.configureCell(recipe: viewModel.recipeList.value[indexPath.item])
-        return cell
-    }
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(#function)
         view.endEditing(true)
