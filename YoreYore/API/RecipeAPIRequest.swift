@@ -11,7 +11,7 @@ import Alamofire
 enum RecipeAPIRequest {
 
     case foodType(type: ClassifyList)
-    case searchWithType(type: ClassifyList, search: String)
+    case searchWithIngredients(type: ClassifyList, ingredients: [String])
     
     var baseURL: URL {
         return URL(string: "https://openapi.foodsafetykorea.go.kr/api/\(APIKey.recipe)/COOKRCP01/json/1/5/")!
@@ -30,10 +30,15 @@ enum RecipeAPIRequest {
 //            }
             let query = type.classifyName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
             return URL(string: "\(baseURL)RCP_PAT2=\(query)")!
-        case .searchWithType(let type, let search):
+        case .searchWithIngredients(let type, let ingredients):
             let query = type.classifyName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-            let query2 = search.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-            return URL(string: "\(baseURL)RCP_PAT2=\(query)&RCP_NM=\(query2)")!
+            var urlString = "\(baseURL)RCP_PAT2=\(query)"
+            for item in ingredients {
+                let ingredient = item.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+                urlString += "&RCP_PARTS_DTLS=\(ingredient)"
+            }
+            
+            return URL(string: urlString)!
         }
     }
     

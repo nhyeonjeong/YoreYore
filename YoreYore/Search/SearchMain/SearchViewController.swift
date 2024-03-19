@@ -31,10 +31,11 @@ final class SearchViewController: BaseViewController {
     
     private func bindData() {
         viewModel.outputTagList.bind { tagList in
+            // tagList새로 그리기
             self.updateSnapshot()
-//            DispatchQueue.main.async {
-//                self.mainView.tagListCollectionView.scrollToItem(at: IndexPath(item: self.viewModel.outputTagList.value.count, section: 0), at: .bottom, animated: true)
-//            }
+            // parchment새로 그리기
+            self.mainView.pagingViewController.reloadData(around: self.viewModel.pagingItem[self.viewModel.selectedFoodType.rawValue]) // textfield까지 같이 검색된다
+            // tagList가 갱신될떄마다 제일 아래 행으로 이동
             self.self.mainView.tagListCollectionView.setContentOffset(CGPoint(x: 0, y: self.mainView.tagListCollectionView.contentSize.height - self.mainView.tagListCollectionView.bounds.height), animated: true)
         }
         viewModel.outputPlaceholder.bind { placeholder in
@@ -97,7 +98,7 @@ extension SearchViewController: PagingViewControllerDataSource, PagingViewContro
     }
     // 3,
     func pagingViewController(_: Parchment.PagingViewController, viewControllerAt index: Int) -> UIViewController {
-        let classifyVC = ClassifyViewController(foodType: viewModel.classifyCases[index], searchText: mainView.searchTextField.text!)
+        let classifyVC = ClassifyViewController(foodType: viewModel.classifyCases[index], searchIngredients: viewModel.outputTagList.value)
         // 상세화면으로 전환
         classifyVC.goDetailRcp = { recipe in
             let vc = RecipeDetailViewController()
@@ -105,7 +106,6 @@ extension SearchViewController: PagingViewControllerDataSource, PagingViewContro
             vc.foodType = self.viewModel.selectedFoodType
             self.navigationController?.pushViewController(vc, animated: true)
         }
-        print(#function, classifyVC.foodType, classifyVC.searchFoodName)
         return classifyVC
     }
     // 2.
@@ -133,17 +133,16 @@ extension SearchViewController: UITextFieldDelegate {
     private func configureTextField() {
         mainView.searchTextField.delegate = self
     }
+    /*
     // 실시간 검색되도록
     func textFieldDidChangeSelection(_ textField: UITextField) {
 //        guard let text = textField.text else {
 //            print("textField.text = nil")
 //            return
 //        }
-        print(#function, textField.text!)
-        mainView.pagingViewController.reloadData(around: viewModel.pagingItem[viewModel.selectedFoodType.rawValue]) // textfield까지 같이 검색된다
 
     }
-    
+    */
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let text = textField.text!
         if text == "" { // 검색창이 비어있으면 키보드 내리기

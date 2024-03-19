@@ -12,7 +12,7 @@ final class ClassifyViewController: BaseViewController {
     var goDetailRcp: ((Recipe) -> Void)? // 전체화면의 전환 위한 클로저
     
     var foodType: ClassifyList
-    var searchFoodName: String
+    var searchIngredients: [String]
     
     let mainView = ClassifyView()
     private let viewModel = ClassifyViewModel()
@@ -24,12 +24,12 @@ final class ClassifyViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
-        viewModel.inputFetchRecipe.value = ClassifyViewModel.SearchWithType(foodType: foodType, foodName: searchFoodName)
+        viewModel.inputFetchRecipe.value = ClassifyViewModel.SearchWithIngredients(foodType: foodType, ingredients: searchIngredients)
         bindData()
     }
-    init(foodType: ClassifyList, searchText: String) {
+    init(foodType: ClassifyList, searchIngredients: [String]) {
         self.foodType = foodType
-        self.searchFoodName = searchText
+        self.searchIngredients = searchIngredients
         super.init(nibName: nil, bundle: nil) // ?
     }
     
