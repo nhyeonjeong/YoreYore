@@ -33,6 +33,9 @@ final class SearchViewController: BaseViewController {
         viewModel.outputTagList.bind { tagList in
             self.updateSnapshot()
         }
+        viewModel.outputPlaceholder.bind { placeholder in
+            self.mainView.searchTextField.placeholder = placeholder
+        }
     }
     
     @objc func xbuttonClicked() {
@@ -142,7 +145,6 @@ extension SearchViewController: UITextFieldDelegate {
         if text == "" { // 검색창이 비어있으면 키보드 내리기
             view.endEditing(true)
         } else {
-            // taglist추가
             viewModel.inputTextFieldReturn.value = text
             textField.text = ""
         }
