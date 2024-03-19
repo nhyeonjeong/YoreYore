@@ -11,10 +11,6 @@ import SnapKit
 final class TagListCollectionViewCell: BaseCollectionViewCell {
     let tagLabel = {
         let view = UILabel()
-//        var config = UIButton.Configuration.filled()
-//        config.cornerStyle = .capsule
-//        config.baseBackgroundColor = Constants.Color.point
-//        view.configuration = config
         view.clipsToBounds = true
         view.layer.cornerRadius = 12
         view.backgroundColor = Constants.Color.point

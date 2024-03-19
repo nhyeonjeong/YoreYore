@@ -10,6 +10,7 @@ import SnapKit
 import Parchment
 
 final class SearchView: BaseView {
+
     private struct FoodClassifyItem: PagingItem, Hashable {
         let classifyName: String
         func isBefore(item: Parchment.PagingItem) -> Bool {
@@ -40,6 +41,13 @@ final class SearchView: BaseView {
         view.tintColor = Constants.Color.background
         return view
     }()
+    private let messageLabel = {
+        let view = UILabel()
+        view.text = "재료를 검색해서 담아주세요!"
+        view.font = Constants.Font.smallFont
+        view.textColor = Constants.Color.mainText
+        return view
+    }()
     
     // compositionalLayout
     lazy var tagListCollectionView = {
@@ -61,7 +69,7 @@ final class SearchView: BaseView {
     
     override func configureHierarchy() {
         textfieldView.addViews([searchTextField, xbutton])
-        self.addViews([textfieldView, tagListCollectionView, pagingViewController.view])
+        self.addViews([textfieldView, messageLabel, tagListCollectionView, pagingViewController.view])
     }
     
     override func configureConstraints() {
@@ -81,12 +89,17 @@ final class SearchView: BaseView {
             make.size.equalTo(20)
             make.trailing.equalToSuperview().inset(15)
         }
-        
-        tagListCollectionView.snp.makeConstraints { make in
+        messageLabel.snp.makeConstraints { make in
             make.top.equalTo(textfieldView.snp.bottom).offset(4)
             make.horizontalEdges.equalToSuperview().inset(Constants.Layout.defaultPadding)
-            make.height.equalTo(100)// 높이 지정 안해줬다.
+            make.height.equalTo(18)
         }
+        tagListCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(messageLabel.snp.bottom).offset(4)
+            make.horizontalEdges.equalToSuperview().inset(Constants.Layout.defaultPadding)
+            make.height.equalTo(54)// 높이 지정 안해줬다.
+        }
+        
         pagingViewController.view.snp.makeConstraints { make in
             make.top.equalTo(tagListCollectionView.snp.bottom).offset(8)
             make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
@@ -110,3 +123,4 @@ extension SearchView {
         return UICollectionViewCompositionalLayout(section: section)
     }
 }
+

@@ -32,6 +32,10 @@ final class SearchViewController: BaseViewController {
     private func bindData() {
         viewModel.outputTagList.bind { tagList in
             self.updateSnapshot()
+//            DispatchQueue.main.async {
+//                self.mainView.tagListCollectionView.scrollToItem(at: IndexPath(item: self.viewModel.outputTagList.value.count, section: 0), at: .bottom, animated: true)
+//            }
+            self.self.mainView.tagListCollectionView.setContentOffset(CGPoint(x: 0, y: self.mainView.tagListCollectionView.contentSize.height - self.mainView.tagListCollectionView.bounds.height), animated: true)
         }
         viewModel.outputPlaceholder.bind { placeholder in
             self.mainView.searchTextField.placeholder = placeholder
