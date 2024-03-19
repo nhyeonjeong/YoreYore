@@ -9,27 +9,30 @@ import UIKit
 import SnapKit
 
 final class TagListCollectionViewCell: BaseCollectionViewCell {
-    let tagButton = {
-        let view = UIButton()
-        var config = UIButton.Configuration.filled()
-        config.cornerStyle = .capsule
-        config.baseBackgroundColor = Constants.Color.point
-        view.configuration = config
+    let tagLabel = {
+        let view = UILabel()
+//        var config = UIButton.Configuration.filled()
+//        config.cornerStyle = .capsule
+//        config.baseBackgroundColor = Constants.Color.point
+//        view.configuration = config
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 12
+        view.backgroundColor = Constants.Color.point
         return view
     }()
     
     override func configureHierarchy() {
-        contentView.addViews([tagButton])
+        contentView.addViews([tagLabel])
     }
     override func configureConstraints() {
-        tagButton.snp.makeConstraints { make in
+        tagLabel.snp.makeConstraints { make in
             make.edges.equalTo(contentView)
             make.height.equalTo(25)
         }
     }
     
     func upgradeCell(_ item: String) {
-        tagButton.setTitle("\(item) X", for: .normal)
+        tagLabel.text = "\(item) X"
     }
     
 }

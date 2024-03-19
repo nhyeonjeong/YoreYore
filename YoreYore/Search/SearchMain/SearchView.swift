@@ -23,7 +23,11 @@ final class SearchView: BaseView {
         view.layer.borderWidth = 1
         return view
     }()
-    let searchTextField = UITextField()
+    let searchTextField = {
+        let view = UITextField()
+        view.placeholder = "재료를 검색해주세요"
+        return view
+    }()
     
     let xbutton = {
         let view = UIButton()
@@ -106,4 +110,3 @@ extension SearchView {
         return UICollectionViewCompositionalLayout(section: section)
     }
 }
-
