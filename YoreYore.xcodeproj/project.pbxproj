@@ -15,6 +15,9 @@
 		8B57DA472BA32B3700716D63 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8B57DA462BA32B3700716D63 /* Alamofire */; };
 		8BBEEB612BA61B6900A4ADF9 /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBEEB602BA61B6900A4ADF9 /* BookmarkViewModel.swift */; };
 		8BBEEB662BA86C6E00A4ADF9 /* TagListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBEEB652BA86C6E00A4ADF9 /* TagListCollectionViewCell.swift */; };
+		8BC004D82BAA2DB7007B0595 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 8BC004D72BAA2DB7007B0595 /* Lottie */; };
+		8BC004DB2BAA2F27007B0595 /* cooking.json in Resources */ = {isa = PBXBuildFile; fileRef = 8BC004DA2BAA2F27007B0595 /* cooking.json */; };
+		8BC004DD2BAA329E007B0595 /* bookLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 8BC004DC2BAA329E007B0595 /* bookLottie.json */; };
 		8BE6016C2B998381009249DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6016B2B998381009249DD /* AppDelegate.swift */; };
 		8BE6016E2B998381009249DD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6016D2B998381009249DD /* SceneDelegate.swift */; };
 		8BE601702B998381009249DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6016F2B998381009249DD /* ViewController.swift */; };
@@ -68,6 +71,8 @@
 		8B57DA322BA1438300716D63 /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		8BBEEB602BA61B6900A4ADF9 /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
 		8BBEEB652BA86C6E00A4ADF9 /* TagListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListCollectionViewCell.swift; sourceTree = "<group>"; };
+		8BC004DA2BAA2F27007B0595 /* cooking.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cooking.json; sourceTree = "<group>"; };
+		8BC004DC2BAA329E007B0595 /* bookLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bookLottie.json; sourceTree = "<group>"; };
 		8BE601682B998381009249DD /* YoreYore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoreYore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BE6016B2B998381009249DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BE6016D2B998381009249DD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +122,7 @@
 				8BE601832B998A16009249DD /* SnapKit in Frameworks */,
 				8BED50D22BA5DF0900900A18 /* RealmSwift in Frameworks */,
 				8BE601B12B9AED47009249DD /* Parchment in Frameworks */,
+				8BC004D82BAA2DB7007B0595 /* Lottie in Frameworks */,
 				8BE601B42B9AEE19009249DD /* SkeletonView in Frameworks */,
 				8BE601A62B9AED0D009249DD /* SideMenu in Frameworks */,
 				8BED50D02BA5DF0900900A18 /* Realm in Frameworks */,
@@ -153,6 +159,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8BC004D92BAA2F15007B0595 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				8BC004DC2BAA329E007B0595 /* bookLottie.json */,
+				8BC004DA2BAA2F27007B0595 /* cooking.json */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		8BE6015F2B998381009249DD = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +189,7 @@
 		8BE6016A2B998381009249DD /* YoreYore */ = {
 			isa = PBXGroup;
 			children = (
+				8BC004D92BAA2F15007B0595 /* Resource */,
 				8BE602022B9D1B41009249DD /* Observable */,
 				8BED50C92BA5DE1B00900A18 /* Realm */,
 				8BE601CB2B9CA711009249DD /* API */,
@@ -371,6 +387,7 @@
 				8B57DA462BA32B3700716D63 /* Alamofire */,
 				8BED50CF2BA5DF0900900A18 /* Realm */,
 				8BED50D12BA5DF0900900A18 /* RealmSwift */,
+				8BC004D72BAA2DB7007B0595 /* Lottie */,
 			);
 			productName = YoreYore;
 			productReference = 8BE601682B998381009249DD /* YoreYore.app */;
@@ -409,6 +426,7 @@
 				8BE601B22B9AEE19009249DD /* XCRemoteSwiftPackageReference "SkeletonView" */,
 				8B57DA452BA32B3700716D63 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				8BED50CE2BA5DF0900900A18 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				8BC004D62BAA2DB7007B0595 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 8BE601692B998381009249DD /* Products */;
 			projectDirPath = "";
@@ -425,6 +443,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BE601802B998601009249DD /* .gitignore in Resources */,
+				8BC004DB2BAA2F27007B0595 /* cooking.json in Resources */,
+				8BC004DD2BAA329E007B0595 /* bookLottie.json in Resources */,
 				8BE601782B998383009249DD /* LaunchScreen.storyboard in Resources */,
 				8BE601752B998383009249DD /* Assets.xcassets in Resources */,
 				8BE601732B998381009249DD /* Main.storyboard in Resources */,
@@ -720,6 +740,14 @@
 				minimumVersion = 5.9.0;
 			};
 		};
+		8BC004D62BAA2DB7007B0595 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.1;
+			};
+		};
 		8BE601812B998A16009249DD /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -783,6 +811,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8B57DA452BA32B3700716D63 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		8BC004D72BAA2DB7007B0595 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8BC004D62BAA2DB7007B0595 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 		8BE601822B998A16009249DD /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

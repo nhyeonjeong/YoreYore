@@ -9,6 +9,10 @@ import Foundation
 import Parchment
 
 final class SearchViewModel {
+    enum Placeholder: String {
+        case successAppendTag = "재료를 한글로 검색해주세요"
+        case appendSameTag = "같은 재료를 입력하셨습니다"
+    }
     // menu 구조체
     struct FoodMenuItem: PagingItem, Hashable {
         let index: Int
@@ -32,12 +36,12 @@ final class SearchViewModel {
         inputTextFieldReturn.bind { text in
             for tag in self.outputTagList.value {
                 if tag == text {
-                    self.outputPlaceholder.value = "같은 재료를 입력하셨습니다"
+                    self.outputPlaceholder.value = Placeholder.appendSameTag.rawValue
                     return
                 }
             }
             self.outputTagList.value.append(text)
-            self.outputPlaceholder.value = "재료를 검색해주세요"
+            self.outputPlaceholder.value = Placeholder.successAppendTag.rawValue
         }
     }
 }

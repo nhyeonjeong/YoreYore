@@ -7,21 +7,41 @@
 
 import UIKit
 import SnapKit
+import Lottie
 import Parchment
 
 final class SearchView: BaseView {
-    private let classifyCases = ClassifyList.allCases
+    let topLabel = {
+        let view = UILabel()
+        view.font = .boldSystemFont(ofSize: 25)
+        view.textColor = Constants.Color.mainText
+        view.numberOfLines = 0
+        view.textAlignment = .right
+        return view
+    }()
+    
+    let cookingImageView = {
+        let view: LottieAnimationView = .init(name: "bookLottie")
+        view.contentMode = .scaleAspectFit
+        return view
+    }()
     
     let textfieldView = {
         let view = UIView()
-        view.layer.cornerRadius = 10
+        view.layer.cornerRadius = 25
         view.layer.borderColor = Constants.Color.point?.cgColor
         view.layer.borderWidth = 1
         return view
     }()
+    let magnifyingImageView = {
+        let view = UIImageView(frame: .zero)
+        view.image = Constants.Image.magnifying
+        view.tintColor = Constants.Color.secondPoint
+        return view
+    }()
     let searchTextField = {
         let view = UITextField()
-        view.placeholder = "재료를 검색해주세요"
+        view.placeholder = SearchViewModel.Placeholder.successAppendTag.rawValue
         return view
     }()
     
@@ -70,15 +90,15 @@ final class SearchView: BaseView {
         let vc = PagingViewController()
         // 메뉴
         vc.register(ClassifyMenuCollectionViewCell.self, for: SearchViewModel.FoodMenuItem.self)
-        vc.backgroundColor = Constants.Color.background ?? .background
-        vc.menuBackgroundColor = Constants.Color.background ?? .background
+        vc.backgroundColor = Constants.Color.background
+        vc.menuBackgroundColor = Constants.Color.background
 
 //        vc.menu
         vc.menuItemSize = .selfSizing(estimatedWidth: 50, height: 50)
         vc.menuItemSpacing = 10
         vc.menuInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         vc.borderColor = UIColor(white: 0, alpha: 0.1)
-        vc.selectedBackgroundColor = Constants.Color.background ?? .background
+        vc.selectedBackgroundColor = Constants.Color.background
         vc.selectedTextColor = Constants.Color.point ?? .point
         vc.indicatorColor = Constants.Color.point ?? .point
         
@@ -96,25 +116,41 @@ final class SearchView: BaseView {
         )
         return vc
     }()
-   
+    
     override func configureHierarchy() {
-        textfieldView.addViews([searchTextField, xbutton])
+        textfieldView.addViews([magnifyingImageView, searchTextField, xbutton])
         // tagList내부 그림 stackview
         for imageView in ingredientsImageViews {
             imageStackView.addArrangedSubview(imageView)
         }
         tagListCollectionView.addViews([imageStackView])
-        self.addViews([textfieldView, messageLabel, tagListCollectionView, pagingViewController.view])
+        self.addViews([topLabel, cookingImageView, textfieldView, messageLabel, tagListCollectionView, pagingViewController.view])
     }
-    
+    // MARK: - Layout
     override func configureConstraints() {
+        topLabel.snp.makeConstraints { make in
+            make.top.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(20)
+    
+        }
+        cookingImageView.snp.makeConstraints { make in
+            make.bottom.equalTo(textfieldView.snp.top).offset(10)
+            make.leading.equalTo(40)
+            make.height.equalTo(100)
+            make.width.equalTo(150)
+            
+        }
         textfieldView.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide).inset(10)
+            make.top.equalTo(topLabel.snp.bottom).offset(15)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(Constants.Layout.defaultPadding)
             make.height.equalTo(50)
         }
-        searchTextField.snp.makeConstraints { make in
+        magnifyingImageView.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(10)
+            make.size.equalTo(22)
+            make.centerY.equalToSuperview()
+        }
+        searchTextField.snp.makeConstraints { make in
+            make.leading.equalTo(magnifyingImageView.snp.trailing).offset(2)
             make.centerY.equalToSuperview()
         }
         xbutton.snp.makeConstraints { make in
@@ -125,7 +161,7 @@ final class SearchView: BaseView {
         }
         messageLabel.snp.makeConstraints { make in
             make.top.equalTo(textfieldView.snp.bottom).offset(4)
-            make.horizontalEdges.equalToSuperview().inset(Constants.Layout.defaultPadding)
+            make.leading.equalTo(safeAreaLayoutGuide).inset(20)
             make.height.equalTo(18)
         }
         tagListCollectionView.snp.makeConstraints { make in
@@ -146,6 +182,19 @@ final class SearchView: BaseView {
             make.top.equalTo(tagListCollectionView.snp.bottom).offset(8)
             make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
         }
+    }
+    override func configureView() {
+        // topLabel 글자 크기 다르게
+        let topLabelText = "배달음식 말고 \n집밥 어떠세요?"
+        let attribtuedString = NSMutableAttributedString(string: topLabelText)
+        let range = (topLabelText as NSString).range(of: "집밥 어떠세요?")
+        attribtuedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 30), range: range)
+        topLabel.attributedText = attribtuedString
+        
+        // 로티 애니메이션
+        cookingImageView.loopMode = .loop // .repeat(3)
+        cookingImageView.animationSpeed = 0.5
+        cookingImageView.play()
     }
 }
 

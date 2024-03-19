@@ -14,6 +14,7 @@ final class TagListCollectionViewCell: BaseCollectionViewCell {
         view.clipsToBounds = true
         view.layer.cornerRadius = 12
         view.backgroundColor = Constants.Color.point
+        view.textColor = Constants.Color.background
         return view
     }()
     
@@ -28,7 +29,7 @@ final class TagListCollectionViewCell: BaseCollectionViewCell {
     }
     
     func upgradeCell(_ item: String) {
-        tagLabel.text = "\(item) X"
+        tagLabel.text = "  \(item) X  "
     }
     
 }
