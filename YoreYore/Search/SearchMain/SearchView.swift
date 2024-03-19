@@ -10,7 +10,7 @@ import SnapKit
 import Parchment
 
 final class SearchView: BaseView {
-
+    
     private struct FoodClassifyItem: PagingItem, Hashable {
         let classifyName: String
         func isBefore(item: Parchment.PagingItem) -> Bool {
@@ -48,7 +48,21 @@ final class SearchView: BaseView {
         view.textColor = Constants.Color.mainText
         return view
     }()
-    
+    let imageStackView = {
+        let view = UIStackView()
+        view.axis = .horizontal
+        return view
+    }()
+    // 디자인
+    let ingredientsImageViews = {
+        var views: [UIImageView] = []
+        for item in Constants.Image.ingredients {
+            let imageView = UIImageView(frame: .zero)
+            imageView.image = item
+            views.append(imageView)
+        }
+        return views
+    }()
     // compositionalLayout
     lazy var tagListCollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
@@ -69,11 +83,14 @@ final class SearchView: BaseView {
     
     override func configureHierarchy() {
         textfieldView.addViews([searchTextField, xbutton])
+        for imageView in ingredientsImageViews {
+            imageStackView.addArrangedSubview(imageView)
+        }
+        tagListCollectionView.addViews([imageStackView]) // 디자인 위함..
         self.addViews([textfieldView, messageLabel, tagListCollectionView, pagingViewController.view])
     }
     
     override func configureConstraints() {
-        
         textfieldView.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide).inset(10)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(Constants.Layout.defaultPadding)
@@ -98,6 +115,14 @@ final class SearchView: BaseView {
             make.top.equalTo(messageLabel.snp.bottom).offset(4)
             make.horizontalEdges.equalToSuperview().inset(Constants.Layout.defaultPadding)
             make.height.equalTo(54)// 높이 지정 안해줬다.
+        }
+        for item in ingredientsImageViews {
+            item.snp.makeConstraints { make in
+                make.size.equalTo(20)
+            }
+        }
+        imageStackView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
         }
         
         pagingViewController.view.snp.makeConstraints { make in
