@@ -8,23 +8,24 @@
 import Foundation
 
 final class ClassifyViewModel {
-    struct SearchWithType {
+    struct SearchWithIngredients {
         let foodType: ClassifyList
-        let foodName: String
+        let ingredients: [String]
     }
     var recipeList: Observable<[Recipe]> = Observable([])
-    var inputFetchRecipe: Observable<SearchWithType> = Observable(SearchWithType(foodType: .dessert, foodName: "")) // 레시피 통신하는 트리거
+    var inputFetchRecipe: Observable<SearchWithIngredients> = Observable(SearchWithIngredients(foodType: .dessert, ingredients: [])) // 레시피 통신하는 트리거
     
     init() {
         bindData()
     }
     private func bindData() {
         inputFetchRecipe.bind { search in
-            // 만약 textfield에 아무것도 안적어놨으면 종류별로만 가져오기
-            // textfield에 내용이 있다면 종류&이름으로 api통신
+            // 만약 tagList가 비어있다면 종류별로만 가져오기
+            // tagList에 내용이 있다면 종류&재료로 api통신
             self.recipeList.value = []
             
-            if search.foodName == "" {
+            if search.ingredients.count == 0 {
+                print("태그리스트 없음!!", search.foodType)
                 RecipeAPIManager.shared.fetchRecipe(type: RCP.self, api: .foodType(type: search.foodType), completionHandler: { data, error in
                     guard let data else {
                         print("api result data nil")
@@ -39,8 +40,8 @@ final class ClassifyViewModel {
                     self.recipeList.value = recipeList
                 })
             } else {
-                
-                RecipeAPIManager.shared.fetchRecipe(type: RCP.self, api: .searchWithType(type: search.foodType, search: search.foodName), completionHandler: { data, error in
+                print("태그리스트 있음!!")
+                RecipeAPIManager.shared.fetchRecipe(type: RCP.self, api: .searchWithIngredients(type: search.foodType, ingredients: search.ingredients), completionHandler: { data, error in
                     guard let data else {
                         print("api result data nil")
                         return

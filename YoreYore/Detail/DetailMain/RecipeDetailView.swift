@@ -32,13 +32,11 @@ final class RecipeDetailView: BaseView {
 
 extension RecipeDetailView {
     private func collectionViewLayout() -> UICollectionViewLayout {
-        
         var configuration = UICollectionLayoutListConfiguration(appearance: .plain)
         configuration.backgroundColor = .white // 컴
         configuration.showsSeparators = false
         
         let layout = UICollectionViewCompositionalLayout.list(using: configuration)
         return layout
-        
     }
 }

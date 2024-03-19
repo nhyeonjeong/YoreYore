@@ -35,7 +35,7 @@ final class BookmarkViewModel {
         }
     }
     // 북마크리스트 fetch
-    func updateFoodList(_ foodTypeIdx: Int?) {
+    private func updateFoodList(_ foodTypeIdx: Int?) {
         guard let idx = foodTypeIdx else {
             print("foodTypeIdx nil")
             return
