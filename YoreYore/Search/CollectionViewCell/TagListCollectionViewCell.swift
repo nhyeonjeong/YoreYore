@@ -11,11 +11,9 @@ import SnapKit
 final class TagListCollectionViewCell: BaseCollectionViewCell {
     let tagButton = {
         let view = UIButton()
-        view.clipsToBounds = true
         var config = UIButton.Configuration.filled()
         config.cornerStyle = .capsule
-        config.image = UIImage(systemName: "xmark")
-        config.titleAlignment = .leading // String이 앞으로 오도록
+        config.baseBackgroundColor = Constants.Color.point
         view.configuration = config
         return view
     }()
@@ -26,6 +24,7 @@ final class TagListCollectionViewCell: BaseCollectionViewCell {
     override func configureConstraints() {
         tagButton.snp.makeConstraints { make in
             make.edges.equalTo(contentView)
+            make.height.equalTo(25)
         }
     }
     

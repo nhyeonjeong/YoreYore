@@ -21,7 +21,6 @@ final class SearchViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindData()
-        setNavigationBar()
         configurePaging()
         configureTextField()
         
@@ -35,13 +34,17 @@ final class SearchViewController: BaseViewController {
             self.updateSnapshot()
         }
     }
+    
+    @objc func xbuttonClicked() {
+        mainView.searchTextField.text = ""
+    }
+    override func configureView() {
+        navigationItem.title = "YoreYore"
+        mainView.xbutton.addTarget(self, action: #selector(xbuttonClicked), for: .touchDown)
+    }
 }
 
 extension SearchViewController {
-    func setNavigationBar() {
-        navigationItem.title = "YoreYore"
-    }
-    
     private func configureDataSource() {
         let tagListCellRegistration = UICollectionView.CellRegistration<TagListCollectionViewCell, String> { cell, indexPath, ItemIdentifier in
             cell.upgradeCell(ItemIdentifier)
@@ -68,7 +71,9 @@ extension SearchViewController: UICollectionViewDelegate {
     }
     // 누르면 tagList에서 삭제
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(#function)
         viewModel.outputTagList.value.remove(at: indexPath.item)
+        print("tagList: \(viewModel.outputTagList.value)")
     }
 }
 // MARK: - PagingViewContorllerDatasource
@@ -139,6 +144,7 @@ extension SearchViewController: UITextFieldDelegate {
         } else {
             // taglist추가
             viewModel.inputTextFieldReturn.value = text
+            textField.text = ""
         }
         return true
     }
