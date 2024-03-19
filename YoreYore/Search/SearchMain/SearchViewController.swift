@@ -90,6 +90,15 @@ extension SearchViewController: UICollectionViewDelegate {
         print("tagList: \(viewModel.outputTagList.value)")
     }
 }
+//
+//extension SearchViewController {
+//    func imagesViewControllerDidScroll(_ imagesViewController: ImagesViewController) {
+//        // Calculate the menu height based on the content offset of the
+//        // currenly selected view controller and update the menu.
+//        let height = calculateMenuHeight(for: imagesViewController.collectionView)
+//        updateMenu(height: height)
+//    }
+//}
 // MARK: - PagingViewContorllerDatasource
 extension SearchViewController: PagingViewControllerDataSource, PagingViewControllerDelegate {
     // DateSource

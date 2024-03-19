@@ -13,8 +13,6 @@ final class SearchViewModel {
     let inputTextFieldReturn: Observable<String> = Observable("")
     let outputTagList: Observable<[String]> = Observable([])
     let outputPlaceholder: Observable<String> = Observable("")
-//    let outputScrollToTagBottom: Observable<Void?> = Observable(nil)
-//    var tagCollectionViewRow = 0
     // 메뉴 배열
     let pagingItem: [PagingIndexItem] = {
         var list: [PagingIndexItem] = []

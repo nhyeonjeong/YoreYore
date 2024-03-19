@@ -10,13 +10,26 @@ import SnapKit
 import Parchment
 
 final class SearchView: BaseView {
-    
-    private struct FoodClassifyItem: PagingItem, Hashable {
+    // menu 구조체
+    struct FoodMenuItem: PagingItem, Hashable {
+        let index: Int
+        let headerImage: UIImage?
         let classifyName: String
         func isBefore(item: Parchment.PagingItem) -> Bool {
             return true
         }
     }
+    private let classifyCases = ClassifyList.allCases
+    // menu
+    private lazy var menuItems = {
+        var list: [FoodMenuItem] = []
+        for idx in 0..<self.classifyCases.count {
+            let item = FoodMenuItem(index: idx, headerImage: UIImage(systemName: "star"), classifyName: self.classifyCases[idx].classifyName)
+            list.append(item)
+        }
+        return list
+    }()
+    
     let textfieldView = {
         let view = UIView()
         view.layer.cornerRadius = 10
@@ -70,23 +83,45 @@ final class SearchView: BaseView {
         return view
     }()
     
-    let pagingViewController: PagingViewController = {
+    // MARK: - pagingvc
+    lazy var pagingViewController: PagingViewController = {
         let vc = PagingViewController()
         // 메뉴 커스텀
-        vc.register(ClassifyMenuCollectionViewCell.self, for: FoodClassifyItem.self)
-        vc.backgroundColor = Constants.Color.point ?? .point
-        vc.menuItemSize = .selfSizing(estimatedWidth: 40, height: 70)
+        vc.register(ClassifyMenuCollectionViewCell.self, for: FoodMenuItem.self)
+        vc.backgroundColor = Constants.Color.background ?? .background
+        vc.menuBackgroundColor = Constants.Color.background ?? .background
+
+//        vc.menu
+        vc.menuItemSize = .selfSizing(estimatedWidth: 50, height: 50)
         vc.menuItemSpacing = 10
-//        vc.menuHorizontalAlignment = .center
+        vc.menuInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        vc.borderColor = UIColor(white: 0, alpha: 0.1)
+        vc.selectedBackgroundColor = Constants.Color.background ?? .background
+        vc.selectedTextColor = Constants.Color.point ?? .point
+        vc.indicatorColor = Constants.Color.point ?? .point
+        
+        vc.indicatorOptions = .visible(
+            height: 1,
+            zIndex: Int.max,
+            spacing: UIEdgeInsets.zero,
+            insets: UIEdgeInsets.zero
+        )
+
+        vc.borderOptions = .visible(
+            height: 2,
+            zIndex: Int.max - 1,
+            insets: UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 18)
+        )
         return vc
     }()
-    
+   
     override func configureHierarchy() {
         textfieldView.addViews([searchTextField, xbutton])
+        // tagList내부 그림 stackview
         for imageView in ingredientsImageViews {
             imageStackView.addArrangedSubview(imageView)
         }
-        tagListCollectionView.addViews([imageStackView]) // 디자인 위함..
+        tagListCollectionView.addViews([imageStackView])
         self.addViews([textfieldView, messageLabel, tagListCollectionView, pagingViewController.view])
     }
     
