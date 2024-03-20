@@ -12,21 +12,29 @@ import Kingfisher
 final class FoodCollectionViewCell: BaseCollectionViewCell {
     private let foodImage: UIImageView = {
         let view = UIImageView(frame: .zero)
+        view.clipsToBounds = true
         view.contentMode = .scaleAspectFill
         return view
     }()
     
-    private let foodName: UILabel = {
+    private let foodNameLebel: UILabel = {
         let view = UILabel()
-        view.font = Constants.Font.smallFont
+        view.font = Constants.Font.smallFontBold
+        view.textAlignment = .right
+        view.numberOfLines = 0
         return view
     }()
     
+    private let blurImageView = {
+        let view = UIView()
+        view.transform = .init(rotationAngle: 75)
+        view.backgroundColor = Constants.Color.background.withAlphaComponent(0.7)
+        return view
+    }()
     
     override func configureHierarchy() {
         contentView.addSubview(foodImage)
-        contentView.addSubview(foodName)
-        
+        foodImage.addViews([blurImageView, foodNameLebel])
     }
     
     override func configureConstraints() {
@@ -34,14 +42,27 @@ final class FoodCollectionViewCell: BaseCollectionViewCell {
             make.top.horizontalEdges.equalTo(contentView)
             make.height.equalTo(100)
         }
-        foodName.snp.makeConstraints { make in
-            make.top.equalTo(foodImage.snp.bottom)
-            make.horizontalEdges.bottom.equalTo(contentView)
+        foodNameLebel.snp.makeConstraints { make in
+            make.top.trailing.equalTo(foodImage).inset(10)
+            make.leading.equalTo(foodImage.snp.leading).inset(100)
+        }
+        
+        blurImageView.snp.makeConstraints { make in
+            make.centerY.equalTo(foodImage.snp.centerY)
+            make.centerX.equalTo(foodImage.snp.trailing)
+            make.size.equalTo(180)
         }
     }
+    override func configureView() {
+        contentView.clipsToBounds = true
+        
+        // UI꾸미기
+        let context = UIGraphicsRenderer()
+        
+    }
     
-    func configureCell(recipe: Recipe) {
+    func upgradeCell(_ recipe: Recipe) {
         foodImage.kf.setImage(with: URL(string: recipe.largeImage))
-        foodName.text = recipe.foodName
+        foodNameLebel.text = recipe.foodName
     }
 }

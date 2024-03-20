@@ -13,7 +13,7 @@ class ManualRepository {
     
     let realm = try! Realm()
     func createItem(_ data: ManualTable) {
-        print(self.realm.configuration.fileURL)
+//        print(self.realm.configuration.fileURL)
         
         do {
             try realm.write {
@@ -23,7 +23,7 @@ class ManualRepository {
             print("realm create fail", error)
         }
         
-        let data = realm.objects(ManualTable.self).first
+//        let data = realm.objects(ManualTable.self).first
     }
     func fetchItem() -> [ManualTable] {
         let result = realm.objects(ManualTable.self)

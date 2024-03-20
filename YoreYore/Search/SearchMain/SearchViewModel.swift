@@ -9,20 +9,22 @@ import Foundation
 import Parchment
 
 final class SearchViewModel {
+    enum Placeholder: String {
+        case successAppendTag = "재료를 한글로 검색해주세요"
+        case appendSameTag = "같은 재료를 입력하셨습니다"
+    }
+    // menu 구조체
+    struct FoodMenuItem: PagingItem, Hashable {
+        let index: Int
+        let classifyName: String
+        func isBefore(item: Parchment.PagingItem) -> Bool {
+            return true
+        }
+    }
     let classifyCases = ClassifyList.allCases
     let inputTextFieldReturn: Observable<String> = Observable("")
     let outputTagList: Observable<[String]> = Observable([])
     let outputPlaceholder: Observable<String> = Observable("")
-//    let outputScrollToTagBottom: Observable<Void?> = Observable(nil)
-//    var tagCollectionViewRow = 0
-    // 메뉴 배열
-    let pagingItem: [PagingIndexItem] = {
-        var list: [PagingIndexItem] = []
-        ClassifyList.allCases.forEach { classify in
-            list.append(PagingIndexItem(index: classify.rawValue, title: classify.classifyName))
-        }
-        return list
-    }()
     
     var selectedFoodType: ClassifyList = .dessert // 제일 처음은 dessert로 시작
     
@@ -34,12 +36,12 @@ final class SearchViewModel {
         inputTextFieldReturn.bind { text in
             for tag in self.outputTagList.value {
                 if tag == text {
-                    self.outputPlaceholder.value = "같은 재료를 입력하셨습니다"
+                    self.outputPlaceholder.value = Placeholder.appendSameTag.rawValue
                     return
                 }
             }
             self.outputTagList.value.append(text)
-            self.outputPlaceholder.value = "재료를 검색해주세요"
+            self.outputPlaceholder.value = Placeholder.successAppendTag.rawValue
         }
     }
 }

@@ -41,8 +41,8 @@ final class SearchViewController: BaseViewController {
             } else {
                 self.mainView.imageStackView.isHidden = false
             }
-            // parchment새로 그리기
-            self.mainView.pagingViewController.reloadData(around: self.viewModel.pagingItem[self.viewModel.selectedFoodType.rawValue]) // textfield까지 같이 검색된다
+            // 알아서 선택된 뷰만 reload해줌,,
+            self.mainView.pagingViewController.reloadData()
         }
         viewModel.outputPlaceholder.bind { placeholder in
             self.mainView.searchTextField.placeholder = placeholder
@@ -90,6 +90,15 @@ extension SearchViewController: UICollectionViewDelegate {
         print("tagList: \(viewModel.outputTagList.value)")
     }
 }
+//
+//extension SearchViewController {
+//    func imagesViewControllerDidScroll(_ imagesViewController: ImagesViewController) {
+//        // Calculate the menu height based on the content offset of the
+//        // currenly selected view controller and update the menu.
+//        let height = calculateMenuHeight(for: imagesViewController.collectionView)
+//        updateMenu(height: height)
+//    }
+//}
 // MARK: - PagingViewContorllerDatasource
 extension SearchViewController: PagingViewControllerDataSource, PagingViewControllerDelegate {
     // DateSource
@@ -99,8 +108,7 @@ extension SearchViewController: PagingViewControllerDataSource, PagingViewContro
     }
     // 1. 실행되는 순서
     func numberOfViewControllers(in pagingViewController: Parchment.PagingViewController) -> Int {
-        print(#function)
-        return viewModel.pagingItem.count
+        return viewModel.classifyCases.count
     }
     // 3,
     func pagingViewController(_: Parchment.PagingViewController, viewControllerAt index: Int) -> UIViewController {
@@ -117,21 +125,18 @@ extension SearchViewController: PagingViewControllerDataSource, PagingViewContro
     // 2.
     func pagingViewController(_: Parchment.PagingViewController, pagingItemAt index: Int) -> Parchment.PagingItem {
         print(#function)
-        return viewModel.pagingItem[index]
+        return PagingIndexItem(index: index, title: viewModel.classifyCases[index].classifyName)
     }
     
     //Deleagate 당근
     // 메뉴 눌렸을 때 viewModel에 선택된 메뉴 저장
     func pagingViewController(_ pagingViewController: PagingViewController, didScrollToItem pagingItem: PagingItem, startingViewController: UIViewController?, destinationViewController: UIViewController, transitionSuccessful: Bool) {
-        for item in viewModel.pagingItem {
-            if pagingItem.isEqual(to: item) {
-                let index = item.index
-                // 선택된 메뉴 알아내기,,
-                viewModel.selectedFoodType = viewModel.classifyCases[index]
-                break
-            }
+        let menu = pagingItem as? PagingIndexItem
+        guard let index = menu?.index else {
+            print("selected menu index is nil")
+            return
         }
-        
+        viewModel.selectedFoodType = viewModel.classifyCases[index]
     }
 }
 
@@ -139,16 +144,7 @@ extension SearchViewController: UITextFieldDelegate {
     private func configureTextField() {
         mainView.searchTextField.delegate = self
     }
-    /*
-    // 실시간 검색되도록
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-//        guard let text = textField.text else {
-//            print("textField.text = nil")
-//            return
-//        }
 
-    }
-    */
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let text = textField.text!
         if text == "" { // 검색창이 비어있으면 키보드 내리기

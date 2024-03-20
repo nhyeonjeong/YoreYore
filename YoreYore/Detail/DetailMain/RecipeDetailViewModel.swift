@@ -83,7 +83,7 @@ final class RecipeDetailViewModel {
         
         self.foodRealm.createMenualItem(manualList: manualList, foodItem: foodTableData)
         self.bookmarkRealm.createFoodItem(foodTableData, foodTypeIdx: foodType.rawValue )
-            print(self.foodRealm.realm.configuration.fileURL)
+//            print(self.foodRealm.realm.configuration.fileURL)
     }
     
     func removeBookmark(_ foodType: ClassifyList, _ food: Recipe) {

@@ -44,7 +44,6 @@ final class BookmarkView: BaseView {
     }()
     lazy var bookmarkCollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
-        view.register(BookmarkCollectionViewCell.self, forCellWithReuseIdentifier: BookmarkCollectionViewCell.identifier)
         view.backgroundColor = .clear
         return view
     }()

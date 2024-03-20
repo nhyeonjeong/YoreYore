@@ -12,7 +12,7 @@ enum ClassifyList: Int, CaseIterable, PagingItem {
     func isBefore(item: Parchment.PagingItem) -> Bool {
         return true
     }
-    
+    case all // 전체
     case dessert // 후식
     case sideDish // 반찬
     case mainDish // 밥
@@ -20,6 +20,8 @@ enum ClassifyList: Int, CaseIterable, PagingItem {
     
     var classifyName: String{
         switch self {
+        case .all:
+            return "전체"
         case .dessert:
             return "후식"
         case .sideDish:
