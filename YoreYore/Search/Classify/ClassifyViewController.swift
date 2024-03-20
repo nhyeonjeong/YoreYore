@@ -27,10 +27,16 @@ final class ClassifyViewController: BaseViewController {
         super.viewDidLoad()
         viewModel.inputFetchRecipe.value = ClassifyViewModel.SearchWithIngredients(foodType: foodType, ingredients: searchIngredients)
         bindData()
+        settingCollectionView()
+    }
+    
+    private func settingCollectionView() {
+        configurePrefetching()
         configureCollectionView()
         configureDataSource()
         updateSnapshot()
     }
+    
     init(foodType: ClassifyList, searchIngredients: [String]) {
         self.foodType = foodType
         self.searchIngredients = searchIngredients
@@ -76,4 +82,27 @@ extension ClassifyViewController: UICollectionViewDelegate {
         view.endEditing(true)
         goDetailRcp?(viewModel.recipeList.value[indexPath.item])
     }
+}
+
+extension ClassifyViewController: UICollectionViewDataSourcePrefetching {
+    func configurePrefetching() {
+        mainView.foodCollectionView.prefetchDataSource = self
+    }
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        
+        print(#function, indexPaths)
+        for item in indexPaths {
+            // 마지막 데이터가 아니라면 추가로 api통신
+            if item.item == viewModel.recipeList.value.count - 6 && viewModel.totalRecipeCount > item.item {
+                // endIdx가 viewMdodel.totalRecipeCount을 초과하지는 않는지
+                viewModel.setApiIndex()
+                viewModel.inputFetchRecipe.value =  ClassifyViewModel.SearchWithIngredients(foodType: foodType, ingredients: searchIngredients)
+            }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+        print(#function)
+    }
+
 }
