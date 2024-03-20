@@ -16,6 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // realm확인
         // 처음bookmark 탭에 진입한다면 realm에 BookmarkTable 종류별로 만들기
         let bookmarkRealm = BookmarkTableRepository.shared
+        
         if bookmarkRealm.fetchItem().count == 0 {
             let cases = ClassifyList.allCases
             for rawValue in 0..<cases.count {

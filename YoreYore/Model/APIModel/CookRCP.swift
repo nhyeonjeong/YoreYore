@@ -12,6 +12,7 @@ struct RCP: Decodable {
 }
 
 struct CookRCP: Decodable {
+    let total_count: String // 검색결과 갯수
     let row: [Row]
 }
 

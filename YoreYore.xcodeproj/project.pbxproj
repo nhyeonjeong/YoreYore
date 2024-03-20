@@ -17,7 +17,6 @@
 		8BBEEB612BA61B6900A4ADF9 /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBEEB602BA61B6900A4ADF9 /* BookmarkViewModel.swift */; };
 		8BBEEB662BA86C6E00A4ADF9 /* TagListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBEEB652BA86C6E00A4ADF9 /* TagListCollectionViewCell.swift */; };
 		8BC004D82BAA2DB7007B0595 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 8BC004D72BAA2DB7007B0595 /* Lottie */; };
-		8BC004DB2BAA2F27007B0595 /* cooking.json in Resources */ = {isa = PBXBuildFile; fileRef = 8BC004DA2BAA2F27007B0595 /* cooking.json */; };
 		8BC004DD2BAA329E007B0595 /* bookLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 8BC004DC2BAA329E007B0595 /* bookLottie.json */; };
 		8BE6016C2B998381009249DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6016B2B998381009249DD /* AppDelegate.swift */; };
 		8BE6016E2B998381009249DD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6016D2B998381009249DD /* SceneDelegate.swift */; };
@@ -73,7 +72,6 @@
 		8B62A26E2BAA50ED00B38D84 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		8BBEEB602BA61B6900A4ADF9 /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
 		8BBEEB652BA86C6E00A4ADF9 /* TagListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListCollectionViewCell.swift; sourceTree = "<group>"; };
-		8BC004DA2BAA2F27007B0595 /* cooking.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cooking.json; sourceTree = "<group>"; };
 		8BC004DC2BAA329E007B0595 /* bookLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bookLottie.json; sourceTree = "<group>"; };
 		8BE601682B998381009249DD /* YoreYore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoreYore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BE6016B2B998381009249DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -165,7 +163,6 @@
 			isa = PBXGroup;
 			children = (
 				8BC004DC2BAA329E007B0595 /* bookLottie.json */,
-				8BC004DA2BAA2F27007B0595 /* cooking.json */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -446,7 +443,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BE601802B998601009249DD /* .gitignore in Resources */,
-				8BC004DB2BAA2F27007B0595 /* cooking.json in Resources */,
 				8BC004DD2BAA329E007B0595 /* bookLottie.json in Resources */,
 				8BE601782B998383009249DD /* LaunchScreen.storyboard in Resources */,
 				8BE601752B998383009249DD /* Assets.xcassets in Resources */,

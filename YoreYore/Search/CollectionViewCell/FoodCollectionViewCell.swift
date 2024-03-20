@@ -44,13 +44,13 @@ final class FoodCollectionViewCell: BaseCollectionViewCell {
         }
         foodNameLebel.snp.makeConstraints { make in
             make.top.trailing.equalTo(foodImage).inset(10)
-            make.leading.equalTo(foodImage.snp.leading).inset(100)
+            make.width.equalTo(90)
         }
         
         blurImageView.snp.makeConstraints { make in
             make.centerY.equalTo(foodImage.snp.centerY)
             make.centerX.equalTo(foodImage.snp.trailing)
-            make.size.equalTo(180)
+            make.size.equalTo(190)
         }
     }
     override func configureView() {

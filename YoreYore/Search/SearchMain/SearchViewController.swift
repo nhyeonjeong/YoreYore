@@ -37,7 +37,7 @@ final class SearchViewController: BaseViewController {
             if self.viewModel.outputTagList.value.count != 0 {
                 self.mainView.imageStackView.isHidden = true
                 // tagList가 갱신될떄마다 제일 아래 행으로 이동
-                self.self.mainView.tagListCollectionView.setContentOffset(CGPoint(x: 0, y: self.mainView.tagListCollectionView.contentSize.height - self.mainView.tagListCollectionView.bounds.height), animated: true)
+                self.mainView.tagListCollectionView.setContentOffset(CGPoint(x: 0, y: self.mainView.tagListCollectionView.contentSize.height - self.mainView.tagListCollectionView.bounds.height), animated: true)
             } else {
                 self.mainView.imageStackView.isHidden = false
             }
