@@ -82,6 +82,7 @@ final class SearchView: BaseView {
     lazy var tagListCollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
         view.backgroundColor = .clear
+
         return view
     }()
     
@@ -212,7 +213,6 @@ extension SearchView {
         // Section
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 4 // 그룹간 세로 간격
-        let layout = UICollectionViewFlowLayout()
         
         return UICollectionViewCompositionalLayout(section: section)
     }

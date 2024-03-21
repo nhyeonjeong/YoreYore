@@ -33,8 +33,10 @@ final class SearchViewController: BaseViewController {
         viewModel.outputTagList.bind { tagList in
             // tagList새로 그리기
             self.updateSnapshot()
+            // contentSize.height = 0이면 1로 변경
+            let newHeight: CGFloat = max(1, self.mainView.tagListCollectionView.contentSize.height)
             self.mainView.tagListCollectionView.snp.updateConstraints { make in
-                make.height.equalTo(self.mainView.tagListCollectionView.contentSize.height)
+                make.height.equalTo(newHeight)
             }
             /*
             // tagList에 tag가 있으면 그림 숨기기
