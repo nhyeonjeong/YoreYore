@@ -13,10 +13,8 @@ import Parchment
 final class SearchView: BaseView {
     let mainScrollView = {
         let view = UIScrollView()
-        view.layer.borderColor = UIColor.red.cgColor
-        view.layer.borderWidth = 2
-        view.maximumZoomScale = 1 // 최대 4배 / 이 설정에 맞게 이미지 뷰가 움직이도록 설정 -> 근데 언제 이 동작이 되도록 설정하지는 않은 상태 -> extension이 필요해진다.
-        view.minimumZoomScale = 1 // 1이라서 축소아무리해도 원래 사이즈
+        view.maximumZoomScale = 1
+        view.minimumZoomScale = 1
         return view
     }()
     let contentView = UIView()
@@ -26,8 +24,6 @@ final class SearchView: BaseView {
         view.textColor = Constants.Color.mainText
         view.numberOfLines = 0
         view.textAlignment = .right
-        view.layer.borderColor = UIColor.green.cgColor
-        view.layer.borderWidth = 2
         return view
     }()
     

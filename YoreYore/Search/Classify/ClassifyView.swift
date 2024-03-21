@@ -13,8 +13,6 @@ final class ClassifyView: BaseView {
     lazy var foodCollectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
         view.backgroundColor = .clear
-        view.layer.borderColor = UIColor.blue.cgColor
-        view.layer.borderWidth = 2
         return view
         
     }()
@@ -32,16 +30,6 @@ final class ClassifyView: BaseView {
 }
 extension ClassifyView {
     private func collectionViewLayout() -> UICollectionViewLayout {
-        /*
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 100, height: 160) // 없으면 안됨
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-        
-        layout.scrollDirection = .vertical // 스크롤 방향도 FlowLayout에 속한다 -> contentMode때문에 Fill로
-        return layout
-        */
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalWidth(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         

@@ -115,19 +115,14 @@ extension SearchViewController: PagingViewControllerDataSource, PagingViewContro
     // 3,
     func pagingViewController(_: Parchment.PagingViewController, viewControllerAt index: Int) -> UIViewController {
         let classifyVC = ClassifyViewController(foodType: viewModel.classifyCases[index], searchIngredients: viewModel.outputTagList.value)
+        
         classifyVC.scrollFunc = { cgPoint in
-            if self.mainView.mainScrollView.contentOffset.y >= 0 {
-                self.mainView.mainScrollView.contentOffset.y = cgPoint.y
-                let pointInSuperview = self.mainView.pagingViewController.view.frame.origin.y - self.mainView.mainScrollView.contentOffset.y
-                self.mainView.contentView.snp.updateConstraints { make in
-                    print("pointInSuperview", pointInSuperview)
-                    make.height.equalTo(self.mainView.frame.height-pointInSuperview)
-                    print("새로운 collectionview 높이", self.mainView.frame.height-pointInSuperview)
-                }
-                
-            } else {
-                self.mainView.mainScrollView.contentOffset.y = 108
+            self.mainView.mainScrollView.contentOffset.y = cgPoint.y
+            let pointInSuperview = self.mainView.pagingViewController.view.frame.origin.y - self.mainView.mainScrollView.contentOffset.y
+            self.mainView.contentView.snp.updateConstraints { make in
+                make.height.equalTo(self.mainView.frame.height-pointInSuperview)
             }
+
         }
         // 상세화면으로 전환
         classifyVC.goDetailRcp = { recipe in
@@ -170,7 +165,6 @@ extension SearchViewController: UITextFieldDelegate, UICollectionViewDelegateFlo
             viewModel.inputTextFieldReturn.value = text
 //            print("textFieldShoudReturn에서의 높이: ", mainView.tagListCollectionView.contentSize.height)
 //
-            print(mainView.mainScrollView.contentOffset.y)
             textField.text = ""
         }
         return true
