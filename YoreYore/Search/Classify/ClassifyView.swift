@@ -12,9 +12,9 @@ final class ClassifyView: BaseView {
 
     lazy var foodCollectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
-//        view.register(FoodCollectionViewCell.self, forCellWithReuseIdentifier: FoodCollectionViewCell.identifier)
-//        view.register(FoodCollectionViewCell.self, forCellWithReuseIdentifier: FoodCollectionViewCell.identifier)
         view.backgroundColor = .clear
+        view.layer.borderColor = UIColor.blue.cgColor
+        view.layer.borderWidth = 2
         return view
         
     }()

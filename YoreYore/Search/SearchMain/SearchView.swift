@@ -11,12 +11,23 @@ import Lottie
 import Parchment
 
 final class SearchView: BaseView {
+    let mainScrollView = {
+        let view = UIScrollView()
+        view.layer.borderColor = UIColor.red.cgColor
+        view.layer.borderWidth = 2
+        view.maximumZoomScale = 1 // 최대 4배 / 이 설정에 맞게 이미지 뷰가 움직이도록 설정 -> 근데 언제 이 동작이 되도록 설정하지는 않은 상태 -> extension이 필요해진다.
+        view.minimumZoomScale = 1 // 1이라서 축소아무리해도 원래 사이즈
+        return view
+    }()
+    let contentView = UIView()
     let topLabel = {
         let view = UILabel()
         view.font = .boldSystemFont(ofSize: 25)
         view.textColor = Constants.Color.mainText
         view.numberOfLines = 0
         view.textAlignment = .right
+        view.layer.borderColor = UIColor.green.cgColor
+        view.layer.borderWidth = 2
         return view
     }()
     
@@ -58,7 +69,7 @@ final class SearchView: BaseView {
     }()
     private let messageLabel = {
         let view = UILabel()
-        view.text = "재료를 검색해서 담아주세요!"
+        view.text = "재료가 담길때마다 검색됩니다!"
         view.font = Constants.Font.smallFont
         view.textColor = Constants.Color.mainText
         return view
@@ -82,7 +93,6 @@ final class SearchView: BaseView {
     lazy var tagListCollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
         view.backgroundColor = .clear
-
         return view
     }()
     
@@ -119,18 +129,30 @@ final class SearchView: BaseView {
     }()
     
     override func configureHierarchy() {
+        
         textfieldView.addViews([magnifyingImageView, searchTextField, xbutton])
         // tagList내부 그림 stackview
 //        for imageView in ingredientsImageViews {
 //            imageStackView.addArrangedSubview(imageView)
 //        }
-        tagListCollectionView.addViews([imageStackView])
-        self.addViews([topLabel, cookingImageView, textfieldView, messageLabel, tagListCollectionView, pagingViewController.view])
+//        tagListCollectionView.addViews([imageStackView])
+        contentView.addViews([topLabel, cookingImageView, textfieldView, messageLabel, tagListCollectionView, pagingViewController.view])
+        mainScrollView.addSubview(contentView)
+        addSubview(mainScrollView)
     }
     // MARK: - Layout
     override func configureConstraints() {
+        mainScrollView.snp.makeConstraints { make in
+            make.horizontalEdges.equalToSuperview()
+            make.verticalEdges.equalTo(self.safeAreaLayoutGuide)
+        }
+        contentView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+            make.width.equalTo(mainScrollView.snp.width)
+            make.height.equalTo(700) // 임의로 줬는데 어케바꿈 ㅜㅜ
+        }
         topLabel.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(20)
+            make.top.horizontalEdges.equalToSuperview().inset(20)
     
         }
         cookingImageView.snp.makeConstraints { make in
@@ -142,7 +164,7 @@ final class SearchView: BaseView {
         }
         textfieldView.snp.makeConstraints { make in
             make.top.equalTo(topLabel.snp.bottom).offset(15)
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(Constants.Layout.defaultPadding)
+            make.horizontalEdges.equalToSuperview().inset(Constants.Layout.defaultPadding)
             make.height.equalTo(50)
         }
         magnifyingImageView.snp.makeConstraints { make in
@@ -162,7 +184,7 @@ final class SearchView: BaseView {
         }
         messageLabel.snp.makeConstraints { make in
             make.top.equalTo(textfieldView.snp.bottom).offset(4)
-            make.leading.equalTo(safeAreaLayoutGuide).inset(20)
+            make.leading.equalToSuperview().inset(20)
             make.height.equalTo(18)
         }
         tagListCollectionView.snp.makeConstraints { make in
@@ -182,7 +204,7 @@ final class SearchView: BaseView {
         
         pagingViewController.view.snp.makeConstraints { make in
             make.top.equalTo(tagListCollectionView.snp.bottom)
-            make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
+            make.horizontalEdges.bottom.equalToSuperview()
         }
     }
     override func configureView() {

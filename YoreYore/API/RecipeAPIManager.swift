@@ -29,7 +29,7 @@ final class RecipeAPIManager {
         AF.request(api.endpoint, method: api.getMethod, encoding: URLEncoding(destination: .queryString)).responseDecodable(of: T.self) { response in
             switch response.result {
             case .success(let success):
-//                print(success)
+                print(success)
                 completionHandler(success, nil)
             case .failure(let failure):
                 print("RecipeAPIManager fetchRecipe failure")
