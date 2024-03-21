@@ -42,7 +42,6 @@ extension ClassifyView {
         layout.scrollDirection = .vertical // 스크롤 방향도 FlowLayout에 속한다 -> contentMode때문에 Fill로
         return layout
         */
-        // estimated하니까 글자에 맞춰서 ..!!!
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalWidth(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         

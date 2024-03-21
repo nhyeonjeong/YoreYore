@@ -33,14 +33,19 @@ final class SearchViewController: BaseViewController {
         viewModel.outputTagList.bind { tagList in
             // tagList새로 그리기
             self.updateSnapshot()
+            self.mainView.tagListCollectionView.snp.updateConstraints { make in
+                make.height.equalTo(self.mainView.tagListCollectionView.contentSize.height)
+            }
+            /*
             // tagList에 tag가 있으면 그림 숨기기
             if self.viewModel.outputTagList.value.count != 0 {
                 self.mainView.imageStackView.isHidden = true
                 // tagList가 갱신될떄마다 제일 아래 행으로 이동
-                self.mainView.tagListCollectionView.setContentOffset(CGPoint(x: 0, y: self.mainView.tagListCollectionView.contentSize.height - self.mainView.tagListCollectionView.bounds.height), animated: true)
+//                self.mainView.tagListCollectionView.setContentOffset(CGPoint(x: 0, y: self.mainView.tagListCollectionView.contentSize.height - self.mainView.tagListCollectionView.bounds.height), animated: true)
             } else {
                 self.mainView.imageStackView.isHidden = false
             }
+             */
             // 알아서 선택된 뷰만 reload해줌,,
             self.mainView.pagingViewController.reloadData()
         }
@@ -89,17 +94,11 @@ extension SearchViewController: UICollectionViewDelegate {
         viewModel.outputTagList.value.remove(at: indexPath.item)
         print("tagList: \(viewModel.outputTagList.value)")
     }
+    
+    
 }
-//
-//extension SearchViewController {
-//    func imagesViewControllerDidScroll(_ imagesViewController: ImagesViewController) {
-//        // Calculate the menu height based on the content offset of the
-//        // currenly selected view controller and update the menu.
-//        let height = calculateMenuHeight(for: imagesViewController.collectionView)
-//        updateMenu(height: height)
-//    }
-//}
-// MARK: - PagingViewContorllerDatasource
+
+// MARK: - PagingViewContorllerDatasource, PagingViewControllerDelegate
 extension SearchViewController: PagingViewControllerDataSource, PagingViewControllerDelegate {
     // DateSource
     private func configurePaging() {
@@ -139,8 +138,8 @@ extension SearchViewController: PagingViewControllerDataSource, PagingViewContro
         viewModel.selectedFoodType = viewModel.classifyCases[index]
     }
 }
-
-extension SearchViewController: UITextFieldDelegate {
+// MARK: - UITextFieldDelegate
+extension SearchViewController: UITextFieldDelegate, UICollectionViewDelegateFlowLayout {
     private func configureTextField() {
         mainView.searchTextField.delegate = self
     }
@@ -151,9 +150,12 @@ extension SearchViewController: UITextFieldDelegate {
             view.endEditing(true)
         } else {
             viewModel.inputTextFieldReturn.value = text
+//            print("textFieldShoudReturn에서의 높이: ", mainView.tagListCollectionView.contentSize.height)
+//    
             textField.text = ""
         }
         return true
     }
+    
 }
 

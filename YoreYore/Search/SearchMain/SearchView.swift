@@ -120,9 +120,9 @@ final class SearchView: BaseView {
     override func configureHierarchy() {
         textfieldView.addViews([magnifyingImageView, searchTextField, xbutton])
         // tagList내부 그림 stackview
-        for imageView in ingredientsImageViews {
-            imageStackView.addArrangedSubview(imageView)
-        }
+//        for imageView in ingredientsImageViews {
+//            imageStackView.addArrangedSubview(imageView)
+//        }
         tagListCollectionView.addViews([imageStackView])
         self.addViews([topLabel, cookingImageView, textfieldView, messageLabel, tagListCollectionView, pagingViewController.view])
     }
@@ -167,25 +167,26 @@ final class SearchView: BaseView {
         tagListCollectionView.snp.makeConstraints { make in
             make.top.equalTo(messageLabel.snp.bottom).offset(4)
             make.horizontalEdges.equalToSuperview().inset(Constants.Layout.defaultPadding)
-            make.height.equalTo(54)// 높이 지정 안해줬다.
+            make.height.equalTo(1) // 원래 54
+            print("SearchView에서 CollectionView의 높이: ", tagListCollectionView.contentSize.height)
         }
-        for item in ingredientsImageViews {
-            item.snp.makeConstraints { make in
-                make.size.equalTo(20)
-            }
-        }
-        imageStackView.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-        }
+//        for item in ingredientsImageViews {
+//            item.snp.makeConstraints { make in
+//                make.size.equalTo(20)
+//            }
+//        }
+//        imageStackView.snp.makeConstraints { make in
+//            make.center.equalToSuperview()
+//        }
         
         pagingViewController.view.snp.makeConstraints { make in
-            make.top.equalTo(tagListCollectionView.snp.bottom).offset(8)
+            make.top.equalTo(tagListCollectionView.snp.bottom)
             make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
         }
     }
     override func configureView() {
         // topLabel 글자 크기 다르게
-        let topLabelText = "배달음식 말고 \n집밥 어떠세요?"
+        let topLabelText = "배달음식 말고\n집밥 어떠세요?"
         let attribtuedString = NSMutableAttributedString(string: topLabelText)
         let range = (topLabelText as NSString).range(of: "집밥 어떠세요?")
         attribtuedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 30), range: range)
@@ -211,6 +212,8 @@ extension SearchView {
         // Section
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 4 // 그룹간 세로 간격
+        let layout = UICollectionViewFlowLayout()
+        
         return UICollectionViewCompositionalLayout(section: section)
     }
 }

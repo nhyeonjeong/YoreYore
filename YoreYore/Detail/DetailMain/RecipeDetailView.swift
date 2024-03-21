@@ -10,17 +10,26 @@ import SnapKit
 import Kingfisher
 
 final class RecipeDetailView: BaseView {
-
-    lazy var screenWidth = UIScreen.main.bounds.width
-    
+    private enum Metric {
+      static let headerHeight = 250.0
+    }
+//    private let mainImageView = {
+//        let view = UIImageView(frame: .zero)
+//        view.contentMode = .scaleAspectFill
+//        view.clipsToBounds = true // 이게 있어야 scaleAspectFill에 맞게 잘 나온다.
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        return view
+//    }()
     lazy var manualCollectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
         view.backgroundColor = .clear
+//        view.showsVerticalScrollIndicator = false
+//        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     override func configureHierarchy() {
-        addSubview(manualCollectionView)
+        addViews([manualCollectionView])
     }
     
     override func configureConstraints() {
