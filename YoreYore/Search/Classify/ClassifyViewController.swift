@@ -10,7 +10,7 @@ import UIKit
 // 넘어온 classifyFood 종류에 따라 collectionView 보이도록!
 final class ClassifyViewController: BaseViewController {
     var goDetailRcp: ((Recipe) -> Void)? // 전체화면의 전환 위한 클로저
-    
+    var scrollFunc: ((CGPoint) -> Void)? // 스크롤할 때 상단뷰 위로 이동
     var foodType: ClassifyList
     var searchIngredients: [String]
     // Diffable사용
@@ -73,6 +73,7 @@ extension ClassifyViewController {
         dataSource.apply(snapShot)
     }
 }
+// MARK: - UICollectionViewDelegate
 extension ClassifyViewController: UICollectionViewDelegate {
     func configureCollectionView() {
         mainView.foodCollectionView.delegate = self
@@ -82,6 +83,19 @@ extension ClassifyViewController: UICollectionViewDelegate {
         view.endEditing(true)
         goDetailRcp?(viewModel.recipeList.value[indexPath.item])
     }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        print(#function, scrollView.contentOffset.y)
+        if scrollView.contentOffset.y > 0 && scrollView.contentOffset.y < 100 {
+            scrollFunc?(scrollView.contentOffset)
+        } else if scrollView.contentOffset.y > 100 {
+            scrollFunc?(CGPoint(x: 0, y: 100))
+        }
+        if scrollView.contentOffset.y < 0 {
+            scrollFunc?(CGPoint(x: 0, y: 0))
+        }
+    }
+    
 }
 
 extension ClassifyViewController: UICollectionViewDataSourcePrefetching {

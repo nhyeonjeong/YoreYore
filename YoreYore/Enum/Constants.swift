@@ -11,12 +11,13 @@ enum Constants {
     enum Color {
         static let background = UIColor.white
         static let mainText = UIColor.black
-        static let subText = UIColor.systemGray4
+        static let subText = UIColor.systemGray2
         static let point = UIColor(named: "pointColor")
         static let secondPoint = UIColor.orange
     }
     
     enum Font {
+        static let titleName = UIFont.boldSystemFont(ofSize: 16)
         static let classifyBold = UIFont.boldSystemFont(ofSize: 15)
         static let classify = UIFont.systemFont(ofSize: 15)
         static let manual = UIFont.systemFont(ofSize: 14)

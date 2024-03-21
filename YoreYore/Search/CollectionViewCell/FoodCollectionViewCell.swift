@@ -57,7 +57,7 @@ final class FoodCollectionViewCell: BaseCollectionViewCell {
         contentView.clipsToBounds = true
         
         // UI꾸미기
-        let context = UIGraphicsRenderer()
+//        let context = UIGraphicsRenderer()
         
     }
     

@@ -11,6 +11,13 @@ import Lottie
 import Parchment
 
 final class SearchView: BaseView {
+    let mainScrollView = {
+        let view = UIScrollView()
+        view.maximumZoomScale = 1
+        view.minimumZoomScale = 1
+        return view
+    }()
+    let contentView = UIView()
     let topLabel = {
         let view = UILabel()
         view.font = .boldSystemFont(ofSize: 25)
@@ -58,7 +65,7 @@ final class SearchView: BaseView {
     }()
     private let messageLabel = {
         let view = UILabel()
-        view.text = "재료를 검색해서 담아주세요!"
+        view.text = "재료가 담길때마다 검색됩니다!"
         view.font = Constants.Font.smallFont
         view.textColor = Constants.Color.mainText
         return view
@@ -118,18 +125,30 @@ final class SearchView: BaseView {
     }()
     
     override func configureHierarchy() {
+        
         textfieldView.addViews([magnifyingImageView, searchTextField, xbutton])
         // tagList내부 그림 stackview
-        for imageView in ingredientsImageViews {
-            imageStackView.addArrangedSubview(imageView)
-        }
-        tagListCollectionView.addViews([imageStackView])
-        self.addViews([topLabel, cookingImageView, textfieldView, messageLabel, tagListCollectionView, pagingViewController.view])
+//        for imageView in ingredientsImageViews {
+//            imageStackView.addArrangedSubview(imageView)
+//        }
+//        tagListCollectionView.addViews([imageStackView])
+        contentView.addViews([topLabel, cookingImageView, textfieldView, messageLabel, tagListCollectionView, pagingViewController.view])
+        mainScrollView.addSubview(contentView)
+        addSubview(mainScrollView)
     }
     // MARK: - Layout
     override func configureConstraints() {
+        mainScrollView.snp.makeConstraints { make in
+            make.horizontalEdges.equalToSuperview()
+            make.verticalEdges.equalTo(self.safeAreaLayoutGuide)
+        }
+        contentView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+            make.width.equalTo(mainScrollView.snp.width)
+            make.height.equalTo(700) // 임의로 줬는데 어케바꿈 ㅜㅜ
+        }
         topLabel.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(20)
+            make.top.horizontalEdges.equalToSuperview().inset(20)
     
         }
         cookingImageView.snp.makeConstraints { make in
@@ -141,7 +160,7 @@ final class SearchView: BaseView {
         }
         textfieldView.snp.makeConstraints { make in
             make.top.equalTo(topLabel.snp.bottom).offset(15)
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(Constants.Layout.defaultPadding)
+            make.horizontalEdges.equalToSuperview().inset(Constants.Layout.defaultPadding)
             make.height.equalTo(50)
         }
         magnifyingImageView.snp.makeConstraints { make in
@@ -161,31 +180,32 @@ final class SearchView: BaseView {
         }
         messageLabel.snp.makeConstraints { make in
             make.top.equalTo(textfieldView.snp.bottom).offset(4)
-            make.leading.equalTo(safeAreaLayoutGuide).inset(20)
+            make.leading.equalToSuperview().inset(20)
             make.height.equalTo(18)
         }
         tagListCollectionView.snp.makeConstraints { make in
             make.top.equalTo(messageLabel.snp.bottom).offset(4)
             make.horizontalEdges.equalToSuperview().inset(Constants.Layout.defaultPadding)
-            make.height.equalTo(54)// 높이 지정 안해줬다.
+            make.height.equalTo(1) // 원래 54
+            print("SearchView에서 CollectionView의 높이: ", tagListCollectionView.contentSize.height)
         }
-        for item in ingredientsImageViews {
-            item.snp.makeConstraints { make in
-                make.size.equalTo(20)
-            }
-        }
-        imageStackView.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-        }
+//        for item in ingredientsImageViews {
+//            item.snp.makeConstraints { make in
+//                make.size.equalTo(20)
+//            }
+//        }
+//        imageStackView.snp.makeConstraints { make in
+//            make.center.equalToSuperview()
+//        }
         
         pagingViewController.view.snp.makeConstraints { make in
-            make.top.equalTo(tagListCollectionView.snp.bottom).offset(8)
-            make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
+            make.top.equalTo(tagListCollectionView.snp.bottom)
+            make.horizontalEdges.bottom.equalToSuperview()
         }
     }
     override func configureView() {
         // topLabel 글자 크기 다르게
-        let topLabelText = "배달음식 말고 \n집밥 어떠세요?"
+        let topLabelText = "배달음식 말고\n집밥 어떠세요?"
         let attribtuedString = NSMutableAttributedString(string: topLabelText)
         let range = (topLabelText as NSString).range(of: "집밥 어떠세요?")
         attribtuedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 30), range: range)
@@ -211,6 +231,7 @@ extension SearchView {
         // Section
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 4 // 그룹간 세로 간격
+        
         return UICollectionViewCompositionalLayout(section: section)
     }
 }
