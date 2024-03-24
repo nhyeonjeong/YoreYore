@@ -11,7 +11,7 @@ import RealmSwift
 class BookmarkTableRepository {
     static let shared = BookmarkTableRepository()
     
-    let realm = try! Realm()
+    var realm = try! Realm()
     func createItem(_ data: BookmarkTable) {
         print(self.realm.configuration.fileURL)
         do {
@@ -23,14 +23,15 @@ class BookmarkTableRepository {
         }
     }
     
-    func createFoodItem(_ item: FoodTable, foodTypeIdx: Int) {
+    func createFoodItem(_ item: FoodTable, bookmark: BookmarkTable) {
+        
         let data = realm.objects(BookmarkTable.self)
         do {
             try realm.write {
-                data[foodTypeIdx].foodList.append(item)
+                bookmark.foodList.append(item)
             }
         } catch {
-            print(#function, "error")
+            print(error)
         }
     }
     func fetchItem() -> [BookmarkTable] {

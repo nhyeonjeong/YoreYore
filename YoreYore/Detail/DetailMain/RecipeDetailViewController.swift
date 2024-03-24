@@ -26,6 +26,7 @@ final class RecipeDetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.foodType = viewModel.foodClassifyType(food.foodType)
+        print(viewModel.foodType?.classifyName)
         viewModel.food = food
         bindData()
         

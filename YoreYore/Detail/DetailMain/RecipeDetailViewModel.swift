@@ -54,6 +54,9 @@ final class RecipeDetailViewModel {
     
     func foodClassifyType(_ typeString: String) -> ClassifyList {
         let cases = ClassifyList.allCases
+        if typeString == "국&찌개" { // api가 이상해서...
+            return .soup
+        }
         for i in 0..<cases.count {
             if cases[i].classifyName == typeString {
                 return cases[i]
@@ -99,16 +102,35 @@ final class RecipeDetailViewModel {
         let foodTableData = FoodTable(sequenceId: food.sequenceId, foodType: food.foodType, foodName: food.foodName, way: food.way, mainImageString: food.largeImage, kcal: food.kal, ingredients: food.ingredients, tip: food.tip)
         
         self.foodRealm.createMenualItem(manualList: manualList, foodItem: foodTableData)
-        self.bookmarkRealm.createFoodItem(foodTableData, foodTypeIdx: foodType.rawValue )
-            print(self.foodRealm.realm.configuration.fileURL)
+        
+        // BookmarkTable에 해당 음식종류가 존재하는지 먼저 확인
+        let data = bookmarkRealm.realm.objects(BookmarkTable.self)
+        for bookmark in data {
+            if bookmark.foodTypeRawValue == foodType.rawValue {
+                self.bookmarkRealm.createFoodItem(foodTableData, bookmark: bookmark)
+                return
+            }
+        }
+        // 만약 이미 생성된 음식종류 테이블이 없다면
+        let bookmarkTableData = BookmarkTable(foodTypeRawValue: foodType.rawValue)
+        bookmarkTableData.foodList.append(foodTableData)
+        bookmarkRealm.createItem(bookmarkTableData)
+        // 다시 정렬,,?
+        
     }
     
     func removeBookmark(_ foodType: ClassifyList, _ food: Recipe) {
-        guard let idx = foodListIdx else {
-            print("foodListIdx = nil")
-            return
+//        guard let idx = foodListIdx else {
+//            print("foodListIdx = nil")
+//            return
+//        }
+        let bookmarkTableData = bookmarkList.value.filter { bookmark in
+            bookmark.foodTypeRawValue == foodType.rawValue
         }
-        let foodList = bookmarkList.value[foodType.rawValue].foodList
-        foodRealm.removeItem(foodList[idx])
+        let foodList = Array(bookmarkTableData[0].foodList)
+        let removeData = foodList.filter { foodTableData in
+            foodTableData.sequenceId == food.sequenceId
+        }
+        foodRealm.removeItem(removeData[0])
     }
 }
