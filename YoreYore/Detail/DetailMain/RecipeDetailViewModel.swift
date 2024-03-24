@@ -15,7 +15,6 @@ final class RecipeDetailViewModel {
     var foodType: ClassifyList? = nil
     var food: Recipe? = nil
     var bookmarkList: Observable<[BookmarkTable]> = Observable([])
-    var foodListIdx: Int? = nil // bookmarkList에서 저장된 순서 인덱스
     
     var inputCheckBookmarkTrigger: Observable<Void?> = Observable(nil)
     var inputBookmarkTrigger: Observable<Void?> = Observable(nil)
@@ -79,7 +78,6 @@ final class RecipeDetailViewModel {
                 for idx in 0..<foodList.count {
                     if foodList[idx].sequenceId == food.sequenceId {
                         outputCheckBookmark.value = true // 북마크여부 저장
-                        foodListIdx = idx
                         return // 찾으면 바로 return
                     }
                 }
