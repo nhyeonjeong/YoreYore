@@ -10,12 +10,12 @@ import UIKit
 final class DetailCollectionViewCell: BaseCollectionViewCell {
     private let horizontalInset: CGFloat = 10
     
-//    private let mainImageView = {
-//        let view = UIImageView(frame: .zero)
-//        view.contentMode = .scaleAspectFill
-//        view.clipsToBounds = true // 이게 있어야 scaleAspectFill에 맞게 잘 나온다.
-//        return view
-//    }()
+    private let mainImageView = {
+        let view = UIImageView(frame: .zero)
+        view.contentMode = .scaleAspectFill
+        view.clipsToBounds = true // 이게 있어야 scaleAspectFill에 맞게 잘 나온다.
+        return view
+    }()
     
     private let recipeNameLabel = {
         let view = UILabel()
@@ -69,19 +69,19 @@ final class DetailCollectionViewCell: BaseCollectionViewCell {
     }()
     
     override func configureHierarchy() {
-        contentView.addViews([recipeNameLabel, subDataStackView, ingredientsLabel, tipView])
+        contentView.addViews([mainImageView, recipeNameLabel, subDataStackView, ingredientsLabel, tipView])
         subDataStackView.addViews([weightLabel, kalLabel])
         tipView.addViews([tipIcon, tipLable])
     }
     
     override func configureConstraints() {
-//        mainImageView.snp.makeConstraints { make in
-//            make.top.horizontalEdges.equalTo(contentView)
-//            make.height.equalTo(230)
-//        }
-//        
+        mainImageView.snp.makeConstraints { make in
+            make.top.horizontalEdges.equalTo(contentView)
+            make.height.equalTo(230)
+        }
+        
         recipeNameLabel.snp.makeConstraints { make in
-            make.top.equalTo(contentView.snp.top).inset(240) // 이미지만큼 Inset
+            make.top.equalTo(mainImageView.snp.bottom).offset(4) // 이미지만큼 Inset
             make.horizontalEdges.equalTo(contentView).inset(horizontalInset)
             make.height.equalTo(22)
         }
@@ -119,21 +119,15 @@ final class DetailCollectionViewCell: BaseCollectionViewCell {
         tipLable.snp.makeConstraints { make in
             make.edges.equalTo(tipView).inset(10)
         }
-        
     }
-    
-//    override func configureView() {
-//        tipView.setLineDot(color: Constants.Color.point, radius: 10)
-//    }
-    
     func upgradeCell(_ item: Recipe) {
         // cellForItemAt에 해당하는 메서드
-//        if let url = URL(string: item.largeImage) {
-//            mainImageView.kf.setImage(with: url)
-//        } else {
-//            mainImageView.backgroundColor = .lightGray // 이미지가 없습니다...
-//            print("DetailCollectionVIewCell no image-----------")
-//        }
+        if let url = URL(string: item.largeImage) {
+            mainImageView.kf.setImage(with: url)
+        } else {
+            mainImageView.backgroundColor = .lightGray // 이미지가 없습니다...
+            print("DetailCollectionVIewCell no image-----------")
+        }
         recipeNameLabel.text = item.foodName
         ingredientsLabel.text = item.ingredients
         if item.weight == "" {

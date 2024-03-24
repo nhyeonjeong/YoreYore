@@ -64,7 +64,7 @@ extension RecipeDetailViewController {
         print("isSaved : ", isSaved)
         let buttomImage = isSaved ? Constants.Image.bookmarkFill : Constants.Image.bookmark
         let button = UIBarButtonItem(image: buttomImage, style: .plain, target: self, action: #selector(bookmarkClicked))
-        button.tintColor = Constants.Color.point
+        button.tintColor = Constants.Color.secondPoint
         navigationItem.rightBarButtonItem = button
     }
 }

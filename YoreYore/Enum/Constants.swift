@@ -29,8 +29,8 @@ enum Constants {
         static let bookmarkBack: UIImage = .bookmarkBack
         static let searchXButton = UIImage(systemName: "xmark.circle.fill")
         static let magnifying = UIImage(systemName: "magnifyingglass")
-        static let bookmarkFill: UIImage = .bookmarkFill
-        static let bookmark: UIImage = .bookmark
+        static let bookmarkFill = UIImage(systemName: "bookmark.fill")
+        static let bookmark = UIImage(systemName: "bookmark")
         static let bowl: UIImage = .bowl
         static let forkFill: UIImage = .fork
         static let ingredients: [UIImage] = [.avocado, .broccoli, .cherry, .egg, .icecream, .tomato]
