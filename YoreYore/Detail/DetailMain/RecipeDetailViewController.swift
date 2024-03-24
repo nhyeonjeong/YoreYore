@@ -13,7 +13,7 @@ final class RecipeDetailViewController: BaseViewController {
         case detail
         case manual
     }
-    var foodType: ClassifyList?
+//    var foodType: ClassifyList?
     var food: Recipe!
     let mainView = RecipeDetailView()
     let viewModel = RecipeDetailViewModel()
@@ -25,7 +25,7 @@ final class RecipeDetailViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.foodType = foodType
+        viewModel.foodType = viewModel.foodClassifyType(food.foodType)
         viewModel.food = food
         bindData()
         

@@ -13,7 +13,7 @@ class BookmarkTableRepository {
     
     let realm = try! Realm()
     func createItem(_ data: BookmarkTable) {
-//        print(self.realm.configuration.fileURL)
+        print(self.realm.configuration.fileURL)
         do {
             try realm.write {
                 realm.add(data)

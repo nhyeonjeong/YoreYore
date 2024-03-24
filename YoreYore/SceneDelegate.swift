@@ -13,6 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        /*
         // realm확인
         // 처음bookmark 탭에 진입한다면 realm에 BookmarkTable 종류별로 만들기
         let bookmarkRealm = BookmarkTableRepository.shared
@@ -23,6 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 bookmarkRealm.createItem(BookmarkTable(foodTypeRawValue: rawValue))
             }
         }
+        */
         
         guard let scene = (scene as? UIWindowScene) else { return }
         

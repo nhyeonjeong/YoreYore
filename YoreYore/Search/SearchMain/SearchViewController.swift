@@ -128,7 +128,7 @@ extension SearchViewController: PagingViewControllerDataSource, PagingViewContro
         classifyVC.goDetailRcp = { recipe in
             let vc = RecipeDetailViewController()
             vc.food = recipe
-            vc.foodType = self.viewModel.selectedFoodType
+//            vc.foodType = self.viewModel.selectedFoodType
             self.navigationController?.pushViewController(vc, animated: true)
         }
         return classifyVC
@@ -141,15 +141,15 @@ extension SearchViewController: PagingViewControllerDataSource, PagingViewContro
     
     //Deleagate 당근
     // 메뉴 눌렸을 때 viewModel에 선택된 메뉴 저장
-    func pagingViewController(_ pagingViewController: PagingViewController, didScrollToItem pagingItem: PagingItem, startingViewController: UIViewController?, destinationViewController: UIViewController, transitionSuccessful: Bool) {
-        let menu = pagingItem as? PagingIndexItem
-        guard let index = menu?.index else {
-            print("selected menu index is nil")
-            return
-        }
-        viewModel.selectedFoodType = viewModel.classifyCases[index]
-        
-    }
+//    func pagingViewController(_ pagingViewController: PagingViewController, didScrollToItem pagingItem: PagingItem, startingViewController: UIViewController?, destinationViewController: UIViewController, transitionSuccessful: Bool) {
+//        let menu = pagingItem as? PagingIndexItem
+//        guard let index = menu?.index else {
+//            print("selected menu index is nil")
+//            return
+//        }
+//        viewModel.selectedFoodType = viewModel.classifyCases[index]
+//        
+//    }
 }
 // MARK: - UITextFieldDelegate
 extension SearchViewController: UITextFieldDelegate, UICollectionViewDelegateFlowLayout {

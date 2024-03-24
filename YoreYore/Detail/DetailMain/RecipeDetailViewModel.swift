@@ -40,7 +40,6 @@ final class RecipeDetailViewModel {
                 print("foodType = nil 이거나 Food = nil, 북마크에 저장할 수 없음")
                 return
             }
-            
             if self.outputCheckBookmark.value {
                 // realm에서 삭제
                 self.removeBookmark(foodType, food)
@@ -53,6 +52,16 @@ final class RecipeDetailViewModel {
         }
     }
     
+    func foodClassifyType(_ typeString: String) -> ClassifyList {
+        let cases = ClassifyList.allCases
+        for i in 0..<cases.count {
+            if cases[i].classifyName == typeString {
+                return cases[i]
+            }
+        }
+        return .dessert // 일단...
+    }
+    
     // 가져온 bookmarkList에 저장된 음식인지 확인해서 별도의 변수에 저장
     // 별도의 변수에 저장한 이유는? 이 음식이 북마크되어있는지 확인하고 싶을때마다
     // 변수 하나로 여부를 확인하는게 더 간단할 것 같았음.
@@ -61,15 +70,23 @@ final class RecipeDetailViewModel {
             print("NO foodtype")
             return
         }
-        let foodList = bookmarkList.value[foodType.rawValue].foodList
-        for idx in 0..<foodList.count {
-            if foodList[idx].sequenceId == food.sequenceId {
-                outputCheckBookmark.value = true // 북마크여부 저장
-                foodListIdx = idx
-                return // 찾아면 바로 return
+        for bookmark in bookmarkList.value {
+            if bookmark.foodTypeRawValue == foodType.rawValue { // realm해당 음식종류가 생성되어있다면
+                let foodList = bookmark.foodList
+                for idx in 0..<foodList.count {
+                    if foodList[idx].sequenceId == food.sequenceId {
+                        outputCheckBookmark.value = true // 북마크여부 저장
+                        foodListIdx = idx
+                        return // 찾으면 바로 return
+                    }
+                }
+                outputCheckBookmark.value = false // 못찾으면
+                return
             }
         }
+        // 위에서 realm에 대항 음식종류가 저장된 이력이 하나도 없다면
         outputCheckBookmark.value = false
+        
     }
     
     func addBookmark(_ foodType: ClassifyList, _ food: Recipe) {
@@ -83,7 +100,7 @@ final class RecipeDetailViewModel {
         
         self.foodRealm.createMenualItem(manualList: manualList, foodItem: foodTableData)
         self.bookmarkRealm.createFoodItem(foodTableData, foodTypeIdx: foodType.rawValue )
-//            print(self.foodRealm.realm.configuration.fileURL)
+            print(self.foodRealm.realm.configuration.fileURL)
     }
     
     func removeBookmark(_ foodType: ClassifyList, _ food: Recipe) {

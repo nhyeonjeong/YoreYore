@@ -107,7 +107,7 @@ extension BookmarkViewController: UICollectionViewDelegate {
         viewModel.inputSelectRecipeTrigger.value = indexPath.item
         
         let vc = RecipeDetailViewController()
-        vc.foodType = viewModel.selectedFoodType
+//        vc.foodType = viewModel.selectedFoodType
         vc.food = viewModel.outputFetchFoodList.value[indexPath.item]
         navigationController?.pushViewController(vc, animated: true)
     }

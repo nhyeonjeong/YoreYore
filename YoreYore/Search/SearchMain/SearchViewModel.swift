@@ -26,7 +26,7 @@ final class SearchViewModel {
     let outputTagList: Observable<[String]> = Observable([])
     let outputPlaceholder: Observable<String> = Observable("")
     
-    var selectedFoodType: ClassifyList = .dessert // 제일 처음은 dessert로 시작
+//    var selectedFoodType: ClassifyList = .dessert // 제일 처음은 dessert로 시작
     
     init() {
         bindDate()

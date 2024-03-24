@@ -37,8 +37,9 @@ final class BookmarkView: BaseView {
     let foodTypeSegment: UISegmentedControl = {
         let view = UISegmentedControl()
         let cases = ClassifyList.allCases
-        for idx in 0..<cases.count {
-            view.insertSegment(withTitle: cases[idx].classifyName, at: idx, animated: true)
+        // 전체는 보이지 않도록
+        for idx in 1..<cases.count {
+            view.insertSegment(withTitle: cases[idx].classifyName, at: cases[idx].rawValue, animated: true)
         }
         return view
     }()

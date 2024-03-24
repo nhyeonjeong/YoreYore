@@ -13,7 +13,7 @@ class ManualRepository {
     
     let realm = try! Realm()
     func createItem(_ data: ManualTable) {
-//        print(self.realm.configuration.fileURL)
+        print(self.realm.configuration.fileURL)
         
         do {
             try realm.write {
