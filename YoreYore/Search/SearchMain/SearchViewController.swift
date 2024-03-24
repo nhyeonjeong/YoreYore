@@ -23,13 +23,12 @@ final class SearchViewController: BaseViewController {
         bindData()
         configurePaging()
         configureTextField()
-        
+
         configureTagListCollectionView()
         configureDataSource()
         updateSnapshot()
-        
     }
-    
+
     private func bindData() {
         viewModel.outputTagList.bind { tagList in
             // tagList새로 그리기

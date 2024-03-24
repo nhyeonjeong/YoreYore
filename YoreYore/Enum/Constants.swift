@@ -13,7 +13,7 @@ enum Constants {
         static let mainText = UIColor.black
         static let subText = UIColor.systemGray2
         static let point = UIColor(named: "pointColor")
-        static let secondPoint = UIColor.orange
+        static let secondPoint = UIColor(named: "secondColor")
     }
     
     enum Font {

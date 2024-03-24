@@ -101,6 +101,7 @@ extension ClassifyViewController: UICollectionViewDelegate {
 extension ClassifyViewController: UICollectionViewDataSourcePrefetching {
     func configurePrefetching() {
         mainView.foodCollectionView.prefetchDataSource = self
+        mainView.foodCollectionView.keyboardDismissMode = .onDrag // 드래그되면 키보드 내리기
     }
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         

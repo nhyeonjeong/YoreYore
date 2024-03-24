@@ -17,20 +17,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: scene)
-        
-        let tabBarvc = UITabBarController()
-        
-        let firstNav = UINavigationController(rootViewController: SearchViewController())
-        let secondNav = UINavigationController(rootViewController: BookmarkViewController())
-        
-        firstNav.tabBarItem = UITabBarItem(title: "레시피", image: Constants.Image.bowl, tag: 0)
-        secondNav.tabBarItem = UITabBarItem(title: "북마크", image: Constants.Image.forkFill, tag: 1)
-        
-        tabBarvc.tabBar.tintColor = Constants.Color.point
-        tabBarvc.tabBar.barTintColor = Constants.Color.background // 스크롤하면 색이 변경되는데 그때 색을 여기서 바꿀 수 있다.
-        tabBarvc.viewControllers = [firstNav, secondNav]
-        
-        window?.rootViewController = tabBarvc
+    
+        let vc = LaunchScreenViewController()
+        window?.rootViewController = vc
         window?.makeKeyAndVisible()
     }
 
