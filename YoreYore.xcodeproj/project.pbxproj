@@ -10,9 +10,6 @@
 		8B428ABF2BB05F6B00FD1B69 /* launchScreen.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B428ABE2BB05F6B00FD1B69 /* launchScreen.json */; };
 		8B428AC12BB05FE700FD1B69 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B428AC02BB05FE700FD1B69 /* LaunchScreenViewController.swift */; };
 		8B428AC32BB0749A00FD1B69 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B428AC22BB0749A00FD1B69 /* Launch Screen.storyboard */; };
-		8B428AC62BB07D0400FD1B69 /* LicensePlistCore in Frameworks */ = {isa = PBXBuildFile; productRef = 8B428AC52BB07D0400FD1B69 /* LicensePlistCore */; };
-		8B428AC82BB07D0400FD1B69 /* license-plist in Frameworks */ = {isa = PBXBuildFile; productRef = 8B428AC72BB07D0400FD1B69 /* license-plist */; };
-		8B428ACA2BB07DC100FD1B69 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B428AC92BB07DC100FD1B69 /* Settings.bundle */; };
 		8B57DA1E2B9E8B7300716D63 /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B57DA1D2B9E8B7300716D63 /* RecipeDetailViewController.swift */; };
 		8B57DA222B9FDA3E00716D63 /* RecipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B57DA212B9FDA3E00716D63 /* RecipeDetailView.swift */; };
 		8B57DA242B9FDB9300716D63 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B57DA232B9FDB9300716D63 /* SearchViewModel.swift */; };
@@ -71,7 +68,6 @@
 		8B428ABE2BB05F6B00FD1B69 /* launchScreen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = launchScreen.json; sourceTree = "<group>"; };
 		8B428AC02BB05FE700FD1B69 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		8B428AC22BB0749A00FD1B69 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		8B428AC92BB07DC100FD1B69 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		8B57DA1D2B9E8B7300716D63 /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
 		8B57DA212B9FDA3E00716D63 /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
 		8B57DA232B9FDB9300716D63 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
@@ -124,7 +120,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B428AC82BB07D0400FD1B69 /* license-plist in Frameworks */,
 				8BE601AE2B9AED27009249DD /* Kingfisher in Frameworks */,
 				8B57DA472BA32B3700716D63 /* Alamofire in Frameworks */,
 				8BE601832B998A16009249DD /* SnapKit in Frameworks */,
@@ -133,7 +128,6 @@
 				8BC004D82BAA2DB7007B0595 /* Lottie in Frameworks */,
 				8BE601B42B9AEE19009249DD /* SkeletonView in Frameworks */,
 				8BED50D02BA5DF0900900A18 /* Realm in Frameworks */,
-				8B428AC62BB07D0400FD1B69 /* LicensePlistCore in Frameworks */,
 				8BE601A32B9AED06009249DD /* FSCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -179,7 +173,6 @@
 		8BE6015F2B998381009249DD = {
 			isa = PBXGroup;
 			children = (
-				8B428AC92BB07DC100FD1B69 /* Settings.bundle */,
 				8BE6017F2B998601009249DD /* .gitignore */,
 				8BE6016A2B998381009249DD /* YoreYore */,
 				8BE601692B998381009249DD /* Products */,
@@ -398,8 +391,6 @@
 				8BED50CF2BA5DF0900900A18 /* Realm */,
 				8BED50D12BA5DF0900900A18 /* RealmSwift */,
 				8BC004D72BAA2DB7007B0595 /* Lottie */,
-				8B428AC52BB07D0400FD1B69 /* LicensePlistCore */,
-				8B428AC72BB07D0400FD1B69 /* license-plist */,
 			);
 			productName = YoreYore;
 			productReference = 8BE601682B998381009249DD /* YoreYore.app */;
@@ -438,7 +429,6 @@
 				8B57DA452BA32B3700716D63 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				8BED50CE2BA5DF0900900A18 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				8BC004D62BAA2DB7007B0595 /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				8B428AC42BB07D0400FD1B69 /* XCRemoteSwiftPackageReference "LicensePlist" */,
 			);
 			productRefGroup = 8BE601692B998381009249DD /* Products */;
 			projectDirPath = "";
@@ -460,7 +450,6 @@
 				8BE601752B998383009249DD /* Assets.xcassets in Resources */,
 				8B428ABF2BB05F6B00FD1B69 /* launchScreen.json in Resources */,
 				8BE601732B998381009249DD /* Main.storyboard in Resources */,
-				8B428ACA2BB07DC100FD1B69 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -743,14 +732,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8B428AC42BB07D0400FD1B69 /* XCRemoteSwiftPackageReference "LicensePlist" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mono0926/LicensePlist.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.25.1;
-			};
-		};
 		8B57DA452BA32B3700716D63 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -818,16 +799,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8B428AC52BB07D0400FD1B69 /* LicensePlistCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8B428AC42BB07D0400FD1B69 /* XCRemoteSwiftPackageReference "LicensePlist" */;
-			productName = LicensePlistCore;
-		};
-		8B428AC72BB07D0400FD1B69 /* license-plist */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8B428AC42BB07D0400FD1B69 /* XCRemoteSwiftPackageReference "LicensePlist" */;
-			productName = "license-plist";
-		};
 		8B57DA462BA32B3700716D63 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8B57DA452BA32B3700716D63 /* XCRemoteSwiftPackageReference "Alamofire" */;
