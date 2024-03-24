@@ -41,6 +41,7 @@ final class BookmarkView: BaseView {
         for idx in 1..<cases.count {
             view.insertSegment(withTitle: cases[idx].classifyName, at: cases[idx].rawValue, animated: true)
         }
+        view.selectedSegmentIndex = 0
         return view
     }()
     lazy var bookmarkCollectionView = {

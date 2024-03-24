@@ -36,14 +36,6 @@ final class BookmarkViewController: BaseViewController {
         viewModel.outputFetchFoodList.bind { foodList in
             self.viewModel.isFoodListEmpty()
         }
-        viewModel.outputcheckSelectedSegment.bind { isSelected in
-            if isSelected {
-                self.mainView.messageLabel.isHidden = true
-            } else { // 선택된 값이 없는 상태면
-                self.mainView.messageLabel.text = "북마크입니다\n음식종류를 선택해주세요!"
-                self.mainView.messageLabel.isHidden = false
-            }
-        }
         viewModel.outputcheckEmptyFoodList.bind { isEmpty in
             if isEmpty {
                 self.mainView.messageLabel.text = "북마크된 음식이 없습니다."
@@ -63,7 +55,7 @@ final class BookmarkViewController: BaseViewController {
         print(#function)
         let selectedIdx = mainView.foodTypeSegment.selectedSegmentIndex
         print("selectedIdx: \(selectedIdx)")
-        viewModel.inputselectedFoodType.value = selectedIdx
+        viewModel.inputselectedFoodType.value = viewModel.cases[selectedIdx]
     }
 }
 
@@ -90,8 +82,6 @@ extension BookmarkViewController {
     private func updateSnapshot() {
         var snapShot = NSDiffableDataSourceSnapshot<Int, Recipe>()
         snapShot.appendSections([0])
-//        print("viewModel.outputFetchList.value: \(viewModel.outputFetchFoodList.value)")
-//        print("----------------------------")
         snapShot.appendItems(viewModel.outputFetchFoodList.value)
         dataSource.apply(snapShot)
 //        dataSource.applySnapshotUsingReloadData(snapShot)
