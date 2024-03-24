@@ -31,7 +31,6 @@
 		8BE6019E2B9AECB6009249DD /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6019D2B9AECB6009249DD /* SearchViewController.swift */; };
 		8BE601A02B9AECC9009249DD /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6019F2B9AECC9009249DD /* SearchView.swift */; };
 		8BE601A32B9AED06009249DD /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 8BE601A22B9AED06009249DD /* FSCalendar */; };
-		8BE601A62B9AED0D009249DD /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 8BE601A52B9AED0D009249DD /* SideMenu */; };
 		8BE601AE2B9AED27009249DD /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8BE601AD2B9AED27009249DD /* Kingfisher */; };
 		8BE601B12B9AED47009249DD /* Parchment in Frameworks */ = {isa = PBXBuildFile; productRef = 8BE601B02B9AED47009249DD /* Parchment */; };
 		8BE601B42B9AEE19009249DD /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 8BE601B32B9AEE19009249DD /* SkeletonView */; };
@@ -128,7 +127,6 @@
 				8BE601B12B9AED47009249DD /* Parchment in Frameworks */,
 				8BC004D82BAA2DB7007B0595 /* Lottie in Frameworks */,
 				8BE601B42B9AEE19009249DD /* SkeletonView in Frameworks */,
-				8BE601A62B9AED0D009249DD /* SideMenu in Frameworks */,
 				8BED50D02BA5DF0900900A18 /* Realm in Frameworks */,
 				8BE601A32B9AED06009249DD /* FSCalendar in Frameworks */,
 			);
@@ -386,7 +384,6 @@
 			packageProductDependencies = (
 				8BE601822B998A16009249DD /* SnapKit */,
 				8BE601A22B9AED06009249DD /* FSCalendar */,
-				8BE601A52B9AED0D009249DD /* SideMenu */,
 				8BE601AD2B9AED27009249DD /* Kingfisher */,
 				8BE601B02B9AED47009249DD /* Parchment */,
 				8BE601B32B9AEE19009249DD /* SkeletonView */,
@@ -426,7 +423,6 @@
 			packageReferences = (
 				8BE601812B998A16009249DD /* XCRemoteSwiftPackageReference "SnapKit" */,
 				8BE601A12B9AED06009249DD /* XCRemoteSwiftPackageReference "FSCalendar" */,
-				8BE601A42B9AED0D009249DD /* XCRemoteSwiftPackageReference "SideMenu" */,
 				8BE601AC2B9AED27009249DD /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				8BE601AF2B9AED47009249DD /* XCRemoteSwiftPackageReference "Parchment" */,
 				8BE601B22B9AEE19009249DD /* XCRemoteSwiftPackageReference "SkeletonView" */,
@@ -766,14 +762,6 @@
 				minimumVersion = 2.8.4;
 			};
 		};
-		8BE601A42B9AED0D009249DD /* XCRemoteSwiftPackageReference "SideMenu" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/jonkykong/SideMenu.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.5.0;
-			};
-		};
 		8BE601AC2B9AED27009249DD /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
@@ -828,11 +816,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8BE601A12B9AED06009249DD /* XCRemoteSwiftPackageReference "FSCalendar" */;
 			productName = FSCalendar;
-		};
-		8BE601A52B9AED0D009249DD /* SideMenu */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8BE601A42B9AED0D009249DD /* XCRemoteSwiftPackageReference "SideMenu" */;
-			productName = SideMenu;
 		};
 		8BE601AD2B9AED27009249DD /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
