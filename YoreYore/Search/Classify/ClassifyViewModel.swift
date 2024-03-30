@@ -80,6 +80,5 @@ final class ClassifyViewModel {
         // endIdx가 viewMdodel.totalRecipeCount을 초과하지는 않는지
         let newFetchEndIdx = fetchEndIdx + fetchUnit
         fetchEndIdx = newFetchEndIdx < totalRecipeCount ? newFetchEndIdx : totalRecipeCount
-
     }
 }

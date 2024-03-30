@@ -60,9 +60,13 @@ final class FoodCollectionViewCell: BaseCollectionViewCell {
 //        let context = UIGraphicsRenderer()
         
     }
+    override func prepareForReuse() {
+        foodImage.image = UIImage(systemName: "star")
+        foodNameLebel.text = "아왜1!!!"
+    }
     
     func upgradeCell(_ recipe: Recipe) {
-//        foodImage.kf.setImage(with: URL(string: recipe.largeImage))
+        foodImage.kf.setImage(with: URL(string: recipe.largeImage))
         foodNameLebel.text = recipe.foodName
     }
 }

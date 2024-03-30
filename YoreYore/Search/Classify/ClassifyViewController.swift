@@ -79,10 +79,13 @@ extension ClassifyViewController: UICollectionViewDelegate {
         mainView.foodCollectionView.delegate = self
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(#function)
         view.endEditing(true)
         goDetailRcp?(viewModel.recipeList.value[indexPath.item])
     }
+//    
+//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        print(#function, indexPath)
+//    }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         print(#function, scrollView.contentOffset.y)
