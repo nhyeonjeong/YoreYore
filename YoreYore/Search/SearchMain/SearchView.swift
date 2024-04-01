@@ -187,7 +187,6 @@ final class SearchView: BaseView {
             make.top.equalTo(messageLabel.snp.bottom).offset(4)
             make.horizontalEdges.equalToSuperview().inset(Constants.Layout.defaultPadding)
             make.height.equalTo(1) // 원래 54
-            print("SearchView에서 CollectionView의 높이: ", tagListCollectionView.contentSize.height)
         }
 //        for item in ingredientsImageViews {
 //            item.snp.makeConstraints { make in

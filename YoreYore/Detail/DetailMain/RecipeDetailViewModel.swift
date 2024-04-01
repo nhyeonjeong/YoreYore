@@ -103,17 +103,16 @@ final class RecipeDetailViewModel {
         
         // BookmarkTable에 해당 음식종류가 존재하는지 먼저 확인
         let data = bookmarkRealm.realm.objects(BookmarkTable.self)
-        for bookmark in data {
-            if bookmark.foodTypeRawValue == foodType.rawValue {
-                self.bookmarkRealm.createFoodItem(foodTableData, bookmark: bookmark)
-                return
-            }
+        let bookData = data.filter { bookmark in
+            bookmark.foodTypeRawValue == foodType.rawValue
         }
-        // 만약 이미 생성된 음식종류 테이블이 없다면
-        let bookmarkTableData = BookmarkTable(foodTypeRawValue: foodType.rawValue)
-        bookmarkTableData.foodList.append(foodTableData)
-        bookmarkRealm.createItem(bookmarkTableData)
-        // 다시 정렬,,?
+        if bookData.isEmpty {
+            let bookmarkTableData = BookmarkTable(foodTypeRawValue: foodType.rawValue)
+            bookmarkTableData.foodList.append(foodTableData)
+            bookmarkRealm.createItem(bookmarkTableData) // 테이블 생성
+        } else {
+            self.bookmarkRealm.createFoodItem(foodTableData, bookmark: bookData[0])
+        }
         
     }
     

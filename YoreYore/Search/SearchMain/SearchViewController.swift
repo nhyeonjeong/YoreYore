@@ -162,8 +162,6 @@ extension SearchViewController: UITextFieldDelegate, UICollectionViewDelegateFlo
             view.endEditing(true)
         } else {
             viewModel.inputTextFieldReturn.value = text
-//            print("textFieldShoudReturn에서의 높이: ", mainView.tagListCollectionView.contentSize.height)
-//
             textField.text = ""
         }
         return true
