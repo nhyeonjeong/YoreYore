@@ -115,14 +115,14 @@ extension SearchViewController: PagingViewControllerDataSource, PagingViewContro
     func pagingViewController(_: Parchment.PagingViewController, viewControllerAt index: Int) -> UIViewController {
         let classifyVC = ClassifyViewController(foodType: viewModel.classifyCases[index], searchIngredients: viewModel.outputTagList.value)
         
-        classifyVC.scrollFunc = { cgPoint in
-            self.mainView.mainScrollView.contentOffset.y = cgPoint.y
-            let pointInSuperview = self.mainView.pagingViewController.view.frame.origin.y - self.mainView.mainScrollView.contentOffset.y
-            self.mainView.contentView.snp.updateConstraints { make in
-                make.height.equalTo(self.mainView.frame.height-pointInSuperview)
-            }
+//        classifyVC.scrollFunc = { cgPoint in
+//            self.mainView.mainScrollView.contentOffset.y = cgPoint.y
+//            let pointInSuperview = self.mainView.pagingViewController.view.frame.origin.y - self.mainView.mainScrollView.contentOffset.y
+//            self.mainView.contentView.snp.updateConstraints { make in
+//                make.height.equalTo(self.mainView.frame.height-pointInSuperview)
+//            }
 
-        }
+//        }
         // 상세화면으로 전환
         classifyVC.goDetailRcp = { recipe in
             let vc = RecipeDetailViewController()
