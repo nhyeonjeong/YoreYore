@@ -85,8 +85,9 @@ final class SearchView: BaseView {
         view.backgroundColor = .clear
         return view
     }()
-    
+    let tableView = UITableView()
     // MARK: - pagingvc
+    // 이 뷰는 tableview(셀은 딱 하나)에 넣기..
     lazy var pagingViewController: PagingViewController = {
         let vc = PagingViewController()
         // 메뉴
@@ -119,9 +120,9 @@ final class SearchView: BaseView {
     }()
     
     override func configureHierarchy() {
-        
+        tableView.addSubview(pagingViewController.view)
         textfieldView.addViews([magnifyingImageView, searchTextField, xbutton])
-        addViews([topLabel, cookingImageView, textfieldView, messageLabel, tagListCollectionView, pagingViewController.view])
+//        addViews([topLabel, cookingImageView, textfieldView, messageLabel, tagListCollectionView, pagingViewController.view])
     }
     // MARK: - Layout
     override func configureConstraints() {
