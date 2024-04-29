@@ -11,7 +11,13 @@ import Lottie
 import Parchment
 
 final class SearchView: BaseView {
-
+    let mainScrollView = {
+        let view = UIScrollView()
+        view.maximumZoomScale = 1
+        view.minimumZoomScale = 1
+        return view
+    }()
+    let contentView = UIView()
     let topLabel = {
         let view = UILabel()
         view.font = .boldSystemFont(ofSize: 25)
@@ -85,7 +91,7 @@ final class SearchView: BaseView {
         view.backgroundColor = .clear
         return view
     }()
-    let tableView = UITableView()
+//    let tableView = UITableView()
     // MARK: - pagingvc
     // 이 뷰는 tableview(셀은 딱 하나)에 넣기..
     lazy var pagingViewController: PagingViewController = {
@@ -120,14 +126,27 @@ final class SearchView: BaseView {
     }()
     
     override func configureHierarchy() {
-        tableView.addSubview(pagingViewController.view)
+//        tableView.addSubview(pagingViewController.view)
+        
         textfieldView.addViews([magnifyingImageView, searchTextField, xbutton])
+        contentView.addViews([topLabel, cookingImageView, textfieldView, messageLabel, tagListCollectionView, pagingViewController.view])
+        mainScrollView.addSubview(contentView)
+        addSubview(mainScrollView)
 //        addViews([topLabel, cookingImageView, textfieldView, messageLabel, tagListCollectionView, pagingViewController.view])
     }
     // MARK: - Layout
     override func configureConstraints() {
+        mainScrollView.snp.makeConstraints { make in
+            make.horizontalEdges.equalToSuperview()
+            make.verticalEdges.equalTo(self.safeAreaLayoutGuide)
+        }
+        contentView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+            make.width.equalTo(mainScrollView.snp.width)
+            make.height.equalTo(700) // 임의로 줬는데 어케바꿈 ㅜㅜ
+        }
         topLabel.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(20)
+            make.top.horizontalEdges.equalToSuperview().inset(20)
     
         }
         cookingImageView.snp.makeConstraints { make in
@@ -168,7 +187,7 @@ final class SearchView: BaseView {
         }
         pagingViewController.view.snp.makeConstraints { make in
             make.top.equalTo(tagListCollectionView.snp.bottom)
-            make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
+            make.horizontalEdges.bottom.equalToSuperview()
         }
     }
     override func configureView() {
