@@ -30,48 +30,58 @@ final class ClassifyViewModel {
             
             if search.ingredients.count == 0 {
                 print("태그리스트 없음!!", search.foodType)
-                RecipeAPIManager.shared.fetchRecipe(type: RCP.self, api: .foodType(type: search.foodType, startIdx: self.fetchStartIdx, endIdx: self.fetchEndIdx), completionHandler: { data, error in
-                    guard let data else {
-                        print("api result data nil")
-                        return
-                    }
-                    let fetchData = data.COOKRCP01.row
-                    guard let count = Int(data.COOKRCP01.total_count) else {
-                        print("totalCount is not Int")
-                        return
-                    }
-                    self.totalRecipeCount = count
+                RecipeAPIManager.shared.fetchRecipe(type: RCP.self, api: .foodType(type: search.foodType, startIdx: self.fetchStartIdx, endIdx: self.fetchEndIdx), completionHandler: { response in
+                    switch response {
+                    case .success(let success):
+                        guard let data = success else {
+                            print("api success response data nil")
+                            return
+                        }
+                        let fetchData = data.COOKRCP01.row
+                        guard let count = Int(data.COOKRCP01.total_count) else {
+                            print("totalCount is not Int")
+                            return
+                        }
+                        self.totalRecipeCount = count
+                        
+                        var temtRecipeList: [Recipe] = []
+                        for data in fetchData {
+                            let recipe = Recipe(sequenceId: data.sequenceId, foodName: data.foodName, way: data.way, foodType: data.foodType, weight: data.weight, kal: data.kal, smallImage: data.smallImage, largeImage: data.largeImage, ingredients: data.ingredients, manuals: data.manuals, tip: data.tip)
+                            temtRecipeList.append(recipe)
+                        }
+                        self.recipeList.value.append(contentsOf: temtRecipeList)
+                    case .failure(let failure):
+                        print(failure)
                     
-                    var temtRecipeList: [Recipe] = []
-                    for data in fetchData {
-                        let recipe = Recipe(sequenceId: data.sequenceId, foodName: data.foodName, way: data.way, foodType: data.foodType, weight: data.weight, kal: data.kal, smallImage: data.smallImage, largeImage: data.largeImage, ingredients: data.ingredients, manuals: data.manuals, tip: data.tip)
-                        temtRecipeList.append(recipe)
                     }
-                    self.recipeList.value.append(contentsOf: temtRecipeList)
                 })
             } else {
                 print("태그리스트 있음!!")
-                RecipeAPIManager.shared.fetchRecipe(type: RCP.self, api: .searchWithIngredients(type: search.foodType, ingredients: search.ingredients, startIdx: self.fetchStartIdx, endIdx: self.fetchEndIdx), completionHandler: { data, error in
-                    guard let data else {
-                        print("api result data nil")
-                        return
+                RecipeAPIManager.shared.fetchRecipe(type: RCP.self, api: .searchWithIngredients(type: search.foodType, ingredients: search.ingredients, startIdx: self.fetchStartIdx, endIdx: self.fetchEndIdx), completionHandler: { response in
+                    
+                    switch response {
+                    case .success(let success):
+                        guard let data = success else {
+                            print("api result data nil")
+                            return
+                        }
+                        let fetchData = data.COOKRCP01.row
+                        guard let count = Int(data.COOKRCP01.total_count) else {
+                            print("totalCount is not Int")
+                            return
+                        }
+                        self.totalRecipeCount = count
+                        var temtRecipeList: [Recipe] = []
+                        for data in fetchData {
+                            let recipe = Recipe(sequenceId: data.sequenceId, foodName: data.foodName, way: data.way, foodType: data.foodType, weight: data.weight, kal: data.kal, smallImage: data.smallImage, largeImage: data.largeImage, ingredients: data.ingredients, manuals: data.manuals, tip: data.tip)
+                            temtRecipeList.append(recipe)
+                        }
+                        self.recipeList.value.append(contentsOf: temtRecipeList)
+                    case .failure(let failure):
+                        print(failure)
                     }
-                    let fetchData = data.COOKRCP01.row
-                    guard let count = Int(data.COOKRCP01.total_count) else {
-                        print("totalCount is not Int")
-                        return
-                    }
-                    self.totalRecipeCount = count
-                    var temtRecipeList: [Recipe] = []
-                    for data in fetchData {
-                        let recipe = Recipe(sequenceId: data.sequenceId, foodName: data.foodName, way: data.way, foodType: data.foodType, weight: data.weight, kal: data.kal, smallImage: data.smallImage, largeImage: data.largeImage, ingredients: data.ingredients, manuals: data.manuals, tip: data.tip)
-                        temtRecipeList.append(recipe)
-                    }
-                    self.recipeList.value.append(contentsOf: temtRecipeList)
                 })
             }
-            
-            
         }
     }
     // startIdx, endIdx 지정 후 api 통신
