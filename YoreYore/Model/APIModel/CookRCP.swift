@@ -99,12 +99,9 @@ struct Row: Decodable, Hashable {
         self.weight = try container.decode(String.self, forKey: .weight)
         self.kal = try container.decode(String.self, forKey: .kal)
         self.smallImage = try container.decode(String.self, forKey: .smallImage)
-//        self.largeImage = try container.decode(String.self, forKey: .largeImage)
         self.ingredients = try container.decode(String.self, forKey: .ingredients)
         self.tip = try container.decode(String.self, forKey: .tip)
-        
-        var largeImageString = try container.decode(String.self, forKey: .largeImage)
-        self.largeImage = largeImageString.setHttps()
+        self.largeImage = try container.decode(String.self, forKey: .largeImage)
         
         var manuals: [Manual] = []
         for index in 1...20 {
@@ -114,9 +111,8 @@ struct Row: Decodable, Hashable {
             let image = try container.decode(String.self, forKey: .init(rawValue: imageKey)!)
             let text = try container.decode(String.self, forKey: .init(rawValue: textKey)!)
             if text == "" && image == "" { break }
-            
-            // http라면 https로 바꾸기
-            manuals.append(Manual(image: image.setHttps(), content: text.setHttps()))
+
+            manuals.append(Manual(image: image, content: text))
         }
         self.manuals = manuals
     }

@@ -9,7 +9,14 @@ import UIKit
 import SnapKit
 
 final class ClassifyView: BaseView {
-
+    let failureMessage = {
+        let view = UILabel()
+        view.font = Constants.Font.manual
+        view.textColor = Constants.Color.subText
+        view.textAlignment = .center
+        view.isHidden = true // 처음에는 hidden
+        return view
+    }()
     lazy var foodCollectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
         view.backgroundColor = .clear
@@ -18,12 +25,15 @@ final class ClassifyView: BaseView {
     }()
     
     override func configureHierarchy() {
-        addSubview(foodCollectionView)
+        addViews([foodCollectionView, failureMessage])
     }
     
     override func configureConstraints() {
         foodCollectionView.snp.makeConstraints { make in
             make.edges.equalTo(safeAreaLayoutGuide)
+        }
+        failureMessage.snp.makeConstraints { make in
+            make.center.equalToSuperview()
         }
     }
 
@@ -52,3 +62,4 @@ extension ClassifyView {
 
     }
 }
+

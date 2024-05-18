@@ -51,6 +51,14 @@ final class ClassifyViewController: BaseViewController {
         viewModel.recipeList.bind { _ in
             self.updateSnapshot()
         }
+        viewModel.outputFailureMessage.bind { message in
+            if let message {
+                self.mainView.failureMessage.isHidden = false
+                self.mainView.failureMessage.text = message
+            } else { // 검색결과가 있을 때
+                self.mainView.failureMessage.isHidden = true
+            }
+        }
     }
 }
 extension ClassifyViewController {
@@ -88,7 +96,7 @@ extension ClassifyViewController: UICollectionViewDelegate {
 //    }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        print(#function, scrollView.contentOffset.y)
+//        print(#function, scrollView.contentOffset.y)
         if scrollView.contentOffset.y > 0 && scrollView.contentOffset.y < 100 {
             scrollFunc?(scrollView.contentOffset)
         } else if scrollView.contentOffset.y > 100 {

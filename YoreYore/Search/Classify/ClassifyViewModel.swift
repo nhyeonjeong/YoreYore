@@ -14,6 +14,7 @@ final class ClassifyViewModel {
     }
     var recipeList: Observable<[Recipe]> = Observable([])
     var inputFetchRecipe: Observable<SearchWithIngredients> = Observable(SearchWithIngredients(foodType: .dessert, ingredients: [])) // 레시피 통신하는 트리거
+    var outputFailureMessage = Observable<String?>(nil)
     let fetchUnit: Int = 25
     var fetchStartIdx: Int = 0
     var fetchEndIdx: Int = 24
@@ -49,10 +50,15 @@ final class ClassifyViewModel {
                             let recipe = Recipe(sequenceId: data.sequenceId, foodName: data.foodName, way: data.way, foodType: data.foodType, weight: data.weight, kal: data.kal, smallImage: data.smallImage, largeImage: data.largeImage, ingredients: data.ingredients, manuals: data.manuals, tip: data.tip)
                             temtRecipeList.append(recipe)
                         }
+                        self.outputFailureMessage.value = nil
                         self.recipeList.value.append(contentsOf: temtRecipeList)
                     case .failure(let failure):
-                        print(failure)
-                    
+                        switch failure {
+                        case .noData:
+                            self.outputFailureMessage.value = "검색결과가 없습니다"
+                        default:
+                            self.outputFailureMessage.value = "오류가 발생했습니다."
+                        }
                     }
                 })
             } else {
@@ -76,9 +82,15 @@ final class ClassifyViewModel {
                             let recipe = Recipe(sequenceId: data.sequenceId, foodName: data.foodName, way: data.way, foodType: data.foodType, weight: data.weight, kal: data.kal, smallImage: data.smallImage, largeImage: data.largeImage, ingredients: data.ingredients, manuals: data.manuals, tip: data.tip)
                             temtRecipeList.append(recipe)
                         }
+                        self.outputFailureMessage.value = nil
                         self.recipeList.value.append(contentsOf: temtRecipeList)
                     case .failure(let failure):
-                        print(failure)
+                        switch failure {
+                        case .noData:
+                            self.outputFailureMessage.value = "검색결과가 없습니다"
+                        default:
+                            self.outputFailureMessage.value = "오류가 발생했습니다."
+                        }
                     }
                 })
             }
