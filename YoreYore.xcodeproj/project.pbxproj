@@ -54,7 +54,6 @@
 		8BE602042B9D1B52009249DD /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE602032B9D1B52009249DD /* Observable.swift */; };
 		8BE602082B9D2361009249DD /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE602072B9D2361009249DD /* Recipe.swift */; };
 		8BE6020A2B9D29F1009249DD /* CookRCP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE602092B9D29F1009249DD /* CookRCP.swift */; };
-		8BED50BA2BA5A7F900900A18 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED50B92BA5A7F900900A18 /* String+Extension.swift */; };
 		8BED50C12BA5B0AB00900A18 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED50C02BA5B0AB00900A18 /* BookmarkViewController.swift */; };
 		8BED50C42BA5B44E00900A18 /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED50C32BA5B44E00900A18 /* BookmarkView.swift */; };
 		8BED50C82BA5C5E600900A18 /* BookmarkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED50C72BA5C5E600900A18 /* BookmarkCollectionViewCell.swift */; };
@@ -108,7 +107,6 @@
 		8BE602032B9D1B52009249DD /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		8BE602072B9D2361009249DD /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		8BE602092B9D29F1009249DD /* CookRCP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookRCP.swift; sourceTree = "<group>"; };
-		8BED50B92BA5A7F900900A18 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		8BED50C02BA5B0AB00900A18 /* BookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
 		8BED50C32BA5B44E00900A18 /* BookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
 		8BED50C72BA5C5E600900A18 /* BookmarkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -265,7 +263,6 @@
 			isa = PBXGroup;
 			children = (
 				8BE601C52B9C3F3D009249DD /* UIView+Extension.swift */,
-				8BED50B92BA5A7F900900A18 /* String+Extension.swift */,
 				8B62A26E2BAA50ED00B38D84 /* UIImage+Extension.swift */,
 			);
 			path = Extension;
@@ -528,7 +525,6 @@
 				8BED50CB2BA5DE2C00900A18 /* BookmarkTableRepository.swift in Sources */,
 				8BED50CD2BA5DE6F00900A18 /* BookmarkModel.swift in Sources */,
 				8BE601B72B9AEE57009249DD /* BaseViewController.swift in Sources */,
-				8BED50BA2BA5A7F900900A18 /* String+Extension.swift in Sources */,
 				8B57DA242B9FDB9300716D63 /* SearchViewModel.swift in Sources */,
 				8BED50D82BA5F32800900A18 /* FoodTableRepository.swift in Sources */,
 				8B57DA2D2BA1252400716D63 /* ManualCollectionViewCell.swift in Sources */,
@@ -610,11 +606,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -667,10 +664,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
@@ -684,7 +682,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 3D3V9NJ477;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -696,12 +694,12 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bamy.YoreYore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -721,7 +719,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3D3V9NJ477;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = YoreYore/Info.plist;
@@ -732,12 +730,12 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bamy.YoreYore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

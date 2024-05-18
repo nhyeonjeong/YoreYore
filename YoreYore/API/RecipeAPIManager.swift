@@ -8,13 +8,19 @@
 import Foundation
 import Alamofire
 
+enum RecipeAPIError: Error {
+    case noResponse
+    case noData
+    case invalidResponse
+}
+
 final class RecipeAPIManager {
     static let shared = RecipeAPIManager() // 싱글톤
     private init() {
         
     }
     
-    func fetchRecipe<T: Decodable>(type: T.Type, api: RecipeAPIRequest, completionHandler: @escaping (T?, Error?) -> Void) {
+    func fetchRecipe<T: Decodable>(type: T.Type, api: RecipeAPIRequest, completionHandler: @escaping (Result<T?, RecipeAPIError>) -> Void) {
         print(#function)
         /*
 //        print("api.parameter: \(api.parameter)")
@@ -25,18 +31,15 @@ final class RecipeAPIManager {
             print("--------------------------------------------")
         }
          */
-        
         AF.request(api.endpoint, method: api.getMethod, encoding: URLEncoding(destination: .queryString)).responseDecodable(of: T.self) { response in
             switch response.result {
             case .success(let success):
-                print(success)
-                completionHandler(success, nil)
-            case .failure(let failure):
+                dump(success)
+                completionHandler(.success(success))
+            case .failure(_):
                 print("RecipeAPIManager fetchRecipe failure")
-                
-                completionHandler(nil, failure)
+                completionHandler(.failure(.noData))
             }
         }
-        
     }
 }
