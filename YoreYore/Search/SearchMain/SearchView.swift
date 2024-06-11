@@ -91,8 +91,9 @@ final class SearchView: BaseView {
         view.backgroundColor = .clear
         return view
     }()
-    
+//    let tableView = UITableView()
     // MARK: - pagingvc
+    // 이 뷰는 tableview(셀은 딱 하나)에 넣기..
     lazy var pagingViewController: PagingViewController = {
         let vc = PagingViewController()
         // 메뉴
@@ -125,16 +126,13 @@ final class SearchView: BaseView {
     }()
     
     override func configureHierarchy() {
+//        tableView.addSubview(pagingViewController.view)
         
         textfieldView.addViews([magnifyingImageView, searchTextField, xbutton])
-        // tagList내부 그림 stackview
-//        for imageView in ingredientsImageViews {
-//            imageStackView.addArrangedSubview(imageView)
-//        }
-//        tagListCollectionView.addViews([imageStackView])
         contentView.addViews([topLabel, cookingImageView, textfieldView, messageLabel, tagListCollectionView, pagingViewController.view])
         mainScrollView.addSubview(contentView)
         addSubview(mainScrollView)
+//        addViews([topLabel, cookingImageView, textfieldView, messageLabel, tagListCollectionView, pagingViewController.view])
     }
     // MARK: - Layout
     override func configureConstraints() {
@@ -156,7 +154,6 @@ final class SearchView: BaseView {
             make.leading.equalTo(40)
             make.height.equalTo(100)
             make.width.equalTo(150)
-            
         }
         textfieldView.snp.makeConstraints { make in
             make.top.equalTo(topLabel.snp.bottom).offset(15)
@@ -187,17 +184,7 @@ final class SearchView: BaseView {
             make.top.equalTo(messageLabel.snp.bottom).offset(4)
             make.horizontalEdges.equalToSuperview().inset(Constants.Layout.defaultPadding)
             make.height.equalTo(1) // 원래 54
-            print("SearchView에서 CollectionView의 높이: ", tagListCollectionView.contentSize.height)
         }
-//        for item in ingredientsImageViews {
-//            item.snp.makeConstraints { make in
-//                make.size.equalTo(20)
-//            }
-//        }
-//        imageStackView.snp.makeConstraints { make in
-//            make.center.equalToSuperview()
-//        }
-        
         pagingViewController.view.snp.makeConstraints { make in
             make.top.equalTo(tagListCollectionView.snp.bottom)
             make.horizontalEdges.bottom.equalToSuperview()
