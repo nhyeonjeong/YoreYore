@@ -39,7 +39,7 @@
 - 커서기반 페이지네이션
 
 ## 🧑🏼‍🍳트러블슈팅
-### 1. API통신 Decoder
+### `1. API통신 Decoder`
 
 1-1) 문제
 
@@ -61,7 +61,7 @@ decoding을 하는 과정에서 이미지와 글 모두 ""으로 넘어왔다면
 </div>
 </details>
 
-### 2. updateConstraints메서드를 사용해 Dynamic한 CollectionView 높이 구현
+### `2. updateConstraints메서드를 사용해 Dynamic한 CollectionView 높이 구현`
 
 1-1) 문제
 
@@ -82,7 +82,7 @@ contentsize가 0일때는 collectionview가 아예 사라지는 문제로 최소
 </div>
 </details>
 
-### 3. Realm모델과 DiffableSource를 같이 사용하기 위한 DTO
+### 3. `Realm모델과 DiffableSource를 같이 사용하기 위한 DTO`
 
 1-1) 문제
 
