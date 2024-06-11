@@ -82,7 +82,7 @@ contentsize가 0일때는 collectionview가 아예 사라지는 문제로 최소
 </div>
 </details>
 
-### 3. `Realm모델과 DiffableSource를 같이 사용하기 위한 DTO`
+### `3. Realm모델과 DiffableSource를 같이 사용하기 위한 DTO`
 
 1-1) 문제
 
