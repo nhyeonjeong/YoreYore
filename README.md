@@ -63,11 +63,11 @@ decoding을 하는 과정에서 이미지와 글 모두 ""으로 넘어왔다면
 
 ### `2. updateConstraints메서드를 사용해 Dynamic한 CollectionView 높이 구현`
 
-1-1) 문제
+2-1) 문제
 
 tagList를 구현한 부분에서 tag가 많아지면서 collectionView에서 차지하는 높이가 길어질 때마다 다이나믹하게 높이를 변경해주고 싶었지만, 높이를 다이나믹하게 변경하는 대신 줄이 늘어날 때마다 마지막 줄로 포커스되도록 함.
 
-1-2) 해결
+2-2) 해결
 
 UI를 snapkit으로 레이아웃을 잡고 있었는데 이 라이브러리에 updateConstraints라는 메서드를 알고 collectionview의 contentsize가 변경될 때마다 해당 메서드 실행하여 차지하는 높이만큼 높이 변경.
 tag가 추가되어 collectionview를 새로 그릴 때마다 updateConstraints실행.
@@ -84,13 +84,13 @@ contentsize가 0일때는 collectionview가 아예 사라지는 문제로 최소
 
 ### `3. Realm모델과 DiffableSource를 같이 사용하기 위한 DTO`
 
-1-1) 문제
+3-1) 문제
 
 북마크는 Realm에 저장이 되도록 했고, 북마크 화면의 collectionview는 Realm에서 가져온 class객체를 DiffableSource로 구현.
 하지만 레시피 상세페이지에서 북마크 해제한 후 북마크화면으로 넘어가면 collectionview를 그리는 과정에서 "Object has been deleted or invalidated" 런타임오류.
 DiffableSource에서 apply메서드로 뷰를 그릴 때는 이전상태와 비교해서 snapshot형태로 사진을 찍기 때문에 이미 삭제된 객체로는 접근할 수 없어서 런타임오류가 발생.
 
-1-2) 해결
+3-2) 해결
 
 Realm에서 가져온 데이터는 class타입이었음. class객체는 참조타입이기 때문에 삭제후에 접근하려고 할 때 문제가 일어나므로 struct객체로 collectionview를 그리기로 함.
 class타입을 원하는 형태의 구조체 Recipe 타입으로 변경하여 사용.
