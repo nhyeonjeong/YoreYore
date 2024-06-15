@@ -16,7 +16,7 @@ struct Recipe: Hashable {
     var weight: String
     var kal: String
     var smallImage: String
-    var largeImage: String // https가 아닐경우 가공해서 다시 저장하기 때문에 var로 변경
+    var largeImage: String
     var ingredients: String
 
     var manuals: [Row.Manual]
