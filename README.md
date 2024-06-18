@@ -29,9 +29,9 @@
 
 ## 🧑🏼‍🍳기술설명
 - MVVM InputOutput패턴
-    - ViewController과 ViewModel을 Observable 클래스를 사용해 MVVM InputOutput패턴으로 작성
+    - 비즈니스로직 분리를 위해 ViewController과 ViewModel분리 및 Observable 클래스를 사용해 MVVM InputOutput패턴으로 작성
     - 비동기코드를 핸들링 하기 위해 Observable 클래스 내부 값 변경시 클로저 실행하여 반응형 코드 작성
-- Alamofire을 사용한 네트워크통신 NetworkManager Singleton패턴으로 구성
+- Alamofire을 사용한 NetworkManager Singleton패턴으로 구성
     - Generic을 사용해 Decodable한 타입들로 디코딩
     - 통신 결과에 따른 completionHandler실행
     - Router Pattern으로 baseURL, method, endpoint 관리
