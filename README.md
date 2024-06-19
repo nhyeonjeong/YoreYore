@@ -35,7 +35,7 @@
     - Generic을 사용해 Decodable한 타입들로 디코딩
     - 통신 결과에 따른 completionHandler실행
     - Router Pattern으로 baseURL, method, endpoint 관리
-- 테이블마다 싱글톤 Repository 생성, repository에서 CRD 관리, 필터 처리
+- Realm 테이블마다 싱글톤 Repository 생성, repository에서 CRD 관리, 필터 처리
 - 커서기반 페이지네이션
 
 ## 🧑🏼‍🍳트러블슈팅
