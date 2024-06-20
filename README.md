@@ -8,8 +8,9 @@
 > 레시피를 검색하고 북마크로 자주 하는 레시피를 저장할 수 있는 앱
 - iOS 1인 개발
 - 개발 기간
-    - 기간 : 24.3.8 ~ 24.3.24
-    - APP Store 출시 / 현재 v1.1.3 - 지속적으로 업데이트 중
+    - 기간 : 24.03.08 ~ 24.03.24
+    - APP Store 출시 / 현재 v1.1.4 - 지속적으로 업데이트 중
+    - https://apps.apple.com/kr/app/yoreyore-%EC%9A%94%EB%A6%AC%EB%A0%88%EC%8B%9C%ED%94%BC/id6479728615
 - 개발 환경
     - 최소버전 15.0
     - 세로모드, 라이트모드만 지원
@@ -37,7 +38,7 @@
     - Router Pattern으로 baseURL, method, endpoint 관리
 - Realm 테이블마다 싱글톤 Repository 생성, repository에서 CRD 관리, 필터 처리
     - 분류별 저장된 음식과 음식별 레시피설명 모두 1:n to many relationship 관계로 구현
-- 커서기반 페이지네이션
+- Offset-Based Pagenation
 
 ## 🧑🏼‍🍳트러블슈팅
 ### `1. API통신 Decoder`
