@@ -9,8 +9,7 @@
 - iOS 1인 개발
 - 개발 기간
     - 기간 : 24.03.08 ~ 24.03.24
-    - APP Store 출시 / 현재 v1.1.4 - 지속적으로 업데이트 중
-    - https://apps.apple.com/kr/app/yoreyore-%EC%9A%94%EB%A6%AC%EB%A0%88%EC%8B%9C%ED%94%BC/id6479728615
+    - [🔗APP Store 출시](https://apps.apple.com/kr/app/yoreyore-%EC%9A%94%EB%A6%AC%EB%A0%88%EC%8B%9C%ED%94%BC/id6479728615) / 현재 v1.1.4 - 지속적으로 업데이트 중
 - 개발 환경
     - 최소버전 15.0
     - 세로모드, 라이트모드만 지원
