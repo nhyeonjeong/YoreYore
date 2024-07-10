@@ -38,6 +38,7 @@
 - Realm 테이블마다 싱글톤 Repository 생성, repository에서 CRD 관리, 필터 처리
     - 분류별 저장된 음식과 음식별 레시피설명 모두 1:n to many relationship 관계로 구현
 - Offset-Based Pagenation
+- 레시피 상세화면에서 사이즈가 다양한 Cell구현을 위해 Compositional Layout과 DiffableDataSource 사용하여 다수의 섹션 구성
 
 ## 🧑🏼‍🍳트러블슈팅
 ### `1. API통신 Decoder`
