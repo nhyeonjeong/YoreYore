@@ -8,8 +8,8 @@
 > 레시피를 검색하고 북마크로 자주 하는 레시피를 저장할 수 있는 앱
 - iOS 1인 개발
 - 개발 기간
-    - 기간 : 24.3.8 ~ 24.3.24
-    - APP Store 출시 / 현재 v1.1.3 - 지속적으로 업데이트 중
+    - 기간 : 24.03.08 ~ 24.03.24
+    - [🔗APP Store 출시](https://apps.apple.com/kr/app/yoreyore-%EC%9A%94%EB%A6%AC%EB%A0%88%EC%8B%9C%ED%94%BC/id6479728615) / 현재 v1.1.4 - 지속적으로 업데이트 중
 - 개발 환경
     - 최소버전 15.0
     - 세로모드, 라이트모드만 지원
@@ -24,32 +24,34 @@
 - UIKit, CodeBaseUI, MVVM
 - Firebase Analytics, Crashlytics
 - Alamofire, Realm, Snapkit, Kingfisher, Parchment, Lottie
-- Decoder, Singleton, Access Control, Router Pattern, DTO 
+- Decoder, ResultType, Singleton, Access Control, Router Pattern, DTO 
 - DiffableDataSource, UICompositionalLayout, UICollectionLayoutListConfiguration, animate
 
 ## 🧑🏼‍🍳기술설명
 - MVVM InputOutput패턴
-    - ViewController과 ViewModel을 Observable 클래스를 사용해 MVVM InputOutput패턴으로 작성
+    - 비즈니스로직 분리를 위해 ViewController과 ViewModel분리 및 Observable 클래스를 사용해 MVVM InputOutput패턴으로 작성
     - 비동기코드를 핸들링 하기 위해 Observable 클래스 내부 값 변경시 클로저 실행하여 반응형 코드 작성
-- Alamofire을 사용한 네트워크통신 NetworkManager Singleton패턴으로 구성
+- Alamofire을 사용한 NetworkManager Singleton패턴으로 구성
     - Generic을 사용해 Decodable한 타입들로 디코딩
     - 통신 결과에 따른 completionHandler실행
     - Router Pattern으로 baseURL, method, endpoint 관리
-- 테이블마다 싱글톤 Repository 생성, repository에서 CRD 관리, 필터 처리
-- 커서기반 페이지네이션
+- Realm 테이블마다 싱글톤 Repository 생성, repository에서 CRD 관리, 필터 처리
+    - 분류별 저장된 음식과 음식별 레시피설명 모두 1:n to many relationship 관계로 구현
+- Offset-Based Pagenation
+- 레시피 상세화면에서 사이즈가 다양한 Cell구현을 위해 Compositional Layout과 DiffableDataSource 사용하여 다수의 섹션 구성
 
 ## 🧑🏼‍🍳트러블슈팅
 ### `1. API통신 Decoder`
 
 1-1) 문제
 
-API통신으로 레시피 정보를 받아올 때 MANUAL_IMG01 ~ MANUAL_IMG20 으로 사진들을 받고, MANUAL01 ~ MANUAL20으로 글을 받고 있음. Row모델로 Decoding할 때 변수를 40개를 쓰는 것으로 했었지만 모델이 너무 길어지고, 설명이 끝난 다음 ""으로 넘어오는 부분까지 저장된다는 점에서 수정이 필요해 보였음. 또한 받아온 모델을 사용할 때 배열이 아닌 변수로 레시피를 나열하기에는 한계가 있을 것이라고 생각
+API통신으로 레시피 정보를 받아올 때 MANUAL_IMG01 ~ MANUAL_IMG20 으로 사진들을 받고, MANUAL01 ~ MANUAL20으로 글을 받고 있음. Row모델로 Decoding할 때 변수를 40개를 쓰는 것으로 했었지만 모델이 너무 길어지고, 설명이 끝난 다음 ""으로 넘어오는 부분까지 저장된다는 점에서 수정이 필요해 보였음. 또한 받아온 모델을 사용할 때 배열이 아닌 변수로 레시피를 나열하기에는 한계가 있을 것이라고 생각.
 
 1-2) 해결
 
 배열로 레시피설명을 사용하는게 좋다고 판단하여 Decode하는 과정에서 바로 이미지 20개, 글20개의 데이터를 배열로 변환하여 저장.
-이미지와 레시피 설명이 들어가는 Manual이라는 구조체를 추가로 만들어 init시점에서 Manual배열을 만들도록 함.
-decoding을 하는 과정에서 이미지와 글 모두 ""으로 넘어왔다면 해당 decoding을 멈추고 manuals 배열에 decoding결과 저장
+이미지와 레시피 설명이 들어가는 Manual이라는 구조체를 추가로 만들어 init시점에서 Manual배열을 만들도록 구성.
+decoding을 하는 과정에서 이미지와 글 모두 ""으로 넘어왔다면 해당 decoding을 멈추고 manuals 배열에 decoding결과 저장.
 
 <details>
 <summary>변경 후 Row 모델</summary>
@@ -87,8 +89,8 @@ contentsize가 0일때는 collectionview가 아예 사라지는 문제로 최소
 3-1) 문제
 
 북마크는 Realm에 저장이 되도록 했고, 북마크 화면의 collectionview는 Realm에서 가져온 class객체를 DiffableSource로 구현.
-하지만 레시피 상세페이지에서 북마크 해제한 후 북마크화면으로 넘어가면 collectionview를 그리는 과정에서 "Object has been deleted or invalidated" 런타임오류.
-DiffableSource에서 apply메서드로 뷰를 그릴 때는 이전상태와 비교해서 snapshot형태로 사진을 찍기 때문에 이미 삭제된 객체로는 접근할 수 없어서 런타임오류가 발생.
+하지만 레시피 상세페이지에서 북마크 해제한 후 북마크화면으로 넘어가면 collectionview를 그리는 과정에서 "Object has been deleted or invalidated" 런타임오류 발생.
+DiffableSource에서 apply메서드로 뷰를 그릴 때는 이전상태와 비교해서 snapshot형태로 사진을 찍기 때문에 이미 삭제된 객체로는 접근할 수 없었던 것이 오류의 원인.
 
 3-2) 해결
 
@@ -106,6 +108,6 @@ class타입을 원하는 형태의 구조체 Recipe 타입으로 변경하여 �
 </details>
 
 ## 🧑🏼‍🍳기술회고
-Observable클래스를 직접 만들어 타입내부의 변수 내용이 변경되면 didSelect로 비동기코드를 처리하는 시도를 해봤는데 더 다양한 연산자와 UI비동기처리를 위해서 RxSwift를 사용해보는것이 좋을 것 같음.
-그리고 parchment라는 라이브러리를 사용하면서 해당 Github에서 제공하는 샘플 코드를 보고 안보고의 차이를 사용하면서 느낌.
-레시피 상세페이지에서는 스크롤뷰를 사용하지 않고 List Configuration으로 여러 종류의 셀을 사용하면서 섹션을 나누어 collectionview를 구현해보았는데 좋은 시도였던 것 같음.
+Observable Class와 didSet 를 사용해 양방향 데이터 바인딩을 적용하였으나, 다양한 상황에서 비동기 처리 및 Operator 의 필요성을 인지하게 되어 RxSwift/Combine 같은 반응형 프로그래밍 구현을 생각해보게 되었습니다. 
+OpenSource 적용 시 샘플 코드를 직접 검토하고 경험해보며 타인의 코드를 이해하고 의도를 파악하는 데 도움이 되었던 것 같고, 뿐만 아니라 타인이 이해하기 쉽도록 스스로 가독성있는 코드를 구성하게 되었던 것 같습니다. 
+또 CollectionView List Configuration을 도입해 여러 섹션과 셀을 Dynamic하게 구성하면서 FlowLayout 과 CompositionalLayout의 차이를 인지할 수 있었습니다.
