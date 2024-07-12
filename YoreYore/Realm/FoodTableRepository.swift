@@ -13,8 +13,6 @@ class FoodTableRepository {
     
     let realm = try! Realm()
     func createItem(_ data: FoodTable) {
-        print(self.realm.configuration.fileURL)
-        
         do {
             try realm.write {
                 realm.add(data)

@@ -91,7 +91,7 @@ final class SearchView: BaseView {
         view.backgroundColor = .clear
         return view
     }()
-//    let tableView = UITableView()
+
     // MARK: - pagingvc
     // 이 뷰는 tableview(셀은 딱 하나)에 넣기..
     lazy var pagingViewController: PagingViewController = {
@@ -207,10 +207,9 @@ final class SearchView: BaseView {
 
 extension SearchView {
     private func collectionViewLayout() -> UICollectionViewLayout {
-        // estimated하니까 글자에 맞춰서 ..!!!
+        // estimated으로 글자에 맞춰서
         let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(100), heightDimension: .absolute(25))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        
         // Group
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(25))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])

@@ -107,11 +107,9 @@ struct Row: Decodable, Hashable {
         for index in 1...20 {
             let imageKey = "MANUAL_IMG" + String(format: "%02d", index)
             let textKey = "MANUAL" + String(format: "%02d", index)
-            
             let image = try container.decode(String.self, forKey: .init(rawValue: imageKey)!)
             let text = try container.decode(String.self, forKey: .init(rawValue: textKey)!)
             if text == "" && image == "" { break }
-
             manuals.append(Manual(image: image, content: text))
         }
         self.manuals = manuals

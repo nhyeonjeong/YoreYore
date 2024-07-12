@@ -88,13 +88,13 @@ extension RecipeDetailViewController: UICollectionViewDelegate {
             let section = Section(rawValue: indexPath.section)
             switch section {
             case .detail:
-                let cell = collectionView.dequeueConfiguredReusableCell(using: detailCellRegistration, for: indexPath, item: itemIdentifier as! Recipe)
+                let cell = collectionView.dequeueConfiguredReusableCell(using: detailCellRegistration, for: indexPath, item: itemIdentifier as? Recipe)
                 return cell
             case .manual:
-                let cell = collectionView.dequeueConfiguredReusableCell(using: manualCellRegistration, for: indexPath, item: itemIdentifier as! Row.Manual)
+                let cell = collectionView.dequeueConfiguredReusableCell(using: manualCellRegistration, for: indexPath, item: itemIdentifier as? Row.Manual)
                 return cell
             case .none:
-                let cell = collectionView.dequeueConfiguredReusableCell(using: manualCellRegistration, for: indexPath, item: itemIdentifier as! Row.Manual)
+                let cell = collectionView.dequeueConfiguredReusableCell(using: manualCellRegistration, for: indexPath, item: itemIdentifier as? Row.Manual)
                 return cell
             }
         })

@@ -12,8 +12,8 @@ class BookmarkTableRepository {
     static let shared = BookmarkTableRepository()
     
     var realm = try! Realm()
+    // BookmarkTable Create
     func createItem(_ data: BookmarkTable) {
-        print(self.realm.configuration.fileURL)
         do {
             try realm.write {
                 realm.add(data)
@@ -22,10 +22,8 @@ class BookmarkTableRepository {
             print("realm create fail", error)
         }
     }
-    
+    // 북마크한 레시피 Create
     func createFoodItem(_ item: FoodTable, bookmark: BookmarkTable) {
-        
-        let data = realm.objects(BookmarkTable.self)
         do {
             try realm.write {
                 bookmark.foodList.append(item)
@@ -34,11 +32,12 @@ class BookmarkTableRepository {
             print(error)
         }
     }
+    // BookmarkTable Read
     func fetchItem() -> [BookmarkTable] {
         let result = realm.objects(BookmarkTable.self)
         return Array(result)
     }
-    // foodList만 가져오기
+    // BookmarkTable에서 foodList만 Read
     func fetchItem(_ foodType: ClassifyList) -> [FoodTable] {
         let result = realm.objects(BookmarkTable.self)
         let bookmark: [BookmarkTable] = Array(result).filter { bookmarkTableData in
@@ -47,6 +46,7 @@ class BookmarkTableRepository {
         return bookmark.isEmpty ? [] : Array(bookmark[0].foodList)
     }
     
+    // BookmarkTable Delete
     func removeItem(_ item: BookmarkTable) {
         do {
             try realm.write {

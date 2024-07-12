@@ -31,11 +31,11 @@ final class RecipeAPIManager {
         AF.request(api.endpoint, method: api.getMethod, encoding: URLEncoding(destination: .queryString)).responseDecodable(of: T.self) { response in
             switch response.result {
             case .success(let success):
-                dump(success)
+//                dump(success)
                 completionHandler(.success(success))
             case .failure(_):
                 print("RecipeAPIManager fetchRecipe failure")
-                if let data = response.data {
+                if let _ = response.data {
                     completionHandler(.failure(.noData))
                 }
                 completionHandler(.failure(.invalidResponse))

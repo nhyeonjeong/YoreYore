@@ -38,17 +38,6 @@ final class SearchViewController: BaseViewController {
             self.mainView.tagListCollectionView.snp.updateConstraints { make in
                 make.height.equalTo(newHeight)
             }
-            /*
-            // tagList에 tag가 있으면 그림 숨기기
-            if self.viewModel.outputTagList.value.count != 0 {
-                self.mainView.imageStackView.isHidden = true
-                // tagList가 갱신될떄마다 제일 아래 행으로 이동
-//                self.mainView.tagListCollectionView.setContentOffset(CGPoint(x: 0, y: self.mainView.tagListCollectionView.contentSize.height - self.mainView.tagListCollectionView.bounds.height), animated: true)
-            } else {
-                self.mainView.imageStackView.isHidden = false
-            }
-             */
-            // 알아서 선택된 뷰만 reload해줌,,
             self.mainView.pagingViewController.reloadData()
         }
         viewModel.outputPlaceholder.bind { placeholder in
