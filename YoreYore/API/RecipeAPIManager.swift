@@ -9,7 +9,6 @@ import Foundation
 import Alamofire
 
 enum RecipeAPIError: Error {
-    case noResponse
     case noData
     case invalidResponse
 }
@@ -19,9 +18,7 @@ final class RecipeAPIManager {
     private init() {
         
     }
-    
     func fetchRecipe<T: Decodable>(type: T.Type, api: RecipeAPIRequest, completionHandler: @escaping (Result<T?, RecipeAPIError>) -> Void) {
-        print(#function)
         /*
 //        print("api.parameter: \(api.parameter)")
 //        print("foodTypeAPI\(api.typeString)------------------------------")
@@ -38,7 +35,10 @@ final class RecipeAPIManager {
                 completionHandler(.success(success))
             case .failure(_):
                 print("RecipeAPIManager fetchRecipe failure")
-                completionHandler(.failure(.noData))
+                if let data = response.data {
+                    completionHandler(.failure(.noData))
+                }
+                completionHandler(.failure(.invalidResponse))
             }
         }
     }
