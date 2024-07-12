@@ -24,7 +24,7 @@
 - UIKit, CodeBaseUI, MVVM
 - Firebase Analytics, Crashlytics
 - Alamofire, Realm, Snapkit, Kingfisher, Parchment, Lottie
-- Decoder, Singleton, Access Control, Router Pattern, DTO 
+- Decoder, ResultType, Singleton, Access Control, Router Pattern, DTO 
 - DiffableDataSource, UICompositionalLayout, UICollectionLayoutListConfiguration, animate
 
 ## 🧑🏼‍🍳기술설명
