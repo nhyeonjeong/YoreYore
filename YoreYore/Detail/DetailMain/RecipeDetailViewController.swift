@@ -57,6 +57,7 @@ final class RecipeDetailViewController: BaseViewController {
 extension RecipeDetailViewController {
     private func setNavigationTitle() {
         navigationItem.title = food.foodName
+        self.navigationItem.leftBarButtonItem = backBarButtonItem
     }
     private func setNavigationBar(isSaved: Bool) {
         // 북마크
